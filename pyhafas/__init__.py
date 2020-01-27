@@ -4,15 +4,21 @@ import datetime
 import json
 import re
 from hashlib import md5
+from typing import List
 
 import requests
 from Crypto.Cipher import AES
 
-from .profiles import Profile
+from .journey import Journey
+from .profile import Profile
 
 
 class HafasClient:
-    def __init__(self, debug: Bool=false, base_url: str=None, profile: Profile):
+    def __init__(
+            self,
+            debug: bool = False,
+            base_url: str = None,
+            profile: Profile = None):
         pass
 
     def departures(self, station):
@@ -21,7 +27,7 @@ class HafasClient:
     def arrivals(self, station):
         pass
 
-    def journeys(self, from, to) -> List[Journey]:
+    def journeys(self, origin, destination) -> List[Journey]:
         pass
 
     def locations(self, term):

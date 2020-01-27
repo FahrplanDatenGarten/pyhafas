@@ -19,7 +19,7 @@ if sys.argv[-1] == 'publish':
 
 setup(
     name='pyhafas',
-    version='0.0.0',
+    version='0.0.0.dev1',
     description='Python client for HAFAS public transport APIs',
     long_description=long_description,
     long_description_content_type="text/markdown",
