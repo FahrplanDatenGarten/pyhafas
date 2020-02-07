@@ -3,6 +3,7 @@ from . import Profile
 
 class DBProfile(Profile):
     baseUrl = "https://reiseauskunft.bahn.de/bin/mgate.exe"
+    defaultUserAgent = "DB Navigator/19.10.04 (iPhone; iOS 13.1.2; Scale/2.00)"
 
     salt = 'bdI8UVj40K5fvxwf'
     addChecksum = True
@@ -24,6 +25,3 @@ class DBProfile(Profile):
             'aid': 'n91dB8Z77MLdoR0K'
         }
     }
-
-    def __init__(self):
-        pass

@@ -11,6 +11,7 @@ from ..station import Station
 
 class Profile:
     baseUrl: str = None
+    defaultUserAgent: str = 'pyhafas'
 
     addMicMac: bool = False
     addChecksum: bool = False
@@ -19,12 +20,10 @@ class Profile:
     locale: str = 'de-DE'
     timezone: str = 'Europe/Berlin'
 
-    userAgent: str = "DB Navigator/19.10.04 (iPhone; iOS 13.1.2; Scale/2.00)"
-
     requestBody: dict = {}
 
-    def __init__(self):
-        pass
+    def __init__(self, ua=defaultUserAgent):
+        self.userAgent = ua
 
     def urlFormatter(self, data):
         url = self.baseUrl
