@@ -1,8 +1,11 @@
 from __future__ import annotations
-from typing import Awaitable, Dict, List, Optional, Tuple, Union, Any, TYPE_CHECKING
+
+from typing import (TYPE_CHECKING, Any, Awaitable, Dict, List, Optional, Tuple,
+                    Union)
 
 from .fptf import Journey, Station
 from .profile import DBProfile, Profile, StationBoardRequestType
+
 
 class HafasClient:
     def __init__(

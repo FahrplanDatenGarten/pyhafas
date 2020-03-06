@@ -14,6 +14,7 @@ class Journey:
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
 
+
 class Leg:
     def __init__(self, **kwargs):
         origin: Station = kwargs.get('origin')

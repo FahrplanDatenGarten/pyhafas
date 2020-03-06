@@ -92,7 +92,10 @@ class Profile:
             'meth': 'Reconstruction'
         }
 
-    def formatJourneysRequest(self, origin: Station, destination: Station) -> Dict:
+    def formatJourneysRequest(
+            self,
+            origin: Station,
+            destination: Station) -> Dict:
         # TODO: find out, what commented-out values mean and implement options
         return {
             'req': {
@@ -100,49 +103,65 @@ class Profile:
                     'type': 'S',
                     'lid': 'A=1@L={}@'.format(origin.id)
                 }],
-                #'viaLocL': None,
+                # 'viaLocL': None,
                 'depLocL': [{
                     'type': 'S',
                     'lid': 'A=1@L={}@'.format(destination.id)
                 }],
-                #'jnyFltrL': [{
+                # 'jnyFltrL': [{
                 #    'type': 'PROD',
                 #    'mode': 'INC',
                 #    'value': '1023'
-                #}],
-                #'outDate': '20200212',
-                #'outTime': '124226',
-                #'maxChg': -1,
-                #'getPasslist': False,
-                #'gisFltrL': [],
-                #'getTariff': False,
-                #'ushrp': True,
-                #'getPT': True,
-                #'getIV': False,
-                #'getPolyline': False,
-                #'numF': 1,
-                #'outFrwd': True,
-                #'trfReq': {
+                # }],
+                # 'outDate': '20200212',
+                # 'outTime': '124226',
+                # 'maxChg': -1,
+                # 'getPasslist': False,
+                # 'gisFltrL': [],
+                # 'getTariff': False,
+                # 'ushrp': True,
+                # 'getPT': True,
+                # 'getIV': False,
+                # 'getPolyline': False,
+                # 'numF': 1,
+                # 'outFrwd': True,
+                # 'trfReq': {
                 #    'jnyCl': 2,
                 #    'cType': 'PK',
                 #    'tvlrProf': [{
                 #        'type': 'E',
                 #        'redtnCard': 4
                 #    }]
-                #}
+                # }
             },
-            #'cfg': {
+            # 'cfg': {
             #    'polyEnc': 'GPA',
             #    'rtMode': 'HYBRID'
-            #},
+            # },
             'meth': 'TripSearch'
         }
 
-    def parseTime(self, TimeString) -> datetime.time:
-        pass
+    def parseTime(self, timeString, date) -> datetime.datetime:
+        hour = int(timeString[:2])
+        minute = int(timeString[2:-2])
+        second = int(timeString[-2:])
+
+        dateOffset = 0
+
+        while (hour) - (24 * dateOffset) >= 24:
+            dateOffset += 1
+
+        return datetime.datetime(
+            date.year,
+            date.month,
+            date.day,
+            hour,
+            minute,
+            second)
 
     def parseDate(self, dateString) -> datetime.date:
-        pass
+        dt = datetime.datetime.strptime(dateString, '%Y%m%d')
+        return dt.date()
 
     def parseStationBoardRequest(self, response: str) -> List[Journey]:
         data = json.loads(response)
@@ -153,6 +172,7 @@ class Profile:
 
         for jny in data['svcResL'][0]['res']['jnyL']:
             journey = Journey(jny['jid'])
+            journey.date = self.parseDate(jny['date'])
             # TODO: Add more data
             # ...
             # ...
@@ -165,6 +185,7 @@ class Profile:
 
     def parseJourneysRequest(self, response: str) -> List[Journey]:
         pass
+
 
 class StationBoardRequestType(Enum):
     DEPARTURE = 'DEP'
