@@ -180,7 +180,10 @@ class Profile:
         minutes = int(timeString[2:-2])
         seconds = int(timeString[-2:])
 
-        return datetime.timedelta(hours=hours, minutes=minutes, seconds=seconds)
+        return datetime.timedelta(
+            hours=hours,
+            minutes=minutes,
+            seconds=seconds)
 
     def parseDate(self, dateString) -> datetime.date:
         dt = datetime.datetime.strptime(dateString, '%Y%m%d')
@@ -204,11 +207,33 @@ class Profile:
 
         return journeys
 
+    def parseLid(self, lid: str) -> Dict:
+        parsedLid = {}
+        for lidElementGroup in lid.split("@"):
+            if lidElementGroup:
+                parsedLid[lidElementGroup.split(
+                    "=")[0]] = lidElementGroup.split("=")[1]
+        return parsedLid
+
     def parseLocationRequest(self, response: str) -> List[Station]:
         data = json.loads(response)
         stations = []
         for stn in data['svcResL'][0]['res']['match']['locL']:
-            station = Station(id=stn['extId'], name=stn['name'])
+            parsedLid = self.parseLid(lid=stn['lid'])
+            latitude: int
+            longitude: int
+            if stn['crd']:
+                latitude = stn['crd']['x'] / 1000000
+                longitude = stn['crd']['y'] / 1000000
+            elif parsedLid['X'] and parsedLid['Y']:
+                latitude = parsedLid['X'] / 1000000
+                longitude = parsedLid['Y'] / 1000000
+
+            station = Station(
+                id=stn['extId'],
+                name=stn['name'],
+                latitude=latitude,
+                longitude=longitude)
             stations.append(station)
         return stations
 
