@@ -1,3 +1,5 @@
+import datetime
+
 class Station:
     def __init__(self, id: str or int, **kwargs):
         self.id = id
@@ -8,8 +10,11 @@ class Station:
 
 
 class Journey:
-    def __init__(self, id: str or int):
+    def __init__(self, id: str or int, **kwargs):
         self.id = id
+        self.date: datetime.date = kwargs.get('date')
+        self.duration: datetime.timedelta = kwargs.get('duration')
+
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
@@ -17,8 +22,8 @@ class Journey:
 
 class Leg:
     def __init__(self, **kwargs):
-        origin: Station = kwargs.get('origin')
-        destination: Station = kwargs.get('destination')
+        self.origin: Station = kwargs.get('origin')
+        self.destination: Station = kwargs.get('destination')
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)

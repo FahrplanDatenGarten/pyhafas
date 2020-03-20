@@ -159,6 +159,13 @@ class Profile:
             minute,
             second)
 
+    def parseTimedelta(self, timeString) -> datetime.timedelta:
+        hours = int(timeString[:2])
+        minutes = int(timeString[2:-2])
+        seconds = int(timeString[-2:])
+
+        return datetime.timedelta(hours=hours, minutes=minutes, seconds=seconds)
+
     def parseDate(self, dateString) -> datetime.date:
         dt = datetime.datetime.strptime(dateString, '%Y%m%d')
         return dt.date()
@@ -166,9 +173,10 @@ class Profile:
     def parseStationBoardRequest(self, response: str) -> List[Journey]:
         data = json.loads(response)
         journeys = []
+        print(data)
 
-        if data['svcResL'][0]['err'] != 'OK':
-            raise
+        if data.get('err') or data['svcResL'][0]['err'] != 'OK':
+            raise Exception()
 
         for jny in data['svcResL'][0]['res']['jnyL']:
             journey = Journey(jny['jid'])
@@ -184,7 +192,21 @@ class Profile:
         pass
 
     def parseJourneysRequest(self, response: str) -> List[Journey]:
-        pass
+        data = json.loads(response)
+        journeys = []
+
+        if data.get('err') or data['svcResL'][0]['err'] != 'OK':
+            raise Exception()
+
+        for jny in data['svcResL'][0]['res']['outConL']:
+            journeys.append(Journey(
+                jny['ctxRecon'],
+                date=self.parseDate(jny['date']),
+                duration=self.parseTimedelta(jny['dur'])
+            ))
+            # TODO: Add more data
+
+        return journeys
 
 
 class StationBoardRequestType(Enum):
