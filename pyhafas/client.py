@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from typing import (TYPE_CHECKING, Any, Awaitable, Dict, List, Optional, Tuple,
                     Union)
 
@@ -61,8 +62,11 @@ class HafasClient:
 
         return self.profile.parseJourneyRequest(res.text)
 
-    def locations(self, term):
-        pass
+    def locations(self, term: str):
+        body = self.profile.formatLocationRequest(term)
+        res = self.profile.request(body)
+
+        return self.profile.parseLocationRequest(res.text)
 
     def stop(self, stop):
         pass

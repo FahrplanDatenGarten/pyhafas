@@ -141,6 +141,22 @@ class Profile:
             'meth': 'TripSearch'
         }
 
+    def formatLocationRequest(
+            self,
+            term: str):
+        return {
+            "req": {
+                "input": {
+                    "field": "S",
+                    "loc": {
+                        "name": term,
+                        "type": "S"
+                    }
+                }
+            },
+            "meth": "LocMatch"
+        }
+
     def parseTime(self, timeString, date) -> datetime.datetime:
         hour = int(timeString[:2])
         minute = int(timeString[2:-2])
@@ -187,6 +203,14 @@ class Profile:
             journeys.append(journey)
 
         return journeys
+
+    def parseLocationRequest(self, response: str) -> List[Station]:
+        data = json.loads(response)
+        stations = []
+        for stn in data['svcResL'][0]['res']['match']['locL']:
+            station = Station(id=stn['extId'], name=stn['name'])
+            stations.append(station)
+        return stations
 
     def parseJourneyRequest(self, response: str) -> Journey:
         pass
