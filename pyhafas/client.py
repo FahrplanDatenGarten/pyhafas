@@ -19,8 +19,8 @@ class HafasClient:
         self.useragent = ua
         self.debug = debug
 
-    def departures(self, station: Station or str):
-        if isinstance(station, str):
+    def departures(self, station):
+        if not isinstance(station, Station):
             station = Station(station)
 
         body = self.profile.formatStationBoardRequest(
@@ -29,8 +29,8 @@ class HafasClient:
 
         return self.profile.parseStationBoardRequest(res.text)
 
-    def arrivals(self, station: Station or str):
-        if isinstance(station, str):
+    def arrivals(self, station):
+        if not isinstance(station, Station):
             station = Station(station)
 
         body = self.profile.formatStationBoardRequest(
@@ -39,13 +39,10 @@ class HafasClient:
 
         return self.profile.parseStationBoardRequest(res.text)
 
-    def journeys(
-            self,
-            origin: Station or str,
-            destination: Station or str) -> List[Journey]:
-        if isinstance(origin, str):
+    def journeys(self, origin, destination) -> List[Journey]:
+        if not isinstance(origin, Station):
             origin = Station(origin)
-        if isinstance(destination, str):
+        if not isinstance(destination, Station):
             destination = Station(destination)
 
         body = self.profile.formatJourneysRequest(origin, destination)
@@ -53,8 +50,8 @@ class HafasClient:
 
         return self.profile.parseJourneysRequest(res.text)
 
-    def journey(self, journey: Journey or str) -> Journey:
-        if isinstance(journey, str):
+    def journey(self, journey) -> Journey:
+        if not isinstance(journey, Station):
             journey = Journey(journey)
 
         body = self.profile.formatJourneyRequest(journey)
