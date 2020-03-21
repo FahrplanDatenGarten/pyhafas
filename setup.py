@@ -29,7 +29,7 @@ setup(
     author_email='simeon@noemis.me, hello@labcode.de',
     license='EUPL 1.2',
     install_requires=['requests'],
-    packages=['pyhafas'],
+    packages=setuptools.find_packages(),
     zip_safe=True,
     classifiers=[
         'Development Status :: 3 - Alpha',
