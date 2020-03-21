@@ -223,11 +223,11 @@ class Profile:
             latitude: int
             longitude: int
             if stn['crd']:
-                latitude = stn['crd']['x'] / 1000000
-                longitude = stn['crd']['y'] / 1000000
+                latitude = stn['crd']['y'] / 1000000
+                longitude = stn['crd']['x'] / 1000000
             elif parsedLid['X'] and parsedLid['Y']:
-                latitude = parsedLid['X'] / 1000000
-                longitude = parsedLid['Y'] / 1000000
+                latitude = parsedLid['Y'] / 1000000
+                longitude = parsedLid['X'] / 1000000
 
             station = Station(
                 id=stn['extId'],
