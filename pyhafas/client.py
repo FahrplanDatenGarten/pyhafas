@@ -59,7 +59,7 @@ class HafasClient:
 
         return self.profile.parseJourneyRequest(res.text)
 
-    def location(self, term: str):
+    def locations(self, term: str) -> List[Station]:
         body = self.profile.formatLocationRequest(term)
         res = self.profile.request(body)
 
