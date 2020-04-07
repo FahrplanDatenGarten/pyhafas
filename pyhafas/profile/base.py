@@ -59,14 +59,20 @@ class Profile:
                 'Content-Type': 'application/json'})
         return req
 
+        req = requests.post(
+            self.urlFormatter(data),
+            data=data,
+            headers={
+                'User-Agent': self.userAgent,
+                'Content-Type': 'application/json'})
+        return req
+
     def calculateChecksum(self, data):
-        to_hash = data + self.salt
-        to_hash = to_hash.encode('utf-8')
-        return md5(to_hash).hexdigest()
+        return md5((data + self.salt).encode('utf-8')).hexdigest()
 
     def calculateMicMac(self, data):
         mic = md5(data.encode('utf-8')).hexdigest()
-        mac = md5((mic + self.salt).encode('utf-8')).hexdigest()
+        mac = self.calculateChecksum(mic)
         return mic, mac
 
     def formatStationBoardRequest(
@@ -192,9 +198,8 @@ class Profile:
     def parseStationBoardRequest(self, response: str) -> List[Journey]:
         data = json.loads(response)
         journeys = []
-        print(data)
 
-        if data.get('err') or data['svcResL'][0]['err'] != 'OK':
+        if data.get('err') != 'OK' or data['svcResL'][0]['err'] != 'OK':
             raise Exception()
 
         for jny in data['svcResL'][0]['res']['jnyL']:

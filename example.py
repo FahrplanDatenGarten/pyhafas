@@ -1,5 +1,5 @@
 from pyhafas import HafasClient
-from pyhafas.profile import DBProfile
+from pyhafas.profile import DBProfile, VSNProfile
 
 client = HafasClient(DBProfile(), debug=True)
 
@@ -10,3 +10,6 @@ client = HafasClient(DBProfile(), debug=True)
 print(client.journeys(8000128, '008100113'))
 # print(client.location("Köln Hbf"))
 
+print('='*20)
+vsn = HafasClient(VSNProfile())
+print(vsn.departures('9034033'))
