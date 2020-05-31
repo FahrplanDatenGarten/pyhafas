@@ -101,7 +101,9 @@ class Profile:
     def formatJourneysRequest(
             self,
             origin: Station,
-            destination: Station) -> Dict:
+            destination: Station,
+            date: datetime.datetime
+    ) -> Dict:
         # TODO: find out, what commented-out values mean and implement options
         return {
             'req': {
@@ -114,13 +116,13 @@ class Profile:
                     'type': 'S',
                     'lid': 'A=1@L={}@'.format(destination.id)
                 }],
+                'outDate': date.strftime("%Y%m%d"),
+                'outTime': date.strftime("%H%M%S"),
                 # 'jnyFltrL': [{
                 #    'type': 'PROD',
                 #    'mode': 'INC',
                 #    'value': '1023'
                 # }],
-                # 'outDate': '20200212',
-                # 'outTime': '124226',
                 # 'maxChg': -1,
                 # 'getPasslist': False,
                 # 'gisFltrL': [],
