@@ -102,6 +102,7 @@ class Profile:
             self,
             origin: Station,
             destination: Station,
+            via: List[Station],
             date: datetime.datetime,
             min_change_time: int,
             max_changes: int
@@ -113,7 +114,12 @@ class Profile:
                     'type': 'S',
                     'lid': 'A=1@L={}@'.format(destination.id)
                 }],
-                # 'viaLocL': None,
+                'viaLocL': [{
+                    'loc': {
+                        'type': 'S',
+                        'lid': 'A=1@L={}@'.format(via_station.id)
+                    }
+                } for via_station in via],
                 'depLocL': [{
                     'type': 'S',
                     'lid': 'A=1@L={}@'.format(origin.id)

@@ -13,6 +13,9 @@ print(
     client.journeys(
         destination=8000128,
         origin=8005556,
+        via=[
+            8070003
+        ],
         date=datetime.datetime(
             year=2020,
             month=5,

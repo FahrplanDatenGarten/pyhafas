@@ -45,6 +45,7 @@ class HafasClient:
             origin,
             destination,
             date: datetime.datetime,
+            via: List = [],
             min_change_time: int = 0,
             max_changes: int = -1
     ) -> List[Journey]:
@@ -52,10 +53,14 @@ class HafasClient:
             origin = Station(origin)
         if not isinstance(destination, Station):
             destination = Station(destination)
+        for via_station in via:
+            if not isinstance(via_station, Station):
+                via[via.index(via_station)] = Station(via_station)
 
         body = self.profile.formatJourneysRequest(
             origin,
             destination,
+            via,
             date,
             min_change_time,
             max_changes
