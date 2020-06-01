@@ -8,7 +8,7 @@ from typing import Dict, List
 
 import requests
 
-from ..fptf import Journey, Station
+from ..fptf import Journey, Station, Leg
 
 
 class Profile:
@@ -231,26 +231,29 @@ class Profile:
                     "=")[0]] = lidElementGroup.split("=")[1]
         return parsedLid
 
+    def parseLidToStation(self, lid: str, name: str = "", latitude=0, longitude=0) -> Station:
+        parsedLid = self.parseLid(lid)
+        if latitude == 0 and longitude == 0 and parsedLid['X'] and parsedLid['Y']:
+            latitude = int(parsedLid['Y']) / 1000000
+            longitude = int(parsedLid['X']) / 1000000
+
+        return Station(
+            id=parsedLid['L'],
+            name=name or parsedLid['O'],
+            latitude=latitude,
+            longitude=longitude
+        )
+
     def parseLocationRequest(self, response: str) -> List[Station]:
         data = json.loads(response)
         stations = []
         for stn in data['svcResL'][0]['res']['match']['locL']:
-            parsedLid = self.parseLid(lid=stn['lid'])
-            latitude: int
-            longitude: int
+            latitude: int = 0
+            longitude: int = 0
             if stn['crd']:
                 latitude = stn['crd']['y'] / 1000000
                 longitude = stn['crd']['x'] / 1000000
-            elif parsedLid['X'] and parsedLid['Y']:
-                latitude = parsedLid['Y'] / 1000000
-                longitude = parsedLid['X'] / 1000000
-
-            station = Station(
-                id=stn['extId'],
-                name=stn['name'],
-                latitude=latitude,
-                longitude=longitude)
-            stations.append(station)
+            stations.append(self.parseLidToStation(stn['lid'], stn['name'], latitude, longitude))
         return stations
 
     def parseJourneyRequest(self, response: str) -> Journey:
@@ -264,13 +267,24 @@ class Profile:
             raise Exception()
 
         for jny in data['svcResL'][0]['res']['outConL']:
+            legs: List[Leg] = []
+            # TODO: Add more data
+            for leg in jny['secL']:
+                origin = self.parseLidToStation(data['svcResL'][0]['res']['common']['locL'][leg['dep']['locX']]['lid'])
+                destination = self.parseLidToStation(
+                    data['svcResL'][0]['res']['common']['locL'][leg['arr']['locX']]['lid'])
+                legs.append(Leg(
+                    origin=origin,
+                    destination=destination,
+                    departure=self.parseTime(leg['dep']['dTimeS'], self.parseDate(jny['date'])),
+                    arrival=self.parseTime(leg['arr']['aTimeS'], self.parseDate(jny['date'])),
+                ))
             journeys.append(Journey(
                 jny['ctxRecon'],
                 date=self.parseDate(jny['date']),
-                duration=self.parseTimedelta(jny['dur'])
+                duration=self.parseTimedelta(jny['dur']),
+                legs=legs
             ))
-            # TODO: Add more data
-
         return journeys
 
 
