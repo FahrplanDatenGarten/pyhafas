@@ -26,7 +26,7 @@ setup(
     url='https://github.com/n0emis/pyhafas',
     download_url='https://github.com/n0emis/pyhafas/releases',
     author='Simeon Keske, Leo Maroni',
-    author_email='simeon@noemis.me, hello@labcode.de',
+    author_email='simeon@noemis.me, hello@em0lar.de',
     license='EUPL 1.2',
     install_requires=['requests'],
     packages=setuptools.find_packages(),
