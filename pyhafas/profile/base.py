@@ -175,8 +175,8 @@ class Profile:
         }
 
     def parseTime(self, timeString, date) -> datetime.datetime:
-        hour = int(timeString[:2])
-        minute = int(timeString[2:-2])
+        hour = int(timeString[-6:-4])
+        minute = int(timeString[-4:-2])
         second = int(timeString[-2:])
 
         dateOffset = 0
