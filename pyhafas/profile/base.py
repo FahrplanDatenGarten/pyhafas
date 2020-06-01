@@ -179,18 +179,14 @@ class Profile:
         minute = int(timeString[-4:-2])
         second = int(timeString[-2:])
 
-        dateOffset = 0
-
-        while (hour) - (24 * dateOffset) >= 24:
-            dateOffset += 1
-
+        dateOffset = int(timeString[:2]) if len(timeString) > 6 else 0
         return datetime.datetime(
             date.year,
             date.month,
             date.day,
             hour,
             minute,
-            second)
+            second) + datetime.timedelta(days=dateOffset)
 
     def parseTimedelta(self, timeString) -> datetime.timedelta:
         hours = int(timeString[:2])
