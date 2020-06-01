@@ -102,7 +102,9 @@ class Profile:
             self,
             origin: Station,
             destination: Station,
-            date: datetime.datetime
+            date: datetime.datetime,
+            min_change_time: int,
+            max_changes: int
     ) -> Dict:
         # TODO: find out, what commented-out values mean and implement options
         return {
@@ -118,12 +120,13 @@ class Profile:
                 }],
                 'outDate': date.strftime("%Y%m%d"),
                 'outTime': date.strftime("%H%M%S"),
+                'minChgTime': min_change_time,
+                'maxChg': max_changes,
                 # 'jnyFltrL': [{
                 #    'type': 'PROD',
                 #    'mode': 'INC',
                 #    'value': '1023'
                 # }],
-                # 'maxChg': -1,
                 # 'getPasslist': False,
                 # 'gisFltrL': [],
                 # 'getTariff': False,

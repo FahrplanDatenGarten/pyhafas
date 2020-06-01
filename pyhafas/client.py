@@ -40,13 +40,26 @@ class HafasClient:
 
         return self.profile.parseStationBoardRequest(res.text)
 
-    def journeys(self, origin, destination, date: datetime.datetime) -> List[Journey]:
+    def journeys(
+            self,
+            origin,
+            destination,
+            date: datetime.datetime,
+            min_change_time: int = 0,
+            max_changes: int = -1
+    ) -> List[Journey]:
         if not isinstance(origin, Station):
             origin = Station(origin)
         if not isinstance(destination, Station):
             destination = Station(destination)
 
-        body = self.profile.formatJourneysRequest(origin, destination, date)
+        body = self.profile.formatJourneysRequest(
+            origin,
+            destination,
+            date,
+            min_change_time,
+            max_changes
+        )
         res = self.profile.request(body)
 
         return self.profile.parseJourneysRequest(res.text)
