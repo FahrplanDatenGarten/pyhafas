@@ -278,13 +278,31 @@ class Profile:
                 except KeyError:
                     arrival_delay = None
 
+                try:
+                    departure_platform = leg['dep']['dPlatfR']
+                except KeyError:
+                    try:
+                        departure_platform = leg['dep']['dPlatfS']
+                    except KeyError:
+                        departure_platform = None
+                try:
+                    arrival_platform = leg['arr']['aPlatfR']
+                except KeyError:
+                    try:
+                        arrival_platform = leg['arr']['aPlatfS']
+                    except KeyError:
+                        arrival_platform = None
+
                 legs.append(Leg(
                     origin=origin,
                     destination=destination,
                     departure=self.parseTime(leg['dep']['dTimeS'], self.parseDate(jny['date'])),
                     departure_delay=departure_delay,
+                    departure_platform=departure_platform,
                     arrival=self.parseTime(leg['arr']['aTimeS'], self.parseDate(jny['date'])),
-                    arrival_delay=arrival_delay
+                    arrival_delay=arrival_delay,
+                    arrival_platform=arrival_platform,
+
                 ))
             journeys.append(Journey(
                 jny['ctxRecon'],
