@@ -109,12 +109,12 @@ class Profile:
             'req': {
                 'arrLocL': [{
                     'type': 'S',
-                    'lid': 'A=1@L={}@'.format(origin.id)
+                    'lid': 'A=1@L={}@'.format(destination.id)
                 }],
                 # 'viaLocL': None,
                 'depLocL': [{
                     'type': 'S',
-                    'lid': 'A=1@L={}@'.format(destination.id)
+                    'lid': 'A=1@L={}@'.format(origin.id)
                 }],
                 'outDate': date.strftime("%Y%m%d"),
                 'outTime': date.strftime("%H%M%S"),
