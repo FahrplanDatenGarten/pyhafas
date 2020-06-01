@@ -26,3 +26,29 @@ class VSNProfile(Profile):
             'aid': 'Mpf5UPC0DmzV8jkg'
         }
     }
+
+    available_products = {
+        'long_distance_express': [1],  # ICE
+        'long_distance': [2],  # IC/EC/CNL
+        'regional_express': [4],  # RE/IR
+        'regional': [8],  # NV
+        'suburban': [16],  # S
+        'bus': [32],  # BUS
+        'ferry': [64],  # F
+        'subway': [128],  # U
+        'tram': [256],  # T
+        'anruf_sammel_taxi': [512]  # Group Taxi
+    }
+
+    default_products = [
+        'long_distance_express',
+        'long_distance',
+        'regional_express',
+        'regional',
+        'suburban',
+        'bus',
+        'ferry',
+        'subway',
+        'tram',
+        'anruf_sammel_taxi'
+    ]

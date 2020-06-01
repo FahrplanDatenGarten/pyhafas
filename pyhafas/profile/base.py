@@ -24,6 +24,9 @@ class Profile:
 
     requestBody: dict = {}
 
+    available_products: dict = []
+    default_products: List[str] = []
+
     def __init__(self, ua=defaultUserAgent):
         self.userAgent = ua
 
@@ -102,7 +105,8 @@ class Profile:
             self,
             origin: Station,
             destination: Station,
-            date: datetime.datetime
+            date: datetime.datetime,
+            products: Dict[str, bool]
     ) -> Dict:
         # TODO: find out, what commented-out values mean and implement options
         return {
@@ -118,11 +122,9 @@ class Profile:
                 }],
                 'outDate': date.strftime("%Y%m%d"),
                 'outTime': date.strftime("%H%M%S"),
-                # 'jnyFltrL': [{
-                #    'type': 'PROD',
-                #    'mode': 'INC',
-                #    'value': '1023'
-                # }],
+                'jnyFltrL': [
+                    self.formatProductsFilter(products)
+                ],
                 # 'maxChg': -1,
                 # 'getPasslist': False,
                 # 'gisFltrL': [],
@@ -163,6 +165,33 @@ class Profile:
                 }
             },
             "meth": "LocMatch"
+        }
+
+    def formatProductsFilter(self, requested_products: dict) -> dict:
+        products = self.default_products
+        for requested_product in requested_products:
+            if requested_products[requested_product]:
+                try:
+                    products.index(requested_product)
+                except ValueError:
+                    products.append(requested_product)
+
+            elif not requested_products[requested_product]:
+                try:
+                    products.pop(products.index(requested_product))
+                except ValueError:
+                    pass
+        bitmask_sum = 0
+        for product in products:
+            try:
+                for product_bitmask in self.available_products[product]:
+                    bitmask_sum += product_bitmask
+            except KeyError:
+                raise Exception()
+        return {
+            'type': 'PROD',
+            'mode': 'INC',
+            'value': str(bitmask_sum)
         }
 
     def parseTime(self, timeString, date) -> datetime.datetime:
