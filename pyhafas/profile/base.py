@@ -269,11 +269,22 @@ class Profile:
                 origin = self.parseLidToStation(data['svcResL'][0]['res']['common']['locL'][leg['dep']['locX']]['lid'])
                 destination = self.parseLidToStation(
                     data['svcResL'][0]['res']['common']['locL'][leg['arr']['locX']]['lid'])
+                try:
+                    departure_delay = self.parseTime(leg['dep']['dTimeR'], self.parseDate(jny['date'])) - self.parseTime(leg['dep']['dTimeS'], self.parseDate(jny['date']))
+                except KeyError:
+                    departure_delay = None
+                try:
+                    arrival_delay = self.parseTime(leg['arr']['aTimeR'], self.parseDate(jny['date'])) - self.parseTime(leg['arr']['aTimeS'], self.parseDate(jny['date']))
+                except KeyError:
+                    arrival_delay = None
+
                 legs.append(Leg(
                     origin=origin,
                     destination=destination,
                     departure=self.parseTime(leg['dep']['dTimeS'], self.parseDate(jny['date'])),
+                    departure_delay=departure_delay,
                     arrival=self.parseTime(leg['arr']['aTimeS'], self.parseDate(jny['date'])),
+                    arrival_delay=arrival_delay
                 ))
             journeys.append(Journey(
                 jny['ctxRecon'],

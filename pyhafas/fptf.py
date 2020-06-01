@@ -29,7 +29,9 @@ class Leg:
         self.origin: Station = kwargs.get('origin')
         self.destination: Station = kwargs.get('destination')
         self.departure: datetime.datetime = kwargs.get('departure')
+        self.departure_delay: datetime.timedelta = kwargs.get('departure_delay', None)
         self.arrival: datetime.datetime = kwargs.get('arrival')
+        self.arrival_delay: datetime.timedelta = kwargs.get('arrival_delay', None)
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
