@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 import datetime
-import json
-from typing import (TYPE_CHECKING, Any, Awaitable, Dict, List, Optional, Tuple,
-                    Union)
+from typing import List
 
 from .fptf import Journey, Station
 from .profile import DBProfile, Profile, StationBoardRequestType
@@ -20,22 +18,38 @@ class HafasClient:
         self.useragent = ua
         self.debug = debug
 
-    def departures(self, station):
+    def departures(
+            self,
+            station,
+            date: datetime.datetime,
+            max_journeys: int = -1):
         if not isinstance(station, Station):
             station = Station(station)
 
         body = self.profile.format_station_board_request(
-            station, StationBoardRequestType.DEPARTURE)
+            station,
+            StationBoardRequestType.DEPARTURE,
+            date,
+            max_journeys
+        )
         res = self.profile.request(body)
 
         return self.profile.parse_station_board_request(res.text)
 
-    def arrivals(self, station):
+    def arrivals(
+            self,
+            station,
+            date: datetime.datetime,
+            max_journeys: int = -1):
         if not isinstance(station, Station):
             station = Station(station)
 
         body = self.profile.format_station_board_request(
-            station, StationBoardRequestType.ARRIVAL)
+            station,
+            StationBoardRequestType.ARRIVAL,
+            date,
+            max_journeys
+        )
         res = self.profile.request(body)
 
         return self.profile.parse_station_board_request(res.text)

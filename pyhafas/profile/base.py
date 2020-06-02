@@ -9,6 +9,7 @@ from typing import Dict, List
 import requests
 
 from pyhafas.fptf import Stopover
+
 from ..fptf import Journey, Leg, Station
 
 
@@ -71,14 +72,20 @@ class Profile:
     def format_station_board_request(
             self,
             station: Station,
-            request_type: StationBoardRequestType) -> Dict:
+            request_type: StationBoardRequestType,
+            date: datetime.datetime,
+            max_journeys: int
+    ) -> Dict:
         # TODO: More options
         return {
             'req': {
                 'type': request_type.value,
                 'stbLoc': {
                     'lid': 'A=1@L={}@'.format(station.id)
-                }
+                },
+                'maxJny': max_journeys,
+                'date': date.strftime("%Y%m%d"),
+                'time': date.strftime("%H%M%S"),
             },
             'meth': 'StationBoard'
         }

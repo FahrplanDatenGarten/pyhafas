@@ -31,10 +31,12 @@ class Leg:
         self.cancelled: bool = kwargs.get('cancelled', False)
         self.destination: Station = kwargs.get('destination')
         self.departure: datetime.datetime = kwargs.get('departure')
-        self.departureDelay: datetime.timedelta = kwargs.get('departureDelay', None)
+        self.departureDelay: datetime.timedelta = kwargs.get(
+            'departureDelay', None)
         self.departurePlatform: str = kwargs.get('departurePlatform', None)
         self.arrival: datetime.datetime = kwargs.get('arrival')
-        self.arrivalDelay: datetime.timedelta = kwargs.get('arrivalDelay', None)
+        self.arrivalDelay: datetime.timedelta = kwargs.get(
+            'arrivalDelay', None)
         self.arrivalPlatform: str = kwargs.get('arrivalPlatform', None)
         self.stopovers: List[Stopover] = kwargs.get('stopovers', None)
 
@@ -47,10 +49,12 @@ class Stopover:
         self.stop: Station = kwargs.get('stop')
         self.cancelled: bool = kwargs.get('cancelled', False)
         self.arrival: datetime.datetime = kwargs.get('arrival', None)
-        self.arrivalDelay: datetime.timedelta = kwargs.get('arrivalDelay', None)
+        self.arrivalDelay: datetime.timedelta = kwargs.get(
+            'arrivalDelay', None)
         self.arrivalPlatform: str = kwargs.get('arrivalPlatform', None)
         self.departure: datetime.datetime = kwargs.get('departure', None)
-        self.departureDelay: datetime.timedelta = kwargs.get('departureDelay', None)
+        self.departureDelay: datetime.timedelta = kwargs.get(
+            'departureDelay', None)
         self.departurePlatform: str = kwargs.get('departurePlatform', None)
 
     def __repr__(self):
