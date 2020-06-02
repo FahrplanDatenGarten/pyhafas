@@ -24,21 +24,21 @@ class HafasClient:
         if not isinstance(station, Station):
             station = Station(station)
 
-        body = self.profile.formatStationBoardRequest(
+        body = self.profile.format_station_board_request(
             station, StationBoardRequestType.DEPARTURE)
         res = self.profile.request(body)
 
-        return self.profile.parseStationBoardRequest(res.text)
+        return self.profile.parse_station_board_request(res.text)
 
     def arrivals(self, station):
         if not isinstance(station, Station):
             station = Station(station)
 
-        body = self.profile.formatStationBoardRequest(
+        body = self.profile.format_station_board_request(
             station, StationBoardRequestType.ARRIVAL)
         res = self.profile.request(body)
 
-        return self.profile.parseStationBoardRequest(res.text)
+        return self.profile.parse_station_board_request(res.text)
 
     def journeys(
             self,
@@ -57,7 +57,7 @@ class HafasClient:
             if not isinstance(via_station, Station):
                 via[via.index(via_station)] = Station(via_station)
 
-        body = self.profile.formatJourneysRequest(
+        body = self.profile.format_journeys_request(
             origin,
             destination,
             via,
@@ -67,22 +67,22 @@ class HafasClient:
         )
         res = self.profile.request(body)
 
-        return self.profile.parseJourneysRequest(res.text)
+        return self.profile.parse_journeys_request(res.text)
 
     def journey(self, journey) -> Journey:
         if not isinstance(journey, Station):
             journey = Journey(journey)
 
-        body = self.profile.formatJourneyRequest(journey)
+        body = self.profile.format_journey_request(journey)
         res = self.profile.request(body)
 
-        return self.profile.parseJourneyRequest(res.text)
+        return self.profile.parse_journey_request(res.text)
 
     def locations(self, term: str) -> List[Station]:
-        body = self.profile.formatLocationRequest(term)
+        body = self.profile.format_location_request(term)
         res = self.profile.request(body)
 
-        return self.profile.parseLocationRequest(res.text)
+        return self.profile.parse_location_request(res.text)
 
     def stop(self, stop):
         pass

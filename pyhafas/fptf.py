@@ -31,11 +31,11 @@ class Leg:
         self.cancelled: bool = kwargs.get('cancelled', False)
         self.destination: Station = kwargs.get('destination')
         self.departure: datetime.datetime = kwargs.get('departure')
-        self.departure_delay: datetime.timedelta = kwargs.get('departure_delay', None)
-        self.departure_platform: str = kwargs.get('departure_platform', None)
+        self.departureDelay: datetime.timedelta = kwargs.get('departureDelay', None)
+        self.departurePlatform: str = kwargs.get('departurePlatform', None)
         self.arrival: datetime.datetime = kwargs.get('arrival')
-        self.arrival_delay: datetime.timedelta = kwargs.get('arrival_delay', None)
-        self.arrival_platform: str = kwargs.get('arrival_platform', None)
+        self.arrivalDelay: datetime.timedelta = kwargs.get('arrivalDelay', None)
+        self.arrivalPlatform: str = kwargs.get('arrivalPlatform', None)
         self.stopovers: List[Stopover] = kwargs.get('stopovers', None)
 
     def __repr__(self):
@@ -47,11 +47,11 @@ class Stopover:
         self.stop: Station = kwargs.get('stop')
         self.cancelled: bool = kwargs.get('cancelled', False)
         self.arrival: datetime.datetime = kwargs.get('arrival', None)
-        self.arrival_delay: datetime.timedelta = kwargs.get('arrival_delay', None)
-        self.arrival_platform: str = kwargs.get('arrival_platform', None)
+        self.arrivalDelay: datetime.timedelta = kwargs.get('arrivalDelay', None)
+        self.arrivalPlatform: str = kwargs.get('arrivalPlatform', None)
         self.departure: datetime.datetime = kwargs.get('departure', None)
-        self.departure_delay: datetime.timedelta = kwargs.get('departure_delay', None)
-        self.departure_platform: str = kwargs.get('departure_platform', None)
+        self.departureDelay: datetime.timedelta = kwargs.get('departureDelay', None)
+        self.departurePlatform: str = kwargs.get('departurePlatform', None)
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
