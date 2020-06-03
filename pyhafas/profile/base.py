@@ -4,12 +4,11 @@ import datetime
 import json
 from enum import Enum
 from hashlib import md5
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 import requests
 
-from pyhafas.fptf import Stopover
-
+from pyhafas.fptf import Stopover, Mode
 from ..fptf import Journey, Leg, Station
 
 
@@ -29,7 +28,7 @@ class Profile:
     def __init__(self, ua=defaultUserAgent):
         self.userAgent = ua
 
-    def url_formatter(self, data):
+    def url_formatter(self, data: str) -> str:
         url = self.baseUrl
 
         if self.addChecksum or self.addMicMac:
@@ -61,10 +60,10 @@ class Profile:
                 'Content-Type': 'application/json'})
         return req
 
-    def calculate_checksum(self, data):
+    def calculate_checksum(self, data: str) -> str:
         return md5((data + self.salt).encode('utf-8')).hexdigest()
 
-    def calculate_mic_mac(self, data):
+    def calculate_mic_mac(self, data: str) -> Tuple[str, str]:
         mic = md5(data.encode('utf-8')).hexdigest()
         mac = self.calculate_checksum(mic)
         return mic, mac
@@ -75,7 +74,7 @@ class Profile:
             request_type: StationBoardRequestType,
             date: datetime.datetime,
             max_journeys: int
-    ) -> Dict:
+    ) -> dict:
         # TODO: More options
         return {
             'req': {
@@ -90,7 +89,7 @@ class Profile:
             'meth': 'StationBoard'
         }
 
-    def format_journey_request(self, journey: Journey) -> Dict:
+    def format_journey_request(self, journey: Journey) -> dict:
         return {
             'req': {
                 'ctxRecon': journey.id
@@ -106,7 +105,7 @@ class Profile:
             date: datetime.datetime,
             min_change_time: int,
             max_changes: int
-    ) -> Dict:
+    ) -> dict:
         # TODO: find out, what commented-out values mean and implement options
         return {
             'req': {
@@ -174,7 +173,7 @@ class Profile:
             "meth": "LocMatch"
         }
 
-    def parse_time(self, time_string, date) -> datetime.datetime:
+    def parse_time(self, time_string: str, date: datetime.date) -> datetime.datetime:
         hour = int(time_string[-6:-4])
         minute = int(time_string[-4:-2])
         second = int(time_string[-2:])
@@ -188,7 +187,7 @@ class Profile:
             minute,
             second) + datetime.timedelta(days=dateOffset)
 
-    def parse_timedelta(self, time_string) -> datetime.timedelta:
+    def parse_timedelta(self, time_string: str) -> datetime.timedelta:
         hours = int(time_string[:2])
         minutes = int(time_string[2:-2])
         seconds = int(time_string[-2:])
@@ -198,7 +197,7 @@ class Profile:
             minutes=minutes,
             seconds=seconds)
 
-    def parse_date(self, date_string) -> datetime.date:
+    def parse_date(self, date_string: str) -> datetime.date:
         dt = datetime.datetime.strptime(date_string, '%Y%m%d')
         return dt.date()
 
@@ -218,7 +217,7 @@ class Profile:
 
         return journeys
 
-    def parse_lid(self, lid: str) -> Dict:
+    def parse_lid(self, lid: str) -> dict:
         parsedLid = {}
         for lidElementGroup in lid.split("@"):
             if lidElementGroup:
@@ -230,8 +229,8 @@ class Profile:
             self,
             lid: str,
             name: str = "",
-            latitude=0,
-            longitude=0) -> Station:
+            latitude: int = 0,
+            longitude: int = 0) -> Station:
         parsedLid = self.parse_lid(lid)
         if latitude == 0 and longitude == 0 and parsedLid['X'] and parsedLid['Y']:
             latitude = int(parsedLid['Y']) / 1000000
@@ -286,7 +285,7 @@ class Profile:
                         destination=leg_destination,
                         departure=self.parse_time(leg['dep']['dTimeS'], self.parse_date(jny['date'])),
                         arrival=self.parse_time(leg['arr']['aTimeS'], self.parse_date(jny['date'])),
-                        mode="walking",
+                        mode=Mode.WALKING,
                         distance=leg['gis']['dist']
                     ))
                 else:
