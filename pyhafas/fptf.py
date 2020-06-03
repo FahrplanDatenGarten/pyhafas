@@ -25,7 +25,8 @@ class Journey:
 
 
 class Leg:
-    def __init__(self, **kwargs):
+    def __init__(self, id: str or int, **kwargs):
+        self.id = id
         self.origin: Station = kwargs.get('origin')
         self.mode: str = kwargs.get('mode', 'train')
         self.cancelled: bool = kwargs.get('cancelled', False)

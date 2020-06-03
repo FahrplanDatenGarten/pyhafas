@@ -281,6 +281,7 @@ class Profile:
                     data['svcResL'][0]['res']['common']['locL'][leg['arr']['locX']]['lid'])
                 if leg['type'] == "WALK":
                     legs.append(Leg(
+                        id=leg['gis']['ctx'],
                         origin=leg_origin,
                         destination=leg_destination,
                         departure=self.parse_time(leg['dep']['dTimeS'], self.parse_date(jny['date'])),
@@ -329,6 +330,7 @@ class Profile:
                             ))
                     legs.append(
                         Leg(
+                            id=leg['jny']['jid'],
                             origin=leg_origin,
                             destination=leg_destination,
                             cancelled=bool(leg['arr'].get('aCncl', False)),
