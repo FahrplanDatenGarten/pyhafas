@@ -40,6 +40,7 @@ class Leg:
             'arrivalDelay', None)
         self.arrivalPlatform: str = kwargs.get('arrivalPlatform', None)
         self.stopovers: List[Stopover] = kwargs.get('stopovers', None)
+        self.distance: int = kwargs.get('distance', 0)
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)

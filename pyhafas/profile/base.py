@@ -286,7 +286,8 @@ class Profile:
                         destination=leg_destination,
                         departure=self.parse_time(leg['dep']['dTimeS'], self.parse_date(jny['date'])),
                         arrival=self.parse_time(leg['arr']['aTimeS'], self.parse_date(jny['date'])),
-                        mode="walking"
+                        mode="walking",
+                        distance=leg['gis']['dist']
                     ))
                 else:
                     leg_stopovers: List[Stopover] = []
