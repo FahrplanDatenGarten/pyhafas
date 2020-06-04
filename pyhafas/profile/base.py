@@ -13,12 +13,12 @@ from ..fptf import Journey, Leg, Station
 
 
 class Profile:
-    baseUrl: str = None
+    baseUrl: str = ""
     defaultUserAgent: str = 'pyhafas'
 
     addMicMac: bool = False
     addChecksum: bool = False
-    salt: str = None
+    salt: str = ""
 
     locale: str = 'de-DE'
     timezone: str = 'Europe/Berlin'
@@ -233,8 +233,8 @@ class Profile:
             longitude: int = 0) -> Station:
         parsedLid = self.parse_lid(lid)
         if latitude == 0 and longitude == 0 and parsedLid['X'] and parsedLid['Y']:
-            latitude = int(parsedLid['Y']) / 1000000
-            longitude = int(parsedLid['X']) / 1000000
+            latitude = int(int(parsedLid['Y']) / 1000000)
+            longitude = int(int(parsedLid['X']) / 1000000)
 
         return Station(
             id=parsedLid['L'],

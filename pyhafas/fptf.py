@@ -21,9 +21,9 @@ class Mode(Enum):
 class Station:
     def __init__(self, id: Union[str, int], **kwargs):
         self.id = id
-        self.name: str = kwargs.get('name')
-        self.latitude: float = kwargs.get('latitude')
-        self.longitude: float = kwargs.get('longitude')
+        self.name: Optional[str] = kwargs.get('name')
+        self.latitude: Optional[float] = kwargs.get('latitude')
+        self.longitude: Optional[float] = kwargs.get('longitude')
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
@@ -32,9 +32,9 @@ class Station:
 class Journey:
     def __init__(self, id: Union[str, int], **kwargs):
         self.id = id
-        self.date: datetime.date = kwargs.get('date')
-        self.duration: datetime.timedelta = kwargs.get('duration')
-        self.legs: List[Leg] = kwargs.get('legs')
+        self.date: Optional[datetime.date] = kwargs.get('date')
+        self.duration: Optional[datetime.timedelta] = kwargs.get('duration')
+        self.legs: Optional[List[Leg]] = kwargs.get('legs')
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
@@ -43,15 +43,15 @@ class Journey:
 class Leg:
     def __init__(self, id: Union[str, int], **kwargs):
         self.id = id
-        self.origin: Station = kwargs.get('origin')
+        self.origin: Station = kwargs['origin']
         self.mode: Mode = kwargs.get('mode', Mode.TRAIN)
         self.cancelled: bool = kwargs.get('cancelled', False)
-        self.destination: Station = kwargs.get('destination')
-        self.departure: datetime.datetime = kwargs.get('departure')
+        self.destination: Station = kwargs['destination']
+        self.departure: datetime.datetime = kwargs['departure']
         self.departureDelay: Optional[datetime.timedelta] = kwargs.get(
             'departureDelay', None)
         self.departurePlatform: Optional[str] = kwargs.get('departurePlatform', None)
-        self.arrival: datetime.datetime = kwargs.get('arrival')
+        self.arrival: datetime.datetime = kwargs['arrival']
         self.arrivalDelay: Optional[datetime.timedelta] = kwargs.get(
             'arrivalDelay', None)
         self.arrivalPlatform: Optional[str] = kwargs.get('arrivalPlatform', None)
