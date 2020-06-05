@@ -130,7 +130,7 @@ class Profile:
                 'outDate': date.strftime("%Y%m%d"),
                 'outTime': date.strftime("%H%M%S"),
                 'jnyFltrL': [
-                    self.formatProductsFilter(products)
+                    self.format_products_filter(products)
                 ],
                 'minChgTime': min_change_time,
                 'maxChg': max_changes,
@@ -175,7 +175,7 @@ class Profile:
             "meth": "LocMatch"
         }
 
-    def formatProductsFilter(self, requested_products: dict) -> dict:
+    def format_products_filter(self, requested_products: dict) -> dict:
         products = self.default_products
         for requested_product in requested_products:
             if requested_products[requested_product]:
