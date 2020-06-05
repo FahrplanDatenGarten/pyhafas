@@ -4,20 +4,21 @@ import datetime
 import json
 from enum import Enum
 from hashlib import md5
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 import requests
 
-from ..fptf import Journey, Station
+from pyhafas.fptf import Stopover, Mode
+from ..fptf import Journey, Leg, Station
 
 
 class Profile:
-    baseUrl: str = None
+    baseUrl: str = ""
     defaultUserAgent: str = 'pyhafas'
 
     addMicMac: bool = False
     addChecksum: bool = False
-    salt: str = None
+    salt: str = ""
 
     locale: str = 'de-DE'
     timezone: str = 'Europe/Berlin'
@@ -30,7 +31,7 @@ class Profile:
     def __init__(self, ua=defaultUserAgent):
         self.userAgent = ua
 
-    def urlFormatter(self, data):
+    def url_formatter(self, data: str) -> str:
         url = self.baseUrl
 
         if self.addChecksum or self.addMicMac:
@@ -38,11 +39,11 @@ class Profile:
             if self.addChecksum:
                 parameters.append(
                     'checksum={}'.format(
-                        self.calculateChecksum(data)))
+                        self.calculate_checksum(data)))
             if self.addMicMac:
                 parameters.append(
                     'mic={}&mac={}'.format(
-                        *self.calculateMicMac(data)))
+                        *self.calculate_mic_mac(data)))
             url += '?{}'.format('&'.join(parameters))
 
         return url
@@ -55,45 +56,43 @@ class Profile:
         data = json.dumps(data)
 
         req = requests.post(
-            self.urlFormatter(data),
+            self.url_formatter(data),
             data=data,
             headers={
                 'User-Agent': self.userAgent,
                 'Content-Type': 'application/json'})
         return req
 
-        req = requests.post(
-            self.urlFormatter(data),
-            data=data,
-            headers={
-                'User-Agent': self.userAgent,
-                'Content-Type': 'application/json'})
-        return req
-
-    def calculateChecksum(self, data):
+    def calculate_checksum(self, data: str) -> str:
         return md5((data + self.salt).encode('utf-8')).hexdigest()
 
-    def calculateMicMac(self, data):
+    def calculate_mic_mac(self, data: str) -> Tuple[str, str]:
         mic = md5(data.encode('utf-8')).hexdigest()
-        mac = self.calculateChecksum(mic)
+        mac = self.calculate_checksum(mic)
         return mic, mac
 
-    def formatStationBoardRequest(
+    def format_station_board_request(
             self,
             station: Station,
-            request_type: StationBoardRequestType) -> Dict:
+            request_type: StationBoardRequestType,
+            date: datetime.datetime,
+            max_journeys: int
+    ) -> dict:
+        # TODO: More options
         return {
             'req': {
                 'type': request_type.value,
                 'stbLoc': {
                     'lid': 'A=1@L={}@'.format(station.id)
                 },
-                'dur': 1,
+                'maxJny': max_journeys,
+                'date': date.strftime("%Y%m%d"),
+                'time': date.strftime("%H%M%S"),
             },
             'meth': 'StationBoard'
         }
 
-    def formatJourneyRequest(self, journey: Journey) -> Dict:
+    def format_journey_request(self, journey: Journey) -> dict:
         return {
             'req': {
                 'ctxRecon': journey.id
@@ -101,31 +100,40 @@ class Profile:
             'meth': 'Reconstruction'
         }
 
-    def formatJourneysRequest(
+    def format_journeys_request(
             self,
             origin: Station,
             destination: Station,
+            via: List[Station],
             date: datetime.datetime,
+            min_change_time: int,
+            max_changes: int,
             products: Dict[str, bool]
-    ) -> Dict:
+    ) -> dict:
         # TODO: find out, what commented-out values mean and implement options
         return {
             'req': {
                 'arrLocL': [{
                     'type': 'S',
-                    'lid': 'A=1@L={}@'.format(origin.id)
+                    'lid': 'A=1@L={}@'.format(destination.id)
                 }],
-                # 'viaLocL': None,
+                'viaLocL': [{
+                    'loc': {
+                        'type': 'S',
+                        'lid': 'A=1@L={}@'.format(via_station.id)
+                    }
+                } for via_station in via],
                 'depLocL': [{
                     'type': 'S',
-                    'lid': 'A=1@L={}@'.format(destination.id)
+                    'lid': 'A=1@L={}@'.format(origin.id)
                 }],
                 'outDate': date.strftime("%Y%m%d"),
                 'outTime': date.strftime("%H%M%S"),
                 'jnyFltrL': [
                     self.formatProductsFilter(products)
                 ],
-                # 'maxChg': -1,
+                'minChgTime': min_change_time,
+                'maxChg': max_changes,
                 # 'getPasslist': False,
                 # 'gisFltrL': [],
                 # 'getTariff': False,
@@ -151,7 +159,7 @@ class Profile:
             'meth': 'TripSearch'
         }
 
-    def formatLocationRequest(
+    def format_location_request(
             self,
             term: str):
         return {
@@ -194,48 +202,43 @@ class Profile:
             'value': str(bitmask_sum)
         }
 
-    def parseTime(self, timeString, date) -> datetime.datetime:
-        hour = int(timeString[:2])
-        minute = int(timeString[2:-2])
-        second = int(timeString[-2:])
+    def parse_time(self, time_string: str, date: datetime.date) -> datetime.datetime:
+        hour = int(time_string[-6:-4])
+        minute = int(time_string[-4:-2])
+        second = int(time_string[-2:])
 
-        dateOffset = 0
-
-        while (hour) - (24 * dateOffset) >= 24:
-            dateOffset += 1
-
+        dateOffset = int(time_string[:2]) if len(time_string) > 6 else 0
         return datetime.datetime(
             date.year,
             date.month,
             date.day,
             hour,
             minute,
-            second)
+            second) + datetime.timedelta(days=dateOffset)
 
-    def parseTimedelta(self, timeString) -> datetime.timedelta:
-        hours = int(timeString[:2])
-        minutes = int(timeString[2:-2])
-        seconds = int(timeString[-2:])
+    def parse_timedelta(self, time_string: str) -> datetime.timedelta:
+        hours = int(time_string[:2])
+        minutes = int(time_string[2:-2])
+        seconds = int(time_string[-2:])
 
         return datetime.timedelta(
             hours=hours,
             minutes=minutes,
             seconds=seconds)
 
-    def parseDate(self, dateString) -> datetime.date:
-        dt = datetime.datetime.strptime(dateString, '%Y%m%d')
+    def parse_date(self, date_string: str) -> datetime.date:
+        dt = datetime.datetime.strptime(date_string, '%Y%m%d')
         return dt.date()
 
-    def parseStationBoardRequest(self, response: str) -> List[Journey]:
+    def parse_station_board_request(self, response: str) -> List[Journey]:
         data = json.loads(response)
         journeys = []
-
-        if data.get('err') != 'OK' or data['svcResL'][0]['err'] != 'OK':
+        if data['svcResL'][0]['err'] != 'OK':
             raise Exception()
 
         for jny in data['svcResL'][0]['res']['jnyL']:
             journey = Journey(jny['jid'])
-            journey.date = self.parseDate(jny['date'])
+            journey.date = self.parse_date(jny['date'])
             # TODO: Add more data
             # ...
             # ...
@@ -243,7 +246,7 @@ class Profile:
 
         return journeys
 
-    def parseLid(self, lid: str) -> Dict:
+    def parse_lid(self, lid: str) -> dict:
         parsedLid = {}
         for lidElementGroup in lid.split("@"):
             if lidElementGroup:
@@ -251,32 +254,45 @@ class Profile:
                     "=")[0]] = lidElementGroup.split("=")[1]
         return parsedLid
 
-    def parseLocationRequest(self, response: str) -> List[Station]:
+    def parse_lid_to_station(
+            self,
+            lid: str,
+            name: str = "",
+            latitude: int = 0,
+            longitude: int = 0) -> Station:
+        parsedLid = self.parse_lid(lid)
+        if latitude == 0 and longitude == 0 and parsedLid['X'] and parsedLid['Y']:
+            latitude = int(int(parsedLid['Y']) / 1000000)
+            longitude = int(int(parsedLid['X']) / 1000000)
+
+        return Station(
+            id=parsedLid['L'],
+            name=name or parsedLid['O'],
+            latitude=latitude,
+            longitude=longitude
+        )
+
+    def parse_location_request(self, response: str) -> List[Station]:
         data = json.loads(response)
         stations = []
         for stn in data['svcResL'][0]['res']['match']['locL']:
-            parsedLid = self.parseLid(lid=stn['lid'])
-            latitude: int
-            longitude: int
+            latitude: int = 0
+            longitude: int = 0
             if stn['crd']:
                 latitude = stn['crd']['y'] / 1000000
                 longitude = stn['crd']['x'] / 1000000
-            elif parsedLid['X'] and parsedLid['Y']:
-                latitude = parsedLid['Y'] / 1000000
-                longitude = parsedLid['X'] / 1000000
-
-            station = Station(
-                id=stn['extId'],
-                name=stn['name'],
-                latitude=latitude,
-                longitude=longitude)
-            stations.append(station)
+            stations.append(
+                self.parse_lid_to_station(
+                    stn['lid'],
+                    stn['name'],
+                    latitude,
+                    longitude))
         return stations
 
-    def parseJourneyRequest(self, response: str) -> Journey:
+    def parse_journey_request(self, response: str) -> Journey:
         pass
 
-    def parseJourneysRequest(self, response: str) -> List[Journey]:
+    def parse_journeys_request(self, response: str) -> List[Journey]:
         data = json.loads(response)
         journeys = []
 
@@ -284,13 +300,98 @@ class Profile:
             raise Exception()
 
         for jny in data['svcResL'][0]['res']['outConL']:
+            legs: List[Leg] = []
+            # TODO: Add more data
+            for leg in jny['secL']:
+                leg_origin = self.parse_lid_to_station(
+                    data['svcResL'][0]['res']['common']['locL'][leg['dep']['locX']]['lid'])
+                leg_destination = self.parse_lid_to_station(
+                    data['svcResL'][0]['res']['common']['locL'][leg['arr']['locX']]['lid'])
+                if leg['type'] == "WALK":
+                    legs.append(Leg(
+                        id=leg['gis']['ctx'],
+                        origin=leg_origin,
+                        destination=leg_destination,
+                        departure=self.parse_time(leg['dep']['dTimeS'], self.parse_date(jny['date'])),
+                        arrival=self.parse_time(leg['arr']['aTimeS'], self.parse_date(jny['date'])),
+                        mode=Mode.WALKING,
+                        distance=leg['gis']['dist']
+                    ))
+                else:
+                    leg_stopovers: List[Stopover] = []
+                    for stopover in leg['jny']['stopL']:
+                        leg_stopovers.append(
+                            Stopover(
+                                stop=self.parse_lid_to_station(
+                                    data['svcResL'][0]['res']['common']['locL'][stopover['locX']]['lid']
+                                ),
+                                cancelled=bool(
+                                    stopover.get(
+                                        'dCncl',
+                                        stopover.get(
+                                            'aCncl',
+                                            False
+                                        ))),
+                                departure=self.parse_time(
+                                    stopover.get('dTimeS'),
+                                    self.parse_date(jny['date'])) if stopover.get('dTimeS') is not None else None,
+                                departureDelay=self.parse_time(
+                                    stopover['dTimeR'],
+                                    self.parse_date(
+                                        jny['date'])) - self.parse_time(
+                                    stopover['dTimeS'],
+                                    self.parse_date(jny['date'])) if stopover.get('dTimeR') is not None else None,
+                                departurePlatform=stopover.get(
+                                    'dPlatfR',
+                                    stopover.get('dPlatfS')),
+                                arrival=self.parse_time(
+                                    stopover['aTimeS'],
+                                    self.parse_date(jny['date'])) if stopover.get('aTimeS') is not None else None,
+                                arrivalDelay=self.parse_time(
+                                    stopover['aTimeR'],
+                                    self.parse_date(
+                                        jny['date'])) - self.parse_time(
+                                    stopover['aTimeS'],
+                                    self.parse_date(jny['date'])) if stopover.get('aTimeR') is not None else None,
+                                arrivalPlatform=stopover.get(
+                                    'aPlatfR',
+                                    stopover.get('aPlatfS')),
+                            ))
+                    legs.append(
+                        Leg(
+                            id=leg['jny']['jid'],
+                            origin=leg_origin,
+                            destination=leg_destination,
+                            cancelled=bool(leg['arr'].get('aCncl', False)),
+                            departure=self.parse_time(
+                                leg['dep']['dTimeS'],
+                                self.parse_date(jny['date'])),
+                            departureDelay=self.parse_time(
+                                leg['dep']['dTimeR'],
+                                self.parse_date(jny['date'])) - self.parse_time(
+                                leg['dep']['dTimeS'],
+                                self.parse_date(jny['date'])) if leg['dep'].get('dTimeR') is not None else None,
+                            departurePlatform=leg['dep'].get(
+                                'dPlatfR',
+                                leg['dep'].get('dPlatfS')),
+                            arrival=self.parse_time(
+                                leg['arr']['aTimeS'],
+                                self.parse_date(jny['date'])),
+                            arrivalDelay=self.parse_time(
+                                leg['arr']['aTimeR'],
+                                self.parse_date(jny['date'])) - self.parse_time(
+                                leg['arr']['aTimeS'],
+                                self.parse_date(jny['date'])) if leg['arr'].get('aTimeR') is not None else None,
+                            arrivalPlatform=leg['arr'].get(
+                                'aPlatfR',
+                                leg['arr'].get('aPlatfS')),
+                            stopovers=leg_stopovers))
             journeys.append(Journey(
                 jny['ctxRecon'],
-                date=self.parseDate(jny['date']),
-                duration=self.parseTimedelta(jny['dur'])
+                date=self.parse_date(jny['date']),
+                duration=self.parse_timedelta(jny['dur']),
+                legs=legs
             ))
-            # TODO: Add more data
-
         return journeys
 
 
