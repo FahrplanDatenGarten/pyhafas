@@ -61,7 +61,8 @@ class HafasClient:
             date: datetime.datetime,
             via: List = [],
             min_change_time: int = 0,
-            max_changes: int = -1
+            max_changes: int = -1,
+            products: Dict[str, bool] = {}
     ) -> List[Journey]:
         if not isinstance(origin, Station):
             origin = Station(origin)
@@ -77,7 +78,8 @@ class HafasClient:
             via,
             date,
             min_change_time,
-            max_changes
+            max_changes,
+            products
         )
         res = self.profile.request(body)
 
