@@ -22,7 +22,8 @@ class HafasClient:
             self,
             station,
             date: datetime.datetime,
-            max_journeys: int = -1) -> List[Journey]:
+            max_journeys: int = -1,
+            duration: int = -1) -> List[Journey]:
         if not isinstance(station, Station):
             station = Station(station)
 
@@ -30,7 +31,8 @@ class HafasClient:
             station,
             StationBoardRequestType.DEPARTURE,
             date,
-            max_journeys
+            max_journeys,
+            duration
         )
         res = self.profile.request(body)
 
@@ -40,7 +42,8 @@ class HafasClient:
             self,
             station,
             date: datetime.datetime,
-            max_journeys: int = -1) -> List[Journey]:
+            max_journeys: int = -1,
+            duration: int = -1) -> List[Journey]:
         if not isinstance(station, Station):
             station = Station(station)
 
@@ -48,7 +51,8 @@ class HafasClient:
             station,
             StationBoardRequestType.ARRIVAL,
             date,
-            max_journeys
+            max_journeys,
+            duration
         )
         res = self.profile.request(body)
 

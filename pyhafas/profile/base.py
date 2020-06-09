@@ -76,7 +76,8 @@ class Profile:
             station: Station,
             request_type: StationBoardRequestType,
             date: datetime.datetime,
-            max_journeys: int
+            max_journeys: int,
+            duration: int
     ) -> dict:
         # TODO: More options
         return {
@@ -88,6 +89,7 @@ class Profile:
                 'maxJny': max_journeys,
                 'date': date.strftime("%Y%m%d"),
                 'time': date.strftime("%H%M%S"),
+                'dur': duration
             },
             'meth': 'StationBoard'
         }
