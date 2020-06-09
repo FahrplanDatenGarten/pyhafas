@@ -307,6 +307,7 @@ class Profile:
                 departure=self.parse_time(departure['dTimeS'], date),
                 arrival=self.parse_time(arrival['aTimeS'], date),
                 mode=Mode.WALKING,
+                name=None,
                 distance=gis['dist'] if gis is not None else None
             )
         else:
@@ -349,6 +350,7 @@ class Profile:
                     ))
             return Leg(
                 id=journey['jid'],
+                name=common['prodL'][journey['prodX']]['name'],
                 origin=leg_origin,
                 destination=leg_destination,
                 cancelled=bool(arrival.get('aCncl', False)),

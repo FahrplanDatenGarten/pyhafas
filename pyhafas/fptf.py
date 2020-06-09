@@ -43,6 +43,7 @@ class Journey:
 class Leg:
     def __init__(self, id: Union[str, int], **kwargs):
         self.id = id
+        self.name: Optional[str] = kwargs.get('name')
         self.origin: Station = kwargs['origin']
         self.mode: Mode = kwargs.get('mode', Mode.TRAIN)
         self.cancelled: bool = kwargs.get('cancelled', False)
