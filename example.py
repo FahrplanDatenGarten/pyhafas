@@ -26,6 +26,8 @@ print(client.journeys(
     ))
 print(client.locations("Köln Hbf"))
 
+print(client.trip("1|1372374|3|80|9062020"))
+
 print('='*20)
 vsn = HafasClient(VSNProfile())
 print(vsn.departures(

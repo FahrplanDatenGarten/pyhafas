@@ -94,6 +94,14 @@ class Profile:
             'meth': 'StationBoard'
         }
 
+    def format_trip_request(self, trip_id: str) -> dict:
+        return {
+            'req': {
+                'jid': trip_id
+            },
+            'meth': 'JourneyDetails'
+        }
+
     def format_journey_request(self, journey: Journey) -> dict:
         return {
             'req': {
@@ -274,93 +282,102 @@ class Profile:
             longitude=longitude
         )
 
-    def parse_legs(self, jny, hafas_response) -> List[Leg]:
+    def parse_leg(
+            self,
+            journey: dict,
+            common: dict,
+            departure: dict,
+            arrival: dict,
+            date: datetime.date,
+            jny_type: str,
+            gis=None) -> Leg:
+        leg_origin = self.parse_lid_to_station(
+            common['locL'][departure['locX']]['lid'])
+        leg_destination = self.parse_lid_to_station(
+            common['locL'][arrival['locX']]['lid'])
+        if jny_type == "WALK":
+            return Leg(
+                id=journey['jid'],
+                origin=leg_origin,
+                destination=leg_destination,
+                departure=self.parse_time(departure['dTimeS'], date),
+                arrival=self.parse_time(arrival['aTimeS'], date),
+                mode=Mode.WALKING,
+                distance=gis['dist'] if gis is not None else None
+            )
+        else:
+            leg_stopovers: List[Stopover] = []
+            for stopover in journey['stopL']:
+                leg_stopovers.append(
+                    Stopover(
+                        stop=self.parse_lid_to_station(
+                            common['locL'][stopover['locX']]['lid']
+                        ),
+                        cancelled=bool(
+                            stopover.get(
+                                'dCncl',
+                                stopover.get(
+                                    'aCncl',
+                                    False
+                                ))),
+                        departure=self.parse_time(
+                            stopover.get('dTimeS'),
+                            date) if stopover.get('dTimeS') is not None else None,
+                        departureDelay=self.parse_time(
+                            stopover['dTimeR'],
+                            date) - self.parse_time(
+                            stopover['dTimeS'],
+                            date) if stopover.get('dTimeR') is not None else None,
+                        departurePlatform=stopover.get(
+                            'dPlatfR',
+                            stopover.get('dPlatfS')),
+                        arrival=self.parse_time(
+                            stopover['aTimeS'],
+                            date) if stopover.get('aTimeS') is not None else None,
+                        arrivalDelay=self.parse_time(
+                            stopover['aTimeR'],
+                            date) - self.parse_time(
+                            stopover['aTimeS'],
+                            date) if stopover.get('aTimeR') is not None else None,
+                        arrivalPlatform=stopover.get(
+                            'aPlatfR',
+                            stopover.get('aPlatfS')),
+                    ))
+            return Leg(
+                id=journey['jid'],
+                origin=leg_origin,
+                destination=leg_destination,
+                cancelled=bool(arrival.get('aCncl', False)),
+                departure=self.parse_time(
+                    departure['dTimeS'],
+                    date),
+                departureDelay=self.parse_time(
+                    departure['dTimeR'],
+                    date) - self.parse_time(
+                    departure['dTimeS'],
+                    date) if departure.get('dTimeR') is not None else None,
+                departurePlatform=departure.get(
+                    'dPlatfR',
+                    departure.get('dPlatfS')),
+                arrival=self.parse_time(
+                    arrival['aTimeS'],
+                    date),
+                arrivalDelay=self.parse_time(
+                    arrival['aTimeR'],
+                    date) - self.parse_time(
+                    arrival['aTimeS'],
+                    date) if arrival.get('aTimeR') is not None else None,
+                arrivalPlatform=arrival.get(
+                    'aPlatfR',
+                    arrival.get('aPlatfS')),
+                stopovers=leg_stopovers)
+
+    def parse_legs(self, jny: dict, common: dict, date: datetime.date) -> List[Leg]:
         legs: List[Leg] = []
 
         for leg in jny['secL']:
-            leg_origin = self.parse_lid_to_station(
-                hafas_response['common']['locL'][leg['dep']['locX']]['lid'])
-            leg_destination = self.parse_lid_to_station(
-                hafas_response['common']['locL'][leg['arr']['locX']]['lid'])
-            if leg['type'] == "WALK":
-                legs.append(Leg(
-                    id=leg['gis']['ctx'],
-                    origin=leg_origin,
-                    destination=leg_destination,
-                    departure=self.parse_time(leg['dep']['dTimeS'], self.parse_date(jny['date'])),
-                    arrival=self.parse_time(leg['arr']['aTimeS'], self.parse_date(jny['date'])),
-                    mode=Mode.WALKING,
-                    distance=leg['gis']['dist']
-                ))
-            else:
-                leg_stopovers: List[Stopover] = []
-                for stopover in leg['jny']['stopL']:
-                    leg_stopovers.append(
-                        Stopover(
-                            stop=self.parse_lid_to_station(
-                                hafas_response['common']['locL'][stopover['locX']]['lid']
-                            ),
-                            cancelled=bool(
-                                stopover.get(
-                                    'dCncl',
-                                    stopover.get(
-                                        'aCncl',
-                                        False
-                                    ))),
-                            departure=self.parse_time(
-                                stopover.get('dTimeS'),
-                                self.parse_date(jny['date'])) if stopover.get('dTimeS') is not None else None,
-                            departureDelay=self.parse_time(
-                                stopover['dTimeR'],
-                                self.parse_date(
-                                    jny['date'])) - self.parse_time(
-                                stopover['dTimeS'],
-                                self.parse_date(jny['date'])) if stopover.get('dTimeR') is not None else None,
-                            departurePlatform=stopover.get(
-                                'dPlatfR',
-                                stopover.get('dPlatfS')),
-                            arrival=self.parse_time(
-                                stopover['aTimeS'],
-                                self.parse_date(jny['date'])) if stopover.get('aTimeS') is not None else None,
-                            arrivalDelay=self.parse_time(
-                                stopover['aTimeR'],
-                                self.parse_date(
-                                    jny['date'])) - self.parse_time(
-                                stopover['aTimeS'],
-                                self.parse_date(jny['date'])) if stopover.get('aTimeR') is not None else None,
-                            arrivalPlatform=stopover.get(
-                                'aPlatfR',
-                                stopover.get('aPlatfS')),
-                        ))
-                legs.append(
-                    Leg(
-                        id=leg['jny']['jid'],
-                        origin=leg_origin,
-                        destination=leg_destination,
-                        cancelled=bool(leg['arr'].get('aCncl', False)),
-                        departure=self.parse_time(
-                            leg['dep']['dTimeS'],
-                            self.parse_date(jny['date'])),
-                        departureDelay=self.parse_time(
-                            leg['dep']['dTimeR'],
-                            self.parse_date(jny['date'])) - self.parse_time(
-                            leg['dep']['dTimeS'],
-                            self.parse_date(jny['date'])) if leg['dep'].get('dTimeR') is not None else None,
-                        departurePlatform=leg['dep'].get(
-                            'dPlatfR',
-                            leg['dep'].get('dPlatfS')),
-                        arrival=self.parse_time(
-                            leg['arr']['aTimeS'],
-                            self.parse_date(jny['date'])),
-                        arrivalDelay=self.parse_time(
-                            leg['arr']['aTimeR'],
-                            self.parse_date(jny['date'])) - self.parse_time(
-                            leg['arr']['aTimeS'],
-                            self.parse_date(jny['date'])) if leg['arr'].get('aTimeR') is not None else None,
-                        arrivalPlatform=leg['arr'].get(
-                            'aPlatfR',
-                            leg['arr'].get('aPlatfS')),
-                        stopovers=leg_stopovers))
+            legs.append(self.parse_leg(leg['jny'], common, leg['dep'], leg['arr'], date, leg['type'], leg.get('gis')))
+
         return legs
 
     def parse_location_request(self, response: str) -> List[Station]:
@@ -380,17 +397,31 @@ class Profile:
                     longitude))
         return stations
 
+    def parse_trip_request(self, response: str) -> Leg:
+        data = json.loads(response)
+
+        if data.get('err') or data['svcResL'][0]['err'] != 'OK':
+            raise Exception()
+        return self.parse_leg(
+            data['svcResL'][0]['res']['journey'],
+            data['svcResL'][0]['res']['common'],
+            data['svcResL'][0]['res']['journey']['stopL'][0],
+            data['svcResL'][0]['res']['journey']['stopL'][-1],
+            self.parse_date(data['svcResL'][0]['res']['journey']['date']),
+            "JNY"
+        )
+
     def parse_journey_request(self, response: str) -> Journey:
         data = json.loads(response)
 
         if data.get('err') or data['svcResL'][0]['err'] != 'OK':
             raise Exception()
-
+        date = self.parse_date(data['svcResL'][0]['res']['outConL'][0]['date'])
         return Journey(
             data['svcResL'][0]['res']['outConL'][0]['ctxRecon'],
-            date=self.parse_date(data['svcResL'][0]['res']['outConL'][0]['date']),
+            date=date,
             duration=self.parse_timedelta(data['svcResL'][0]['res']['outConL'][0]['dur']),
-            legs=self.parse_legs(data['svcResL'][0]['res']['outConL'][0], data['svcResL'][0]['res']))
+            legs=self.parse_legs(data['svcResL'][0]['res']['outConL'][0], data['svcResL'][0]['res']['common'], date))
 
     def parse_journeys_request(self, response: str) -> List[Journey]:
         data = json.loads(response)
@@ -401,11 +432,12 @@ class Profile:
 
         for jny in data['svcResL'][0]['res']['outConL']:
             # TODO: Add more data
+            date = self.parse_date(jny['date'])
             journeys.append(Journey(
                 jny['ctxRecon'],
-                date=self.parse_date(jny['date']),
+                date=date,
                 duration=self.parse_timedelta(jny['dur']),
-                legs=self.parse_legs(jny, data['svcResL'][0]['res'])
+                legs=self.parse_legs(jny, data['svcResL'][0]['res']['common'], date)
             ))
         return journeys
 

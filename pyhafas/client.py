@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import datetime
-from typing import List, Dict
+from typing import List, Dict, Union
 
 from .fptf import Journey, Station
 from .profile import DBProfile, Profile, StationBoardRequestType
@@ -104,13 +104,16 @@ class HafasClient:
 
         return self.profile.parse_location_request(res.text)
 
+    def trip(self, id: Union[str, int]):
+        body = self.profile.format_trip_request(id)
+        res = self.profile.request(body)
+
+        return self.profile.parse_trip_request(res.text)
+
     def stop(self, stop):
         pass
 
     def nearby(self, location):
-        pass
-
-    def trip(self, id, name):
         pass
 
     def radar(self, north, west, south, east):
