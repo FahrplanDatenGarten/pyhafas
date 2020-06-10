@@ -301,7 +301,7 @@ class Profile:
             common['locL'][arrival['locX']]['lid'])
         if jny_type == "WALK":
             return Leg(
-                id=journey['jid'],
+                id=gis['ctx'],
                 origin=leg_origin,
                 destination=leg_destination,
                 departure=self.parse_time(departure['dTimeS'], date),
@@ -382,7 +382,7 @@ class Profile:
         legs: List[Leg] = []
 
         for leg in jny['secL']:
-            legs.append(self.parse_leg(leg['jny'], common, leg['dep'], leg['arr'], date, leg['type'], leg.get('gis')))
+            legs.append(self.parse_leg(leg.get('jny', None), common, leg['dep'], leg['arr'], date, leg['type'], leg.get('gis')))
 
         return legs
 
