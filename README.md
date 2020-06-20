@@ -3,6 +3,7 @@
 
 [![](https://img.shields.io/pypi/v/pyhafas.svg)](https://pypi.python.org/pypi/pyhafas)
 [![](https://readthedocs.org/projects/pyhafas/badge/?version=latest)](https://pyhafas.readthedocs.io/)
+[![#pyhafas on matrix.org](https://img.shields.io/matrix/pyhafas:matrix.org?logo=matrix&server_fqdn=matrix.org)](https://riot.im/app/#/room/#pyhafas:matrix.org)
 
 ## Installation
 You only need to install the pyhafas package, for example using pip:
