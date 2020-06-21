@@ -3,7 +3,7 @@ from __future__ import annotations
 import datetime
 from typing import List, Dict, Union
 
-from .fptf import Journey, Station
+from .fptf import Journey, Station, Leg
 from .profile import DBProfile, Profile, StationBoardRequestType
 
 
@@ -24,7 +24,7 @@ class HafasClient:
             date: datetime.datetime,
             max_journeys: int = -1,
             duration: int = -1,
-            products: Dict[str, bool] = {}) -> List[Journey]:
+            products: Dict[str, bool] = {}) -> List[Leg]:
         if not isinstance(station, Station):
             station = Station(station)
 
@@ -46,7 +46,7 @@ class HafasClient:
             date: datetime.datetime,
             max_journeys: int = -1,
             duration: int = -1,
-            products: Dict[str, bool] = {}) -> List[Journey]:
+            products: Dict[str, bool] = {}) -> List[Leg]:
         if not isinstance(station, Station):
             station = Station(station)
 

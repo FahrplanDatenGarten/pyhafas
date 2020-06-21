@@ -244,21 +244,23 @@ class Profile:
         dt = datetime.datetime.strptime(date_string, '%Y%m%d')
         return dt.date()
 
-    def parse_station_board_request(self, response: str) -> List[Journey]:
+    def parse_station_board_request(self, response: str) -> List[Leg]:
         data = json.loads(response)
-        journeys = []
+        legs = []
         if data['svcResL'][0]['err'] != 'OK':
             raise Exception()
+        for raw_leg in data['svcResL'][0]['res']['jnyL']:
+            leg = self.parse_leg(
+                raw_leg,
+                data['svcResL'][0]['res']['common'],
+                raw_leg['stopL'][0],
+                raw_leg['stopL'][-1],
+                self.parse_date(raw_leg['date']),
+                "JNY"
+            )
+            legs.append(leg)
 
-        for jny in data['svcResL'][0]['res']['jnyL']:
-            journey = Journey(jny['jid'])
-            journey.date = self.parse_date(jny['date'])
-            # TODO: Add more data
-            # ...
-            # ...
-            journeys.append(journey)
-
-        return journeys
+        return legs
 
     def parse_lid(self, lid: str) -> dict:
         parsedLid = {}
