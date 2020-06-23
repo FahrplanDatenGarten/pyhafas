@@ -25,7 +25,7 @@ class Profile:
 
     requestBody: dict = {}
 
-    available_products: dict = []
+    available_products: Dict[str, List[int]] = {}
     default_products: List[str] = []
 
     def __init__(self, ua=defaultUserAgent):
