@@ -64,6 +64,12 @@ class Profile:
         return req
 
     def calculate_checksum(self, data: str) -> str:
+        """
+        Calculates the HaFAS Checksum of the request required for some HaFAS profiles
+
+        :param data: Data of the request
+        :return: Checksum for HaFAS
+        """
         return md5((data + self.salt).encode('utf-8')).hexdigest()
 
     def calculate_mic_mac(self, data: str) -> Tuple[str, str]:
@@ -80,6 +86,17 @@ class Profile:
             duration: int,
             products: Dict[str, bool]
     ) -> dict:
+        """
+        Creates the HaFAS request for Station Board (departure/arrival)
+
+        :param station: Station to get departures/arrivals for
+        :param request_type: ARRIVAL or DEPARTURE
+        :param date: Date and time to get departures/arrival for
+        :param max_journeys: Maximum number of trips that can be returned
+        :param products: Allowed products (e.g. ICE,IC)
+        :param duration: Time in which trips are searched
+        :return: Request for HaFAS
+        """
         # TODO: More options
         return {
             'req': {
@@ -99,6 +116,12 @@ class Profile:
         }
 
     def format_trip_request(self, trip_id: str) -> dict:
+        """
+        Creates the HaFAS request for refreshing journey details
+
+        :param trip_id: Id of the trip/leg
+        :return: Request for HaFAS
+        """
         return {
             'req': {
                 'jid': trip_id
@@ -107,6 +130,12 @@ class Profile:
         }
 
     def format_journey_request(self, journey: Journey) -> dict:
+        """
+        Creates the HaFAS request for refreshing journey details
+
+        :param journey: Id of the journey (ctxRecon)
+        :return: Request for HaFAS
+        """
         return {
             'req': {
                 'ctxRecon': journey.id
@@ -124,6 +153,18 @@ class Profile:
             max_changes: int,
             products: Dict[str, bool]
     ) -> dict:
+        """
+        Creates the HaFAS request for journeys
+
+        :param origin: Origin station
+        :param destination: Destionation station
+        :param via: Via stations, maybe empty list)
+        :param date: Date and time to search journeys for
+        :param min_change_time: Minimum time for changes at stations
+        :param max_changes: Maximum number of changes
+        :param products: Allowed products (e.g. ICE,IC)
+        :return: Request for HaFAS
+        """
         # TODO: find out, what commented-out values mean and implement options
         return {
             'req': {
@@ -176,6 +217,12 @@ class Profile:
     def format_location_request(
             self,
             term: str):
+        """
+        Creates the HaFAS request for location search.
+
+        :param term: Search term
+        :return: Request for HaFAS
+        """
         return {
             "req": {
                 "input": {
@@ -190,6 +237,12 @@ class Profile:
         }
 
     def format_products_filter(self, requested_products: dict) -> dict:
+        """
+        Create the products filter given to HaFAS
+
+        :param requested_products: Mapping of Products to whether it's enabled or disabled
+        :return:
+        """
         products = self.default_products
         for requested_product in requested_products:
             if requested_products[requested_product]:
@@ -216,7 +269,14 @@ class Profile:
             'value': str(bitmask_sum)
         }
 
-    def parse_time(self, time_string: str, date: datetime.date) -> datetime.datetime:
+    def parse_datetime(self, time_string: str, date: datetime.date) -> datetime.datetime:
+        """
+        Parses time HaFAS sends back
+
+        :param time_string: Time string given by HaFAS
+        :param date: date object
+        :return: datetime object with parsed date and time
+        """
         hour = int(time_string[-6:-4])
         minute = int(time_string[-4:-2])
         second = int(time_string[-2:])
@@ -231,6 +291,12 @@ class Profile:
             second) + datetime.timedelta(days=dateOffset)
 
     def parse_timedelta(self, time_string: str) -> datetime.timedelta:
+        """
+        Parses time HaFAS sends back as timedelta
+
+        :param time_string: Time string given by HaFAS
+        :return: timedelta object with parsed time
+        """
         hours = int(time_string[:2])
         minutes = int(time_string[2:-2])
         seconds = int(time_string[-2:])
@@ -241,28 +307,25 @@ class Profile:
             seconds=seconds)
 
     def parse_date(self, date_string: str) -> datetime.date:
+        """
+        Parses date HaFAS sends back
+
+        :param date_string: Date string given by HaFAS
+        :return: date object with parsed date
+        """
         dt = datetime.datetime.strptime(date_string, '%Y%m%d')
         return dt.date()
 
-    def parse_station_board_request(self, response: str) -> List[Leg]:
-        data = json.loads(response)
-        legs = []
-        if data['svcResL'][0]['err'] != 'OK':
-            raise Exception()
-        for raw_leg in data['svcResL'][0]['res']['jnyL']:
-            leg = self.parse_leg(
-                raw_leg,
-                data['svcResL'][0]['res']['common'],
-                raw_leg['stopL'][0],
-                raw_leg['stopL'][-1],
-                self.parse_date(raw_leg['date']),
-                "JNY"
-            )
-            legs.append(leg)
-
-        return legs
-
     def parse_lid(self, lid: str) -> dict:
+        """
+        Converts the LID given by HaFAS
+
+        Splits the LID (e.g. A=1@O=Siegburg/Bonn) in multiple elements (e.g. A=1 and O=Siegburg/Bonn).
+        These are converted into a dict where the part before the equal sign is the key and the part after the value.
+
+        :param lid: Location identifier (given by HaFAS)
+        :return: Dict of the elements of the dict
+        """
         parsedLid = {}
         for lidElementGroup in lid.split("@"):
             if lidElementGroup:
@@ -276,6 +339,15 @@ class Profile:
             name: str = "",
             latitude: int = 0,
             longitude: int = 0) -> Station:
+        """
+        Parses the LID given by HaFAS to a station object
+
+        :param lid: Location identifier (given by HaFAS)
+        :param name: Station name (optional, if not given, LID is used)
+        :param latitude: Latitude of the station (optional, if not given, LID is used)
+        :param longitude: Longitude of the station (optional, if not given, LID is used)
+        :return: Station object
+        """
         parsedLid = self.parse_lid(lid)
         if latitude == 0 and longitude == 0 and parsedLid['X'] and parsedLid['Y']:
             latitude = int(int(parsedLid['Y']) / 1000000)
@@ -295,8 +367,22 @@ class Profile:
             departure: dict,
             arrival: dict,
             date: datetime.date,
-            jny_type: str,
+            jny_type: str = "JNY",
             gis=None) -> Leg:
+        """
+        Parses Leg HaFAS returns into Leg object
+
+        Different Types of HaFAS responses can be parsed into a leg object with the multiple variables
+
+        :param journey: Journey object given back by HaFAS (Data of the Leg to parse)
+        :param common:  Common object given back by HaFAS
+        :param departure: Departure object given back by HaFAS
+        :param arrival: Arrival object given back by HaFAS
+        :param date: Parsed date of Journey (Departing date)
+        :param jny_type: HaFAS Journey type
+        :param gis: GIS object given back by HaFAS. Currently only used by "WALK" journey type.
+        :return: Parsed Leg object
+        """
         leg_origin = self.parse_lid_to_station(
             common['locL'][departure['locX']]['lid'])
         leg_destination = self.parse_lid_to_station(
@@ -306,8 +392,8 @@ class Profile:
                 id=gis['ctx'],
                 origin=leg_origin,
                 destination=leg_destination,
-                departure=self.parse_time(departure['dTimeS'], date),
-                arrival=self.parse_time(arrival['aTimeS'], date),
+                departure=self.parse_datetime(departure['dTimeS'], date),
+                arrival=self.parse_datetime(arrival['aTimeS'], date),
                 mode=Mode.WALKING,
                 name=None,
                 distance=gis['dist'] if gis is not None else None
@@ -327,23 +413,23 @@ class Profile:
                                     'aCncl',
                                     False
                                 ))),
-                        departure=self.parse_time(
+                        departure=self.parse_datetime(
                             stopover.get('dTimeS'),
                             date) if stopover.get('dTimeS') is not None else None,
-                        departureDelay=self.parse_time(
+                        departureDelay=self.parse_datetime(
                             stopover['dTimeR'],
-                            date) - self.parse_time(
+                            date) - self.parse_datetime(
                             stopover['dTimeS'],
                             date) if stopover.get('dTimeR') is not None else None,
                         departurePlatform=stopover.get(
                             'dPlatfR',
                             stopover.get('dPlatfS')),
-                        arrival=self.parse_time(
+                        arrival=self.parse_datetime(
                             stopover['aTimeS'],
                             date) if stopover.get('aTimeS') is not None else None,
-                        arrivalDelay=self.parse_time(
+                        arrivalDelay=self.parse_datetime(
                             stopover['aTimeR'],
-                            date) - self.parse_time(
+                            date) - self.parse_datetime(
                             stopover['aTimeS'],
                             date) if stopover.get('aTimeR') is not None else None,
                         arrivalPlatform=stopover.get(
@@ -356,23 +442,23 @@ class Profile:
                 origin=leg_origin,
                 destination=leg_destination,
                 cancelled=bool(arrival.get('aCncl', False)),
-                departure=self.parse_time(
+                departure=self.parse_datetime(
                     departure['dTimeS'],
                     date),
-                departureDelay=self.parse_time(
+                departureDelay=self.parse_datetime(
                     departure['dTimeR'],
-                    date) - self.parse_time(
+                    date) - self.parse_datetime(
                     departure['dTimeS'],
                     date) if departure.get('dTimeR') is not None else None,
                 departurePlatform=departure.get(
                     'dPlatfR',
                     departure.get('dPlatfS')),
-                arrival=self.parse_time(
+                arrival=self.parse_datetime(
                     arrival['aTimeS'],
                     date),
-                arrivalDelay=self.parse_time(
+                arrivalDelay=self.parse_datetime(
                     arrival['aTimeR'],
-                    date) - self.parse_time(
+                    date) - self.parse_datetime(
                     arrival['aTimeS'],
                     date) if arrival.get('aTimeR') is not None else None,
                 arrivalPlatform=arrival.get(
@@ -381,14 +467,52 @@ class Profile:
                 stopovers=leg_stopovers)
 
     def parse_legs(self, jny: dict, common: dict, date: datetime.date) -> List[Leg]:
+        """
+        Parses Legs (when multiple available)
+
+        :param jny: Journies object returned by HaFAS (contains secL list)
+        :param common: Common object returned by HaFAS
+        :param date: Parsed date of Journey (Departing date)
+        :return: Parsed List of Leg objects
+        """
         legs: List[Leg] = []
 
         for leg in jny['secL']:
-            legs.append(self.parse_leg(leg.get('jny', None), common, leg['dep'], leg['arr'], date, leg['type'], leg.get('gis')))
+            legs.append(
+                self.parse_leg(leg.get('jny', None), common, leg['dep'], leg['arr'], date, leg['type'], leg.get('gis')))
+
+        return legs
+
+    def parse_station_board_request(self, response: str) -> List[Leg]:
+        """
+        Parses the HaFAS response for the station board request
+
+        :param response: HaFAS response
+        :return: List of journey objects
+        """
+        data = json.loads(response)
+        legs = []
+        if data['svcResL'][0]['err'] != 'OK':
+            raise Exception()
+        for raw_leg in data['svcResL'][0]['res']['jnyL']:
+            leg = self.parse_leg(
+                raw_leg,
+                data['svcResL'][0]['res']['common'],
+                raw_leg['stopL'][0],
+                raw_leg['stopL'][-1],
+                self.parse_date(raw_leg['date'])
+            )
+            legs.append(leg)
 
         return legs
 
     def parse_location_request(self, response: str) -> List[Station]:
+        """
+        Parses the HaFAS response for the location request
+
+        :param response: HaFAS response
+        :return: List of Station objects
+        """
         data = json.loads(response)
         stations = []
         for stn in data['svcResL'][0]['res']['match']['locL']:
@@ -406,6 +530,12 @@ class Profile:
         return stations
 
     def parse_trip_request(self, response: str) -> Leg:
+        """
+        Parses the HaFAS response for trip request
+
+        :param response: HaFAS response
+        :return: Leg objects
+        """
         data = json.loads(response)
 
         if data.get('err') or data['svcResL'][0]['err'] != 'OK':
@@ -415,11 +545,16 @@ class Profile:
             data['svcResL'][0]['res']['common'],
             data['svcResL'][0]['res']['journey']['stopL'][0],
             data['svcResL'][0]['res']['journey']['stopL'][-1],
-            self.parse_date(data['svcResL'][0]['res']['journey']['date']),
-            "JNY"
+            self.parse_date(data['svcResL'][0]['res']['journey']['date'])
         )
 
     def parse_journey_request(self, response: str) -> Journey:
+        """
+        Parses the HaFAS response for journeys request
+
+        :param response: HaFAS response
+        :return: List of Journey objects
+        """
         data = json.loads(response)
 
         if data.get('err') or data['svcResL'][0]['err'] != 'OK':
@@ -432,6 +567,12 @@ class Profile:
             legs=self.parse_legs(data['svcResL'][0]['res']['outConL'][0], data['svcResL'][0]['res']['common'], date))
 
     def parse_journeys_request(self, response: str) -> List[Journey]:
+        """
+        Parses the HaFAS response for journeys request
+
+        :param response: HaFAS response
+        :return: List of Journey objects
+        """
         data = json.loads(response)
         journeys = []
 
