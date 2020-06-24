@@ -11,9 +11,8 @@ Documentation content
 
 .. toctree::
    :maxdepth: 2
+   :caption: Contents:
 
-.. automodule:: pyhafas
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

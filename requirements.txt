@@ -1,2 +1,3 @@
 requests
 pycryptodome
+sphinx_autodoc_typehints

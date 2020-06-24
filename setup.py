@@ -2,6 +2,7 @@
 """Setup file for the HAFAS client."""
 import os
 import sys
+import setuptools
 
 try:
     from setuptools import setup
