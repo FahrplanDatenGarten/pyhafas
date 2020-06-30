@@ -1,5 +1,5 @@
-# pyhafas
-**A python client for HAFAS public transport APIs**.
+# pyHaFAS
+**A python client for HaFAS public transport APIs**.
 
 [![](https://img.shields.io/pypi/v/pyhafas.svg)](https://pypi.python.org/pypi/pyhafas)
 [![](https://readthedocs.org/projects/pyhafas/badge/?version=latest)](https://pyhafas.readthedocs.io/)

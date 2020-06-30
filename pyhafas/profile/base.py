@@ -9,6 +9,7 @@ from typing import Dict, List, Tuple
 import requests
 
 from pyhafas.fptf import Mode, Stopover
+from ..exceptions import ProductNotAvailableError, GeneralHafasError
 from ..fptf import Journey, Leg, Station
 
 
@@ -262,7 +263,8 @@ class Profile:
                 for product_bitmask in self.available_products[product]:
                     bitmask_sum += product_bitmask
             except KeyError:
-                raise Exception()
+                raise ProductNotAvailableError(
+                    'The product "{}" is not available in chosen profile.'.format(product))
         return {
             'type': 'PROD',
             'mode': 'INC',
@@ -277,9 +279,12 @@ class Profile:
         :param date: date object
         :return: datetime object with parsed date and time
         """
-        hour = int(time_string[-6:-4])
-        minute = int(time_string[-4:-2])
-        second = int(time_string[-2:])
+        try:
+            hour = int(time_string[-6:-4])
+            minute = int(time_string[-4:-2])
+            second = int(time_string[-2:])
+        except ValueError:
+            raise ValueError('Time string "{}" has wrong format'.format(time_string))
 
         dateOffset = int(time_string[:2]) if len(time_string) > 6 else 0
         return datetime.datetime(
@@ -297,9 +302,12 @@ class Profile:
         :param time_string: Time string given by HaFAS
         :return: timedelta object with parsed time
         """
-        hours = int(time_string[:2])
-        minutes = int(time_string[2:-2])
-        seconds = int(time_string[-2:])
+        try:
+            hours = int(time_string[:2])
+            minutes = int(time_string[2:-2])
+            seconds = int(time_string[-2:])
+        except ValueError:
+            raise ValueError('Time string "{}" has wrong format'.format(time_string))
 
         return datetime.timedelta(
             hours=hours,
@@ -491,18 +499,21 @@ class Profile:
         :return: List of journey objects
         """
         data = json.loads(response)
-        legs = []
         if data['svcResL'][0]['err'] != 'OK':
-            raise Exception()
-        for raw_leg in data['svcResL'][0]['res']['jnyL']:
-            leg = self.parse_leg(
-                raw_leg,
-                data['svcResL'][0]['res']['common'],
-                raw_leg['stopL'][0],
-                raw_leg['stopL'][-1],
-                self.parse_date(raw_leg['date'])
-            )
-            legs.append(leg)
+            raise GeneralHafasError("HaFAS returned general error: " + data['svcResL'][0].get('errTxt', ""))
+        legs = []
+        try:
+            for raw_leg in data['svcResL'][0]['res']['jnyL']:
+                leg = self.parse_leg(
+                    raw_leg,
+                    data['svcResL'][0]['res']['common'],
+                    raw_leg['stopL'][0],
+                    raw_leg['stopL'][-1],
+                    self.parse_date(raw_leg['date'])
+                )
+                legs.append(leg)
+        except KeyError:
+            pass
 
         return legs
 
@@ -514,13 +525,16 @@ class Profile:
         :return: List of Station objects
         """
         data = json.loads(response)
+        if data['svcResL'][0]['err'] != 'OK':
+            raise GeneralHafasError("HaFAS returned general error: " + data['svcResL'][0].get('errTxt', ""))
         stations = []
         for stn in data['svcResL'][0]['res']['match']['locL']:
-            latitude: int = 0
-            longitude: int = 0
-            if stn['crd']:
-                latitude = stn['crd']['y'] / 1000000
-                longitude = stn['crd']['x'] / 1000000
+            try:
+                latitude: int = stn['crd']['y'] / 1000000
+                longitude: int = stn['crd']['x'] / 1000000
+            except KeyError:
+                latitude: int = 0
+                longitude: int = 0
             stations.append(
                 self.parse_lid_to_station(
                     stn['lid'],
@@ -537,9 +551,8 @@ class Profile:
         :return: Leg objects
         """
         data = json.loads(response)
-
-        if data.get('err') or data['svcResL'][0]['err'] != 'OK':
-            raise Exception()
+        if data['svcResL'][0]['err'] != 'OK':
+            raise GeneralHafasError("HaFAS returned general error: " + data['svcResL'][0].get('errTxt', ""))
         return self.parse_leg(
             data['svcResL'][0]['res']['journey'],
             data['svcResL'][0]['res']['common'],
@@ -558,7 +571,7 @@ class Profile:
         data = json.loads(response)
 
         if data.get('err') or data['svcResL'][0]['err'] != 'OK':
-            raise Exception()
+            raise GeneralHafasError("HaFAS returned general error: " + data['svcResL'][0].get('errTxt', ""))
         date = self.parse_date(data['svcResL'][0]['res']['outConL'][0]['date'])
         return Journey(
             data['svcResL'][0]['res']['outConL'][0]['ctxRecon'],
@@ -577,7 +590,7 @@ class Profile:
         journeys = []
 
         if data.get('err') or data['svcResL'][0]['err'] != 'OK':
-            raise Exception()
+            raise GeneralHafasError("HaFAS returned general error: " + data['svcResL'][0].get('errTxt', ""))
 
         for jny in data['svcResL'][0]['res']['outConL']:
             # TODO: Add more data
