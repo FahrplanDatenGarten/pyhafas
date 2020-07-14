@@ -1,7 +1,7 @@
-from . import Profile
+from pyhafas.profile.base import BaseProfile
 
 
-class DBProfile(Profile):
+class DBProfile(BaseProfile):
     baseUrl = "https://reiseauskunft.bahn.de/bin/mgate.exe"
     defaultUserAgent = "DB Navigator/19.10.04 (iPhone; iOS 13.1.2; Scale/2.00)"
 

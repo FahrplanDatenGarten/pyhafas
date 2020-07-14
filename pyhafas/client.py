@@ -1,16 +1,16 @@
 from __future__ import annotations
 
 import datetime
-from typing import List, Dict
+from typing import Dict, List
 
-from .fptf import Journey, Station, Leg
-from .profile import DBProfile, Profile, StationBoardRequestType
+from .fptf import Journey, Leg, Station, StationBoardRequestType
+from .profile import BaseProfile, DBProfile
 
 
 class HafasClient:
     def __init__(
             self,
-            profile: Profile = DBProfile(),
+            profile: BaseProfile = DBProfile(),
             ua: str = "pyhafas",
             debug: bool = False):
 

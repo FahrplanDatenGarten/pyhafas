@@ -1,6 +1,14 @@
 import datetime
 from enum import Enum
-from typing import List, Union, Optional
+from typing import List, Optional, Union
+
+
+class StationBoardRequestType(Enum):
+    DEPARTURE = 'DEP'
+    ARRIVAL = 'ARR'
+
+    def __repr__(self):
+        return '<%s.%s>' % (self.__class__.__name__, self.name)
 
 
 class Mode(Enum):
@@ -51,12 +59,15 @@ class Leg:
         self.departure: datetime.datetime = kwargs['departure']
         self.departureDelay: Optional[datetime.timedelta] = kwargs.get(
             'departureDelay', None)
-        self.departurePlatform: Optional[str] = kwargs.get('departurePlatform', None)
+        self.departurePlatform: Optional[str] = kwargs.get(
+            'departurePlatform', None)
         self.arrival: datetime.datetime = kwargs['arrival']
         self.arrivalDelay: Optional[datetime.timedelta] = kwargs.get(
             'arrivalDelay', None)
-        self.arrivalPlatform: Optional[str] = kwargs.get('arrivalPlatform', None)
-        self.stopovers: Optional[List[Stopover]] = kwargs.get('stopovers', None)
+        self.arrivalPlatform: Optional[str] = kwargs.get(
+            'arrivalPlatform', None)
+        self.stopovers: Optional[List[Stopover]
+                                 ] = kwargs.get('stopovers', None)
         self.distance: Optional[int] = kwargs.get('distance', None)
 
     def __repr__(self):
@@ -70,11 +81,14 @@ class Stopover:
         self.arrival: Optional[datetime.datetime] = kwargs.get('arrival', None)
         self.arrivalDelay: Optional[datetime.timedelta] = kwargs.get(
             'arrivalDelay', None)
-        self.arrivalPlatform: Optional[str] = kwargs.get('arrivalPlatform', None)
-        self.departure: Optional[datetime.datetime] = kwargs.get('departure', None)
+        self.arrivalPlatform: Optional[str] = kwargs.get(
+            'arrivalPlatform', None)
+        self.departure: Optional[datetime.datetime] = kwargs.get(
+            'departure', None)
         self.departureDelay: Optional[datetime.timedelta] = kwargs.get(
             'departureDelay', None)
-        self.departurePlatform: Optional[str] = kwargs.get('departurePlatform', None)
+        self.departurePlatform: Optional[str] = kwargs.get(
+            'departurePlatform', None)
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
