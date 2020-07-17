@@ -18,5 +18,9 @@ class RequestHelperInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def request(self, body) -> requests.Response:
+    def request(self, body) -> dict:
+        pass
+
+    @abc.abstractmethod
+    def format_response(self, response: requests.Response) -> dict:
         pass

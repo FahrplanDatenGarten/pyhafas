@@ -38,7 +38,7 @@ class HafasClient:
         )
         res = self.profile.request(body)
 
-        return self.profile.parse_station_board_request(res.text)
+        return self.profile.parse_station_board_request(res)
 
     def arrivals(
             self,
@@ -60,7 +60,7 @@ class HafasClient:
         )
         res = self.profile.request(body)
 
-        return self.profile.parse_station_board_request(res.text)
+        return self.profile.parse_station_board_request(res)
 
     def journeys(
             self,
@@ -91,7 +91,7 @@ class HafasClient:
         )
         res = self.profile.request(body)
 
-        return self.profile.parse_journeys_request(res.text)
+        return self.profile.parse_journeys_request(res)
 
     def journey(self, journey) -> Journey:
         if not isinstance(journey, Journey):
@@ -100,19 +100,19 @@ class HafasClient:
         body = self.profile.format_journey_request(journey)
         res = self.profile.request(body)
 
-        return self.profile.parse_journey_request(res.text)
+        return self.profile.parse_journey_request(res)
 
     def locations(self, term: str) -> List[Station]:
         body = self.profile.format_location_request(term)
         res = self.profile.request(body)
 
-        return self.profile.parse_location_request(res.text)
+        return self.profile.parse_location_request(res)
 
     def trip(self, id: str):
         body = self.profile.format_trip_request(id)
         res = self.profile.request(body)
 
-        return self.profile.parse_trip_request(res.text)
+        return self.profile.parse_trip_request(res)
 
     def stop(self, stop):
         pass

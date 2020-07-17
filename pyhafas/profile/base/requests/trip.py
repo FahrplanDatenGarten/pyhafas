@@ -21,25 +21,17 @@ class BaseTripRequest(TripRequestInterface):
             'meth': 'JourneyDetails'
         }
 
-    def parse_trip_request(self: ProfileInterface, response: str) -> Leg:
+    def parse_trip_request(self: ProfileInterface, data: dict) -> Leg:
         """
-        Parses the HaFAS response for trip request
+        Parses the HaFAS data for trip request
 
-        :param self:
-        :param response: HaFAS response
+        :param data: Formatted HaFAS response
         :return: Leg objects
         """
-        data = json.loads(response)
-        if data['svcResL'][0]['err'] != 'OK':
-            raise GeneralHafasError(
-                "HaFAS returned general error: " +
-                data['svcResL'][0].get(
-                    'errTxt',
-                    ""))
         return self.parse_leg(
-            data['svcResL'][0]['res']['journey'],
-            data['svcResL'][0]['res']['common'],
-            data['svcResL'][0]['res']['journey']['stopL'][0],
-            data['svcResL'][0]['res']['journey']['stopL'][-1],
-            self.parse_date(data['svcResL'][0]['res']['journey']['date'])
+            data['res']['journey'],
+            data['common'],
+            data['res']['journey']['stopL'][0],
+            data['res']['journey']['stopL'][-1],
+            self.parse_date(data['res']['journey']['date'])
         )

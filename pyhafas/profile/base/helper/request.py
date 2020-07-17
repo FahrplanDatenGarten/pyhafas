@@ -36,7 +36,7 @@ class BaseRequestHelper(RequestHelperInterface):
 
         return url
 
-    def request(self: ProfileInterface, body) -> requests.Response:
+    def request(self: ProfileInterface, body) -> dict:
         data = {
             'svcReqL': [body]
         }
@@ -49,4 +49,12 @@ class BaseRequestHelper(RequestHelperInterface):
             headers={
                 'User-Agent': self.userAgent,
                 'Content-Type': 'application/json'})
-        return req
+        return self.format_response(req)
+
+    def format_response(self: ProfileInterface, response: requests.Response) -> dict:
+        data = json.loads(response.text)
+        return {
+            "res": data['svcResL'][0]['res'],
+            "common": data['svcResL'][0]['res']['common']
+        }
+

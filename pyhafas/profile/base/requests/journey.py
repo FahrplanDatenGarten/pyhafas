@@ -25,28 +25,20 @@ class BaseJourneyRequest(JourneyRequestInterface):
 
     def parse_journey_request(
             self: ProfileInterface,
-            response: str) -> Journey:
+            data: dict) -> Journey:
         """
         Parses the HaFAS response for journeys request
 
-        :param response: HaFAS response
+        :param data: Formatted HaFAS response
         :return: List of Journey objects
         """
-        data = json.loads(response)
-
-        if data.get('err') or data['svcResL'][0]['err'] != 'OK':
-            raise GeneralHafasError(
-                "HaFAS returned general error: " +
-                data['svcResL'][0].get(
-                    'errTxt',
-                    ""))
-        date = self.parse_date(data['svcResL'][0]['res']['outConL'][0]['date'])
+        date = self.parse_date(data['res']['outConL'][0]['date'])
         return Journey(
-            data['svcResL'][0]['res']['outConL'][0]['ctxRecon'],
+            data['res']['outConL'][0]['ctxRecon'],
             date=date,
             duration=self.parse_timedelta(
-                data['svcResL'][0]['res']['outConL'][0]['dur']),
+                data['res']['outConL'][0]['dur']),
             legs=self.parse_legs(
-                data['svcResL'][0]['res']['outConL'][0],
-                data['svcResL'][0]['res']['common'],
+                data['res']['outConL'][0],
+                data['common'],
                 date))

@@ -50,26 +50,19 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
 
     def parse_station_board_request(
             self: ProfileInterface,
-            response: str) -> List[Leg]:
+            data: dict) -> List[Leg]:
         """
-        Parses the HaFAS response for the station board request
+        Parses the HaFAS data for the station board request
 
-        :param response: HaFAS response
+        :param data: Formatted HaFAS response
         :return: List of journey objects
         """
-        data = json.loads(response)
-        if data['svcResL'][0]['err'] != 'OK':
-            raise GeneralHafasError(
-                "HaFAS returned general error: " +
-                data['svcResL'][0].get(
-                    'errTxt',
-                    ""))
         legs = []
         try:
-            for raw_leg in data['svcResL'][0]['res']['jnyL']:
+            for raw_leg in data['res']['jnyL']:
                 leg = self.parse_leg(
                     raw_leg,
-                    data['svcResL'][0]['res']['common'],
+                    data['res']['common'],
                     raw_leg['stopL'][0],
                     raw_leg['stopL'][-1],
                     self.parse_date(raw_leg['date'])
