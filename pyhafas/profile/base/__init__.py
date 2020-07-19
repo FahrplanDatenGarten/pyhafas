@@ -1,5 +1,6 @@
 from typing import Dict, List
 
+from pyhafas.profile.base.helper.error_handling import BaseErrorHandlingHelper
 from pyhafas.profile.base.helper.request import BaseRequestHelper
 from pyhafas.profile.base.helper.format_products_filter import \
     BaseFormatProductsFilterHelper
@@ -16,6 +17,7 @@ from pyhafas.profile.interfaces import ProfileInterface
 
 class BaseProfile(
         BaseRequestHelper,
+        BaseErrorHandlingHelper,
         BaseFormatProductsFilterHelper,
         BaseParseLidHelper,
         BaseParseDateTimeHelper,

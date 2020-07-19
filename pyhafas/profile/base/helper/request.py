@@ -43,18 +43,18 @@ class BaseRequestHelper(RequestHelperInterface):
         data.update(self.requestBody)
         data = json.dumps(data)
 
-        req = requests.post(
+        res = requests.post(
             self.url_formatter(data),
             data=data,
             headers={
                 'User-Agent': self.userAgent,
                 'Content-Type': 'application/json'})
-        return self.format_response(req)
+        data = json.loads(res.text)
+        self.check_for_errors(data)
+        return self.format_response(data)
 
-    def format_response(self: ProfileInterface, response: requests.Response) -> dict:
-        data = json.loads(response.text)
+    def format_response(self: ProfileInterface, data: dict) -> dict:
         return {
             "res": data['svcResL'][0]['res'],
             "common": data['svcResL'][0]['res']['common']
         }
-

@@ -1,8 +1,6 @@
 import abc
 from typing import Tuple
 
-import requests
-
 
 class RequestHelperInterface(abc.ABC):
     @abc.abstractmethod
@@ -22,5 +20,5 @@ class RequestHelperInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def format_response(self, response: requests.Response) -> dict:
+    def format_response(self, data: dict) -> dict:
         pass
