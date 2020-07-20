@@ -1,8 +1,6 @@
-import json
-
-from pyhafas.exceptions import GeneralHafasError
-from pyhafas.fptf import Leg
+from pyhafas.types.fptf import Leg
 from pyhafas.profile import ProfileInterface
+from pyhafas.types.hafas_response import HafasResponse
 from pyhafas.profile.interfaces.requests.trip import TripRequestInterface
 
 
@@ -21,7 +19,7 @@ class BaseTripRequest(TripRequestInterface):
             'meth': 'JourneyDetails'
         }
 
-    def parse_trip_request(self: ProfileInterface, data: dict) -> Leg:
+    def parse_trip_request(self: ProfileInterface, data: HafasResponse) -> Leg:
         """
         Parses the HaFAS data for trip request
 
@@ -29,9 +27,9 @@ class BaseTripRequest(TripRequestInterface):
         :return: Leg objects
         """
         return self.parse_leg(
-            data['res']['journey'],
-            data['common'],
-            data['res']['journey']['stopL'][0],
-            data['res']['journey']['stopL'][-1],
-            self.parse_date(data['res']['journey']['date'])
+            data.res['journey'],
+            data.common,
+            data.res['journey']['stopL'][0],
+            data.res['journey']['stopL'][-1],
+            self.parse_date(data.res['journey']['date'])
         )

@@ -1,7 +1,7 @@
-from pyhafas.exceptions import ProductNotAvailableError
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces.helper.format_products_filter import \
     FormatProductsFilterHelperInterface
+from pyhafas.types.exceptions import ProductNotAvailableError
 
 
 class BaseFormatProductsFilterHelper(FormatProductsFilterHelperInterface):

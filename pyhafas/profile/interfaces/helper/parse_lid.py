@@ -1,6 +1,6 @@
 import abc
 
-from pyhafas.fptf import Station
+from pyhafas.types.fptf import Station
 
 
 class ParseLidHelperInterface(abc.ABC):

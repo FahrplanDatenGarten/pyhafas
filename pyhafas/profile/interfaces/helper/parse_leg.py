@@ -2,7 +2,7 @@ import abc
 import datetime
 from typing import List
 
-from pyhafas.fptf import Leg
+from pyhafas.types.fptf import Leg
 
 
 class ParseLegHelperInterface(abc.ABC):

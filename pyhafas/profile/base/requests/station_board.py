@@ -1,10 +1,9 @@
 import datetime
-import json
 from typing import Dict, List
 
-from pyhafas.exceptions import GeneralHafasError
-from pyhafas.fptf import Leg, Station, StationBoardRequestType
+from pyhafas.types.fptf import Leg, Station, StationBoardRequestType
 from pyhafas.profile import ProfileInterface
+from pyhafas.types.hafas_response import HafasResponse
 from pyhafas.profile.interfaces.requests.station_board import \
     StationBoardRequestInterface
 
@@ -50,7 +49,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
 
     def parse_station_board_request(
             self: ProfileInterface,
-            data: dict) -> List[Leg]:
+            data: HafasResponse) -> List[Leg]:
         """
         Parses the HaFAS data for the station board request
 
@@ -59,10 +58,10 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
         """
         legs = []
         try:
-            for raw_leg in data['res']['jnyL']:
+            for raw_leg in data.res['jnyL']:
                 leg = self.parse_leg(
                     raw_leg,
-                    data['res']['common'],
+                    data.res['common'],
                     raw_leg['stopL'][0],
                     raw_leg['stopL'][-1],
                     self.parse_date(raw_leg['date'])

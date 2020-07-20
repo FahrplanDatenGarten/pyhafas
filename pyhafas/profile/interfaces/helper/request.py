@@ -1,6 +1,8 @@
 import abc
 from typing import Tuple
 
+from pyhafas.types.hafas_response import HafasResponse
+
 
 class RequestHelperInterface(abc.ABC):
     @abc.abstractmethod
@@ -16,9 +18,5 @@ class RequestHelperInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def request(self, body) -> dict:
-        pass
-
-    @abc.abstractmethod
-    def format_response(self, data: dict) -> dict:
+    def request(self, body) -> HafasResponse:
         pass

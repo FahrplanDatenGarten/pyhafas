@@ -1,6 +1,7 @@
 import abc
 
-from pyhafas.fptf import Leg
+from pyhafas.types.fptf import Leg
+from pyhafas.types.hafas_response import HafasResponse
 
 
 class TripRequestInterface(abc.ABC):
@@ -9,5 +10,5 @@ class TripRequestInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def parse_trip_request(self, response: str) -> Leg:
+    def parse_trip_request(self, data: HafasResponse) -> Leg:
         pass

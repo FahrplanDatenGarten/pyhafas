@@ -1,7 +1,8 @@
 import abc
 from typing import List
 
-from pyhafas.fptf import Station
+from pyhafas.types.fptf import Station
+from pyhafas.types.hafas_response import HafasResponse
 
 
 class LocationRequestInterface(abc.ABC):
@@ -10,5 +11,5 @@ class LocationRequestInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def parse_location_request(self, response: str) -> List[Station]:
+    def parse_location_request(self, data: HafasResponse) -> List[Station]:
         pass

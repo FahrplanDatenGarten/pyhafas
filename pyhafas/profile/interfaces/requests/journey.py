@@ -1,6 +1,7 @@
 import abc
 
-from pyhafas.fptf import Journey
+from pyhafas.types.fptf import Journey
+from pyhafas.types.hafas_response import HafasResponse
 
 
 class JourneyRequestInterface(abc.ABC):
@@ -9,5 +10,5 @@ class JourneyRequestInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def parse_journey_request(self, response: str) -> Journey:
+    def parse_journey_request(self, data: HafasResponse) -> Journey:
         pass

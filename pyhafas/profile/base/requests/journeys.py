@@ -1,12 +1,11 @@
 import datetime
-import json
 from typing import Dict, List
 
-from pyhafas.exceptions import GeneralHafasError
-from pyhafas.fptf import Journey, Station
+from pyhafas.types.fptf import Journey, Station
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces.requests.journeys import \
     JourneysRequestInterface
+from pyhafas.types.hafas_response import HafasResponse
 
 
 class BaseJourneysRequest(JourneysRequestInterface):
@@ -83,7 +82,7 @@ class BaseJourneysRequest(JourneysRequestInterface):
 
     def parse_journeys_request(
             self: ProfileInterface,
-            data: dict) -> List[Journey]:
+            data: HafasResponse) -> List[Journey]:
         """
         Parses the HaFAS data for journeys request
 
@@ -92,12 +91,12 @@ class BaseJourneysRequest(JourneysRequestInterface):
         """
         journeys = []
 
-        for jny in data['res']['outConL']:
+        for jny in data.res['outConL']:
             # TODO: Add more data
             date = self.parse_date(jny['date'])
             journeys.append(
                 Journey(
                     jny['ctxRecon'], date=date, duration=self.parse_timedelta(
                         jny['dur']), legs=self.parse_legs(
-                        jny, data['common'], date)))
+                        jny, data.common, date)))
         return journeys

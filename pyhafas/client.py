@@ -3,7 +3,7 @@ from __future__ import annotations
 import datetime
 from typing import Dict, List
 
-from .fptf import Journey, Leg, Station, StationBoardRequestType
+from .types.fptf import Journey, Leg, Station, StationBoardRequestType
 from .profile import BaseProfile, DBProfile
 
 

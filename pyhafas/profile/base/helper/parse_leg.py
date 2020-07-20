@@ -1,7 +1,7 @@
 import datetime
 from typing import List
 
-from pyhafas.fptf import Leg, Mode, Stopover
+from pyhafas.types.fptf import Leg, Mode, Stopover
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces.helper.parse_leg import ParseLegHelperInterface
 

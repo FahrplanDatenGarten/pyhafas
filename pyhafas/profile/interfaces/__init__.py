@@ -1,7 +1,6 @@
 from abc import ABC
 from typing import Dict, List
 
-from pyhafas.profile.interfaces.helper.error_handling import ErrorHandlingHelperInterface
 from pyhafas.profile.interfaces.helper.request import RequestHelperInterface
 from pyhafas.profile.interfaces.helper.format_products_filter import \
     FormatProductsFilterHelperInterface
@@ -21,7 +20,6 @@ from pyhafas.profile.interfaces.requests.trip import TripRequestInterface
 
 class ProfileInterface(
         RequestHelperInterface,
-        ErrorHandlingHelperInterface,
         FormatProductsFilterHelperInterface,
         ParseLidHelperInterface,
         ParseDateTimeHelperInterface,

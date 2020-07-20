@@ -1,10 +1,9 @@
-import json
 from typing import List
 
-from pyhafas.exceptions import GeneralHafasError
-from pyhafas.fptf import Station
+from pyhafas.types.fptf import Station
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces import LocationRequestInterface
+from pyhafas.types.hafas_response import HafasResponse
 
 
 class BaseLocationRequest(LocationRequestInterface):
@@ -30,7 +29,7 @@ class BaseLocationRequest(LocationRequestInterface):
 
     def parse_location_request(
             self: ProfileInterface,
-            data: dict) -> List[Station]:
+            data: HafasResponse) -> List[Station]:
         """
         Parses the HaFAS data for the location request
 
@@ -38,7 +37,7 @@ class BaseLocationRequest(LocationRequestInterface):
         :return: List of Station objects
         """
         stations = []
-        for stn in data['res']['match']['locL']:
+        for stn in data.res['match']['locL']:
             try:
                 latitude: int = stn['crd']['y'] / 1000000
                 longitude: int = stn['crd']['x'] / 1000000

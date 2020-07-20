@@ -2,7 +2,8 @@ import abc
 import datetime
 from typing import Dict, List
 
-from pyhafas.fptf import Leg, Station, StationBoardRequestType
+from pyhafas.types.fptf import Leg, Station, StationBoardRequestType
+from pyhafas.types.hafas_response import HafasResponse
 
 
 class StationBoardRequestInterface(abc.ABC):
@@ -17,5 +18,5 @@ class StationBoardRequestInterface(abc.ABC):
     ) -> dict:
         pass
 
-    def parse_station_board_request(self, response: str) -> List[Leg]:
+    def parse_station_board_request(self, data: HafasResponse) -> List[Leg]:
         pass

@@ -5,7 +5,9 @@ from typing import Tuple
 import requests
 
 from pyhafas.profile import ProfileInterface
+from pyhafas.profile.base.mappings.error_codes import BaseErrorCodesMapping
 from pyhafas.profile.interfaces.helper.request import RequestHelperInterface
+from pyhafas.types.hafas_response import HafasResponse
 
 
 class BaseRequestHelper(RequestHelperInterface):
@@ -36,7 +38,7 @@ class BaseRequestHelper(RequestHelperInterface):
 
         return url
 
-    def request(self: ProfileInterface, body) -> dict:
+    def request(self: ProfileInterface, body) -> HafasResponse:
         data = {
             'svcReqL': [body]
         }
@@ -49,12 +51,4 @@ class BaseRequestHelper(RequestHelperInterface):
             headers={
                 'User-Agent': self.userAgent,
                 'Content-Type': 'application/json'})
-        data = json.loads(res.text)
-        self.check_for_errors(data)
-        return self.format_response(data)
-
-    def format_response(self: ProfileInterface, data: dict) -> dict:
-        return {
-            "res": data['svcResL'][0]['res'],
-            "common": data['svcResL'][0]['res']['common']
-        }
+        return HafasResponse(res, BaseErrorCodesMapping)

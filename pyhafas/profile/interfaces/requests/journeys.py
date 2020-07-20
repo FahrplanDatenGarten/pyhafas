@@ -2,7 +2,8 @@ import abc
 import datetime
 from typing import Dict, List
 
-from pyhafas.fptf import Journey, Station
+from pyhafas.types.fptf import Journey, Station
+from pyhafas.types.hafas_response import HafasResponse
 
 
 class JourneysRequestInterface(abc.ABC):
@@ -20,5 +21,5 @@ class JourneysRequestInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def parse_journeys_request(self, response: str) -> List[Journey]:
+    def parse_journeys_request(self, data: HafasResponse) -> List[Journey]:
         pass
