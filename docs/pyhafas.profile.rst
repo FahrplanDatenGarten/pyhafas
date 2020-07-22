@@ -1,14 +1,15 @@
 pyhafas.profile package
 =======================
 
-Submodules
-----------
+Subpackages
+-----------
 
 .. toctree::
    :maxdepth: 4
 
    pyhafas.profile.base
    pyhafas.profile.db
+   pyhafas.profile.interfaces
    pyhafas.profile.vsn
 
 Module contents

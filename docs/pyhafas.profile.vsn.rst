@@ -1,5 +1,8 @@
-pyhafas.profile.vsn module
-==========================
+pyhafas.profile.vsn package
+===========================
+
+Module contents
+---------------
 
 .. automodule:: pyhafas.profile.vsn
    :members:

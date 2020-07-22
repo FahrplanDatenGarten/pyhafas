@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    pyhafas.profile
+   pyhafas.types
 
 Submodules
 ----------
@@ -16,7 +17,6 @@ Submodules
    :maxdepth: 4
 
    pyhafas.client
-   pyhafas.fptf
 
 Module contents
 ---------------
