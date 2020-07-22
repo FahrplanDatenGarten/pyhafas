@@ -21,7 +21,7 @@ if sys.argv[-1] == 'publish':
 
 setup(
     name='pyhafas',
-    version='0.0.0.dev1',
+    version='0.1.0',
     description='Python client for HAFAS public transport APIs',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -35,7 +35,7 @@ setup(
     packages=setuptools.find_packages(),
     zip_safe=True,
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
