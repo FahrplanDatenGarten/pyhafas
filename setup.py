@@ -2,6 +2,7 @@
 """Setup file for the HAFAS client."""
 import os
 import sys
+
 import setuptools
 
 try:
@@ -29,7 +30,8 @@ setup(
     author='Simeon Keske, Leo Maroni',
     author_email='dev@n0emis.eu, hello@em0lar.de',
     license='MIT',
-    install_requires=['requests'],
+    install_requires=['requests==2.24.*',
+                      'pycryptodome==3.9.*'],
     packages=setuptools.find_packages(),
     zip_safe=True,
     classifiers=[
