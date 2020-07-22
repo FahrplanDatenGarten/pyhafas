@@ -1,6 +1,6 @@
-from pyhafas.types.fptf import Journey
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces.requests.journey import JourneyRequestInterface
+from pyhafas.types.fptf import Journey
 from pyhafas.types.hafas_response import HafasResponse
 
 

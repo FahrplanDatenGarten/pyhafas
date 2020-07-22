@@ -1,10 +1,10 @@
 import datetime
 from typing import Dict, List
 
-from pyhafas.types.fptf import Journey, Station
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces.requests.journeys import \
     JourneysRequestInterface
+from pyhafas.types.fptf import Journey, Station
 from pyhafas.types.hafas_response import HafasResponse
 
 

@@ -18,7 +18,8 @@ class HafasResponse:
         error_not_found = False
         if self.data.get('err', "OK") != "OK":
             try:
-                raise mapping[self.data['err']].value(self.data.get('errTxt', ''))
+                raise mapping[self.data['err']].value(
+                    self.data.get('errTxt', ''))
             except KeyError:
                 error_not_found = True
         if error_not_found:
@@ -34,7 +35,8 @@ class HafasResponse:
             except KeyError:
                 error_not_found = True
         if error_not_found:
-            raise mapping['default'].value(self.data['svcResL'][0].get('errTxt', ''))
+            raise mapping['default'].value(
+                self.data['svcResL'][0].get('errTxt', ''))
 
     @property
     def common(self):

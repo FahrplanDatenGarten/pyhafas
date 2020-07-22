@@ -1,6 +1,6 @@
-from pyhafas.types.fptf import Station
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces.helper.parse_lid import ParseLidHelperInterface
+from pyhafas.types.fptf import Station
 
 
 class BaseParseLidHelper(ParseLidHelperInterface):

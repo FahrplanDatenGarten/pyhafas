@@ -1,3 +1,6 @@
 from .client import HafasClient
-from .types.exceptions import GeneralHafasError, AuthenticationError, AccessDeniedError, LocationNotFoundError, \
-    JourneysTooManyTrainsError, JourneysArrivalDepartureTooNearError, TripDataNotFoundError
+from .types.exceptions import (AccessDeniedError, AuthenticationError,
+                               GeneralHafasError,
+                               JourneysArrivalDepartureTooNearError,
+                               JourneysTooManyTrainsError,
+                               LocationNotFoundError, TripDataNotFoundError)

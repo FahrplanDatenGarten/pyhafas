@@ -1,8 +1,8 @@
 from typing import List
 
-from pyhafas.types.fptf import Station
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces import LocationRequestInterface
+from pyhafas.types.fptf import Station
 from pyhafas.types.hafas_response import HafasResponse
 
 

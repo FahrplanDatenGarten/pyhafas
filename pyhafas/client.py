@@ -1,8 +1,8 @@
 import datetime
 from typing import Dict, List
 
-from .types.fptf import Journey, Leg, Station, StationBoardRequestType
 from .profile import BaseProfile, DBProfile
+from .types.fptf import Journey, Leg, Station, StationBoardRequestType
 
 
 class HafasClient:

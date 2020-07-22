@@ -1,6 +1,11 @@
-from pyhafas.profile.interfaces.mappings.error_codes import ErrorCodesMappingInterface
-from pyhafas.types.exceptions import GeneralHafasError, AuthenticationError, AccessDeniedError, LocationNotFoundError, \
-    JourneysTooManyTrainsError, JourneysArrivalDepartureTooNearError, TripDataNotFoundError
+from pyhafas.profile.interfaces.mappings.error_codes import \
+    ErrorCodesMappingInterface
+from pyhafas.types.exceptions import (AccessDeniedError, AuthenticationError,
+                                      GeneralHafasError,
+                                      JourneysArrivalDepartureTooNearError,
+                                      JourneysTooManyTrainsError,
+                                      LocationNotFoundError,
+                                      TripDataNotFoundError)
 
 
 class BaseErrorCodesMapping(ErrorCodesMappingInterface):

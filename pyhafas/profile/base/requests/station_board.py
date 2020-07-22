@@ -1,11 +1,11 @@
 import datetime
 from typing import Dict, List
 
-from pyhafas.types.fptf import Leg, Station, StationBoardRequestType
 from pyhafas.profile import ProfileInterface
-from pyhafas.types.hafas_response import HafasResponse
 from pyhafas.profile.interfaces.requests.station_board import \
     StationBoardRequestInterface
+from pyhafas.types.fptf import Leg, Station, StationBoardRequestType
+from pyhafas.types.hafas_response import HafasResponse
 
 
 class BaseStationBoardRequest(StationBoardRequestInterface):

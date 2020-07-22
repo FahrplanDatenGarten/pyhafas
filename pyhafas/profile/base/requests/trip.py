@@ -1,7 +1,7 @@
-from pyhafas.types.fptf import Leg
 from pyhafas.profile import ProfileInterface
-from pyhafas.types.hafas_response import HafasResponse
 from pyhafas.profile.interfaces.requests.trip import TripRequestInterface
+from pyhafas.types.fptf import Leg
+from pyhafas.types.hafas_response import HafasResponse
 
 
 class BaseTripRequest(TripRequestInterface):
