@@ -11,11 +11,11 @@ HaFAS is a software sold by the company "`HaCon <https://hacon.de/en>`_" and is 
 Every public transport providers using HaFAS has their own deployment.
 In general all of them use have the same API but there are some small differences between them. To cover this we have a :term:`profile` :superscript:`G` for each HaFAS deployment.
 
-
+.. WARNING:: pyHaFAS is still in beta.
+   The interface might change, so please read the changelog carefully before you update.
 
 Contributing
 ------------
-8011160
 If you have a question, found a bug or want to propose a feature, have a look at `the issues page <https://github.com/n0emis/pyhafas/issues>`_.
 Even better than creating an issue is creating a pull request. If you wanna do that please read the :doc:`development/guide`.
 
