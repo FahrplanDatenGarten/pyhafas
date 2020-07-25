@@ -14,7 +14,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
             station: Station,
             request_type: StationBoardRequestType,
             date: datetime.datetime,
-            max_journeys: int,
+            max_trips: int,
             duration: int,
             products: Dict[str, bool]
     ) -> dict:
@@ -24,7 +24,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
         :param station: Station to get departures/arrivals for
         :param request_type: ARRIVAL or DEPARTURE
         :param date: Date and time to get departures/arrival for
-        :param max_journeys: Maximum number of trips that can be returned
+        :param max_trips: Maximum number of trips that can be returned
         :param products: Allowed products (e.g. ICE,IC)
         :param duration: Time in which trips are searched
         :return: Request for HaFAS
@@ -36,7 +36,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
                 'stbLoc': {
                     'lid': 'A=1@L={}@'.format(station.id)
                 },
-                'maxJny': max_journeys,
+                'maxJny': max_trips,
                 'date': date.strftime("%Y%m%d"),
                 'time': date.strftime("%H%M%S"),
                 'dur': duration,

@@ -26,7 +26,7 @@ class BaseJourneysRequest(JourneysRequestInterface):
         :param destination: Destionation station
         :param via: Via stations, maybe empty list)
         :param date: Date and time to search journeys for
-        :param min_change_time: Minimum time for changes at stations
+        :param min_change_time: Minimum transfer/change time at each station
         :param max_changes: Maximum number of changes
         :param products: Allowed products (e.g. ICE,IC)
         :return: Request for HaFAS

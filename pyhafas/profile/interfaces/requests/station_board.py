@@ -12,7 +12,7 @@ class StationBoardRequestInterface(abc.ABC):
             station: Station,
             request_type: StationBoardRequestType,
             date: datetime.datetime,
-            max_journeys: int,
+            max_trips: int,
             duration: int,
             products: Dict[str, bool]
     ) -> dict:
