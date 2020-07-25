@@ -6,4 +6,3 @@ You need it when you're using pyHaFAS. Below you can find the API of the client.
 .. automodule:: pyhafas.client
    :members:
    :undoc-members:
-   :show-inheritance:

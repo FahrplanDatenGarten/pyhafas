@@ -28,6 +28,8 @@ Even better than creating an issue is creating a pull request. If you wanna do t
    usage/profiles
    usage/client
    usage/fptf
+   usage/exceptions
+   usage/examples
 
 .. toctree::
    :caption: For developers

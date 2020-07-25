@@ -68,17 +68,5 @@ html_theme = 'sphinx_rtd_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 #html_static_path = ['_static']
 
-html_theme_options = {
-    # 'description': 'A python client for the HaFAS (HaCon Fahrplan Auskunfts System)',
-    # 'github_user': 'n0emis',
-    # 'github_repo': 'pyhafas',
-    # 'github_button': True,
-    # 'github_banner': False,
-}
 
-# Custom sidebar templates, maps document names to template names.
-html_sidebars = {
-#     '**': [
-#         'about.html', 'navigation.html', 'searchbox.html',
-#     ]
-}
+autoclass_content = "both"
