@@ -7,3 +7,4 @@ With this specification we build python classes in the module `pyhafas.types.ftp
 .. automodule:: pyhafas.types.fptf
    :members:
    :undoc-members:
+   :show-inheritance:

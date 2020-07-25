@@ -1,24 +1,25 @@
 import datetime
-from typing import Dict, List, Union
+from typing import Dict, List, Union, Optional
 
+from pyhafas.types.station_board_request import StationBoardRequestType
 from pyhafas.profile import ProfileInterface
-from pyhafas.types.fptf import Journey, Leg, Station, StationBoardRequestType
+from pyhafas.types.fptf import Journey, Leg, Station
 
 
 class HafasClient:
+    """
+    The interface between the user's program and pyHaFAS internal code.
+
+    :param profile: `Profile` to be used
+    :param ua: (optional) The user-agent which will be send to HaFAS. Defaults to "pyhafas"
+    :param debug: (optional) Whether debug mode should be enabled. Defaults to False.
+    """
 
     def __init__(
             self,
             profile: ProfileInterface,
             ua: str = "pyhafas",
             debug: bool = False):
-        """
-        The interface between the user's program and pyHaFAS internal code.
-
-        :param profile: `Profile` to be used
-        :param ua: (optional) The user-agent which will be send to HaFAS. Defaults to "pyhafas"
-        :param debug: (optional) Whether debug mode should be enabled. Defaults to False.
-        """
         self.profile = profile
         self.useragent = ua
         self.debug = debug
@@ -27,6 +28,7 @@ class HafasClient:
             self,
             station: Union[Station, str],
             date: datetime.datetime,
+            max_journeys: Optional[int] = None,  # Deprecated, will be removed in 0.2.0
             max_trips: int = -1,
             duration: int = -1,
             products: Dict[str, bool] = {}) -> List[Leg]:
@@ -35,6 +37,7 @@ class HafasClient:
 
         :param station: FPTF `Station` object or ID of station
         :param date: Date and Time when to search
+        :param max_journeys: (optional, deprecated, will be removed in 0.2.0) Use `max_trips` instead - Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param max_trips: (optional) Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param duration: (optional) Minutes after `date` in which is search is made. Default is "whatever HaFAS wants"
         :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.
@@ -42,6 +45,9 @@ class HafasClient:
         """
         if not isinstance(station, Station):
             station = Station(id=station)
+
+        if max_journeys is not None:
+            max_trips = max_journeys
 
         body = self.profile.format_station_board_request(
             station,
@@ -59,6 +65,7 @@ class HafasClient:
             self,
             station: Union[Station, str],
             date: datetime.datetime,
+            max_journeys: Optional[int] = None,  # Deprecated, will be removed in 0.2.0
             max_trips: int = -1,
             duration: int = -1,
             products: Dict[str, bool] = {}) -> List[Leg]:
@@ -67,6 +74,7 @@ class HafasClient:
 
         :param station: FPTF `Station` object or ID of station
         :param date: Date and Time when to search
+        :param max_journeys: (optional, deprecated, will be removed in 0.2.0) Use `max_trips` instead - Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param max_trips: (optional) Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param duration: (optional) Minutes after `date` in which is search is made. Default is "whatever HaFAS wants"
         :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.
@@ -74,6 +82,9 @@ class HafasClient:
         """
         if not isinstance(station, Station):
             station = Station(id=station)
+
+        if max_journeys is not None:
+            max_trips = max_journeys
 
         body = self.profile.format_station_board_request(
             station,
