@@ -26,7 +26,7 @@ You only need to install the pyhafas package, for example using pip:
 
 Sample Starter Code
 -------------------
-Below is a samle code for an easy usage. It has multiple parts:
+Below is a sample code for an easy usage. It has multiple parts:
 
 1. It imports the `HafasClient` and the `DBProfile` of pyHaFAS and creates the `HafasClient` with the :term:`profile` :superscript:`G`. The `DBProfile` is the :term:`profile` :superscript:`G` belonging to the HaFAS deployment of Deutsche Bahn.
 
