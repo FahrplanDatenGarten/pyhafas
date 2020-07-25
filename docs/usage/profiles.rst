@@ -34,6 +34,10 @@ Default Products
 ^^^^^^^^^^^^^^^^
 All available products specified above are enabled by default.
 
+Other interesting Stuff
+^^^^^^^^^^^^^^^^^^^^^^^
+* Mapping list with station IDs exists: `<https://data.deutschebahn.com/dataset/data-haltestellen>`_
+
 Verkehrsverbund Süd-Niedersachsen (VSN)
 ---------------------------------------
 Usage

@@ -32,7 +32,7 @@ Below is a sample code for an easy usage. It has multiple parts:
 
 2. It searches for locations (stations) with the term "Berlin" and prints the result
 
-3. It searches for departing trains at Berlin Central Station. Every station is identified by an ID, which (in this case `8011160`) can be obtained by a `location`-request with pyhafas or in case of Deutsche Bahn a `list <https://data.deutschebahn.com/dataset/data-haltestellen>`_ with all station IDs exist.
+3. It searches for departing trains at Berlin Central Station. Every station is identified by an ID, which (in this case `8011160`) can be obtained by a `location`-request with pyhafas.
 
 .. code:: python
 
