@@ -73,15 +73,15 @@ class Stopover:
     :ivar cancelled: Whether the stop is cancelled
     :vartype cancelled: bool
     :ivar arrival: Planned arrival date and time at the station (maybe `None`)
-    :vartype arrival: Optional[datetime]
+    :vartype arrival: Optional[datetime.datetime]
     :ivar arrivalDelay: Arrival delay at the station (maybe `None`)
-    :vartype arrivalDelay: Optional[timedelta]
+    :vartype arrivalDelay: Optional[datetime.timedelta]
     :ivar arrivalPlatform: Real-time arrival platform at the station (maybe `None`)
     :vartype arrivalPlatform: Optional[str]
     :ivar departure: Planned departure date and time at the station (maybe `None`)
-    :vartype departure: Optional[datetime]
+    :vartype departure: Optional[datetime.datetime]
     :ivar departureDelay: Departure delay at the station (maybe `None`)
-    :vartype departureDelay: Optional[timedelta]
+    :vartype departureDelay: Optional[datetime.timedelta]
     :ivar departurePlatform: Real-time departure platform at the station (maybe `None`)
     :vartype departurePlatform: Optional[str]
     """
@@ -134,25 +134,25 @@ class Leg:
     :ivar destination: FPTF `Station` object of the destination station
     :vartype destination: Station
     :ivar departure: Planned Date and Time of the departure
-    :vartype departure: datetime
+    :vartype departure: datetime.datetime
     :ivar arrival: Planned Date and Time of the arrival
-    :vartype arrival: datetime
+    :vartype arrival: datetime.datetime
     :ivar mode: Type of transport vehicle - Must be a part of the FPTF `Mode` enum. Defaults to `Mode.TRAIN`
     :vartype mode: Mode
     :ivar name: Name of the trip (e.g. ICE 123) (maybe `None`)
-    :vartype name: str
+    :vartype name: Optional[str]
     :ivar cancelled: Whether the trip is cancelled in complete (not only some stops)
     :vartype cancelled: bool
     :ivar distance: Distance of the walk trip in metres. Only set if `mode` is `Mode.WALKING` otherwise None
-    :vartype distance: int
+    :vartype distance: Optional[int]
     :ivar departureDelay: Delay at the departure station (maybe `None`)
-    :vartype departureDelay: timedelta
+    :vartype departureDelay: Optional[datetime.timedelta]
     :ivar departurePlatform: Real-time platform at the departure station (maybe `None`)
-    :vartype departurePlatform: str
+    :vartype departurePlatform: Optional[str]
     :ivar arrivalDelay: Delay at the arrival station (maybe `None`)
-    :vartype arrivalDelay: timedelta
+    :vartype arrivalDelay: Optional[datetime.timedelta]
     :ivar arrivalPlatform: Real-time platform at the arrival station (maybe `None`)
-    :vartype arrivalPlatform: str
+    :vartype arrivalPlatform: Optional[str]
     :ivar stopovers: List of FPTF `Stopover` objects (maybe `None`)
     :vartype stopovers: Optional[List[Stopover]]
     """
@@ -223,9 +223,9 @@ class Journey:
     :ivar id: ID of the Journey
     :vartype id: str
     :ivar date: Starting date of the journey (maybe `None`)
-    :vartype date: Optional[date]
+    :vartype date: Optional[datetime.date]
     :ivar duration: Duration of the complete journey (maybe `None`)
-    :vartype duration: Optional[timedelta]
+    :vartype duration: Optional[datetime.timedelta]
     :ivar legs: Longitude coordinate of the Station (maybe `None`)
     :vartype legs: Optional[List[Leg]]
     """

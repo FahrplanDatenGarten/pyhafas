@@ -17,7 +17,7 @@ In general all of them have the same API but there are some small differences be
 Contributing
 ------------
 If you have a question, found a bug or want to propose a feature, have a look at `the issues page <https://github.com/n0emis/pyhafas/issues>`_.
-Even better than creating an issue is creating a pull request. If you want to do that please read the :doc:`development/guide`.
+Even better than creating an issue is creating a pull request. If you want to do that please read the :doc:`/development/guide`.
 
 
 .. toctree::
