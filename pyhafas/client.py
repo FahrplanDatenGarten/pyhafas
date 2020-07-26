@@ -11,7 +11,7 @@ class HafasClient:
     The interface between the user's program and pyHaFAS internal code.
 
     :param profile: `Profile` to be used
-    :param ua: (optional) The user-agent which will be send to HaFAS. Defaults to "pyhafas"
+    :param ua: (optional, not recommended to change) The user-agent which will be send to HaFAS. By default "pyhafas", but is often overwritten by profile to emulate the app.
     :param debug: (optional) Whether debug mode should be enabled. Defaults to False.
     """
 

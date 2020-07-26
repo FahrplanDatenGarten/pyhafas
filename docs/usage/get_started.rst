@@ -52,4 +52,4 @@ Below is a sample code for an easy usage. It has multiple parts:
 What's next?
 ------------
 
-For a good start with pyHaFAS you should read especially the pages TODO (idee: profile, methoden) of the documentation.
+For a good start with pyHaFAS you should go on reading the documentation. Especially the pages :doc:`/usage/examples` and :doc:`profiles` are a good start.
