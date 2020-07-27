@@ -14,7 +14,7 @@ class BaseFormatProductsFilterHelper(FormatProductsFilterHelperInterface):
         :param requested_products: Mapping of Products to whether it's enabled or disabled
         :return:
         """
-        products = self.default_products
+        products = self.defaultProducts
         for requested_product in requested_products:
             if requested_products[requested_product]:
                 try:
@@ -30,7 +30,7 @@ class BaseFormatProductsFilterHelper(FormatProductsFilterHelperInterface):
         bitmask_sum = 0
         for product in products:
             try:
-                for product_bitmask in self.available_products[product]:
+                for product_bitmask in self.availableProducts[product]:
                     bitmask_sum += product_bitmask
             except KeyError:
                 raise ProductNotAvailableError(

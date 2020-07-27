@@ -26,7 +26,7 @@ class DBProfile(BaseProfile):
         }
     }
 
-    available_products = {
+    availableProducts = {
         'long_distance_express': [1],  # ICE
         'long_distance': [2],  # IC/EC
         'regional_express': [4],  # RE/IR
@@ -39,7 +39,7 @@ class DBProfile(BaseProfile):
         'taxi': [512]  # Group Taxi
     }
 
-    default_products = [
+    defaultProducts = [
         'long_distance_express',
         'long_distance',
         'regional_express',

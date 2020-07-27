@@ -27,7 +27,7 @@ class VSNProfile(BaseProfile):
         }
     }
 
-    available_products = {
+    availableProducts = {
         'long_distance_express': [1],  # ICE
         'long_distance': [2],  # IC/EC/CNL
         'regional_express': [4],  # RE/IR
@@ -40,7 +40,7 @@ class VSNProfile(BaseProfile):
         'anruf_sammel_taxi': [512]  # Group Taxi
     }
 
-    default_products = [
+    defaultProducts = [
         'long_distance_express',
         'long_distance',
         'regional_express',

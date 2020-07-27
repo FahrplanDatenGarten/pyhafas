@@ -38,8 +38,8 @@ class BaseProfile(
 
     requestBody: dict = {}
 
-    available_products: Dict[str, List[int]] = {}
-    default_products: List[str] = []
+    availableProducts: Dict[str, List[int]] = {}
+    defaultProducts: List[str] = []
 
     def __init__(self, ua=defaultUserAgent):
         self.userAgent = ua
