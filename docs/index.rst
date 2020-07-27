@@ -9,7 +9,7 @@ pyHaFAS is a client for the API of HaFAS public transport management system.
 HaFAS is a software sold by the company "`HaCon <https://hacon.de/en>`_" and is used by a lot of public transport providers for routing and providing departure information to their customers.
 
 Every public transport providers using HaFAS has their own deployment.
-In general all of them have the same API but there are some small differences between them. To cover this we have a :term:`profile` :superscript:`G` for each HaFAS deployment.
+In general all of them have the same API but there are some small differences between them. To cover this we have a :term:`profile`:superscript:`G` for each HaFAS deployment.
 
 .. WARNING:: pyHaFAS is still in beta.
    The interface might change, so please read the changelog carefully before you update.

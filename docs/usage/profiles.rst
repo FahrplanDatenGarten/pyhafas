@@ -1,7 +1,7 @@
 Profiles
 ========
 Here's a list of all HaFAS deployments pyHaFAS supports.
-If the :term:`profile` :superscript:`G` has any differences, they will be mentioned here. Also the available and default :term:`products <product>`:superscript:`G` are defined.
+If the :term:`profile`:superscript:`G` has any differences, they will be mentioned here. Also the available and default :term:`products <product>`:superscript:`G` are defined.
 
 Deutsche Bahn (DB)
 ------------------

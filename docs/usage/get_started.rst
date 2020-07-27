@@ -6,7 +6,7 @@ Terminology
 In pyHaFAS we often use the followings terms. Please read them, so you can understand the documentation and project better.
 
 Most other pyHaFAS-specific words are defined in the :doc:`/glossary`.
-If one of this words is used in this documentation it's marked as a link with a superscript G as follows: :term:`profile` :superscript:`G`
+If one of this words is used in this documentation it's marked as a link with a superscript G as follows: :term:`profile`:superscript:`G`
 
 
 ======= =======
@@ -28,7 +28,7 @@ Sample Starter Code
 -------------------
 Below is a sample code for an easy usage. It has multiple parts:
 
-1. It imports the `HafasClient` and the `DBProfile` of pyHaFAS and creates the `HafasClient` with the :term:`profile` :superscript:`G`. The `DBProfile` is the :term:`profile` :superscript:`G` belonging to the HaFAS deployment of Deutsche Bahn.
+1. It imports the `HafasClient` and the `DBProfile` of pyHaFAS and creates the `HafasClient` with the :term:`profile`:superscript:`G`. The `DBProfile` is the :term:`profile`:superscript:`G` belonging to the HaFAS deployment of Deutsche Bahn.
 
 2. It searches for locations (stations) with the term "Berlin" and prints the result
 
