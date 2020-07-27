@@ -23,7 +23,7 @@ Let's get to the parts of the code:
   1. The :class:`HafasClient <pyhafas.client.HafasClient>` searches for locations with the term "Siegburg/Bonn".
   2. The best location is chosen from the list (first object in the list is that with highest similarity)
 
-3. The :class:`HafasClient <pyhafas.client.HafasClient>` searches for maximum 2 trips with the following criteria:
+3. The :class:`HafasClient <pyhafas.client.HafasClient>` searches for maximum 2 :term:`trips <leg>`:superscript:`G` with the following criteria:
 
   * departing now
   * at the best location (from step 2)
@@ -71,11 +71,11 @@ Let's get to the parts of the code:
 
 2. departures + trip
 --------------------
-The below code get the next departing trip at the station "Siegburg/Bonn" (with the id `008005556`) and gets after that detailed information with the :func:`trip <pyhafas.client.HafasClient.trip>` method.
+The below code get the next departing :term:`trip <leg>`:superscript:`G` at the station "Siegburg/Bonn" (with the id `008005556`) and gets after that detailed information with the :func:`trip <pyhafas.client.HafasClient.trip>` method.
 
 Currently the :func:`trip <pyhafas.client.HafasClient.trip>` method gives the same data as :func:`departures <pyhafas.client.HafasClient.departures>`, but in future versions there will be more data available in :func:`trip <pyhafas.client.HafasClient.trip>`.
 
-Using the :func:`trip <pyhafas.client.HafasClient.trip>` method is also useful to refresh the data about a specific trip by its ID.
+Using the :func:`trip <pyhafas.client.HafasClient.trip>` method is also useful to refresh the data about a specific :term:`trip <leg>`:superscript:`G` by its ID.
 
 .. code:: python
 
@@ -104,19 +104,19 @@ Using the :func:`trip <pyhafas.client.HafasClient.trip>` method is also useful t
 
 3. locations + journeys + journey
 ---------------------------------
-In the code block below we create search for possible journeys between the stations "Göttingen Bahnhof/ZOB" and "Góttingen Campus" via "Göttingen Angerstraße".
+In the code block below we create search for possible :term:`journeys <journey>`:superscript:`G`  between the stations "Göttingen Bahnhof/ZOB" and "Góttingen Campus" via "Göttingen Angerstraße".
 
 For explanation of the first and second part please look at :ref:`example 1 <example1>`. After the code there is also a visualization of a journey HaFAS returns for this request.
 
-In part 3 the HafasClient searches for journeys with the following criteria:
+In part 3 the HafasClient searches for :term:`journeys <journey>`:superscript:`G` with the following criteria:
 
 * origin station is "Göttingen Bahnhof/ZOB"
 * destination station is "Göttingen Campus"
-* the journey must be via "Göttingen Angerstraße"
-* the journey may have a maximum of 1 transfer
+* the :term:`journey`:superscript:`G` must be via "Göttingen Angerstraße"
+* the :term:`journey`:superscript:`G` may have a maximum of 1 transfer
 * each transfer must have at least a time of 15 minutes
 
-In part 4 the journey data of of the first journey found in part 3 is refreshed.
+In part 4 the :term:`journey`:superscript:`G` data of of the first :term:`journey`:superscript:`G` found in part 3 is refreshed.
 
 .. code:: python
 
@@ -152,7 +152,7 @@ In part 4 the journey data of of the first journey found in part 3 is refreshed.
 
 *As short form for Göttingen we use GOE*
 
-Here is a table with the journey in the variable `journey` of the code example above.
+Here is a table with the :term:`journey`:superscript:`G` in the variable `journey` of the code example above.
 Here some explanation on the routing algorithm of HaFAS:
 
 * You might see that the walk leg is exactly 15 minutes. This is because we set a minimum change time of 15 minutes. A normal walking time would be about 5 minutes.

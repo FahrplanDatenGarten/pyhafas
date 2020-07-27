@@ -1,6 +1,6 @@
 Profile (Developer)
 ===================
-Since every HaFAS deployment is different we have the concept of profiles for managing the differences between them.
+Since every HaFAS deployment is different we have the concept of :term:`profiles <profile>`:superscript:`G` for managing the differences between them.
 
 For a "standard" HaFAS we have the :class:`BaseProfile <pyhafas.profile.base>` which contains code working for most HaFAS deployments.
 This profile inherits the methods of all classes living in the folder of the profile. That classes all have an interface which defines the abstract methods of the class.
