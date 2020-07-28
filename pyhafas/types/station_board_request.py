@@ -2,6 +2,9 @@ from enum import Enum
 
 
 class StationBoardRequestType(Enum):
+    """
+    Mapping of StationBoard requests
+    """
     DEPARTURE = 'DEP'
     ARRIVAL = 'ARR'
 

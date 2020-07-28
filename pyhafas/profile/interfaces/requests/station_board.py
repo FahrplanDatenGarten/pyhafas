@@ -17,7 +17,24 @@ class StationBoardRequestInterface(abc.ABC):
             duration: int,
             products: Dict[str, bool]
     ) -> dict:
+        """
+        Creates the HaFAS request for Station Board (departure/arrival)
+
+        :param station: Station to get departures/arrivals for
+        :param request_type: ARRIVAL or DEPARTURE
+        :param date: Date and time to get departures/arrival for
+        :param max_trips: Maximum number of trips that can be returned
+        :param products: Allowed products (a product is a mean of transport like ICE,IC)
+        :param duration: Time in which trips are searched
+        :return: Request body for HaFAS
+        """
         pass
 
     def parse_station_board_request(self, data: HafasResponse) -> List[Leg]:
+        """
+        Parses the HaFAS data for a station board request
+
+        :param data: Formatted HaFAS response
+        :return: List of journey objects
+        """
         pass

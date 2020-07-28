@@ -33,9 +33,6 @@ class BaseProfile(
     addChecksum: bool = False
     salt: str = ""
 
-    locale: str = 'de-DE'
-    timezone: str = 'Europe/Berlin'
-
     requestBody: dict = {}
 
     availableProducts: Dict[str, List[int]] = {}

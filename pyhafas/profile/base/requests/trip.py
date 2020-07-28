@@ -7,10 +7,10 @@ from pyhafas.types.hafas_response import HafasResponse
 class BaseTripRequest(TripRequestInterface):
     def format_trip_request(self: ProfileInterface, trip_id: str) -> dict:
         """
-        Creates the HaFAS request for refreshing journey details
+        Creates the HaFAS request for a trip request
 
         :param trip_id: Id of the trip/leg
-        :return: Request for HaFAS
+        :return: Request body for HaFAS
         """
         return {
             'req': {
@@ -21,7 +21,7 @@ class BaseTripRequest(TripRequestInterface):
 
     def parse_trip_request(self: ProfileInterface, data: HafasResponse) -> Leg:
         """
-        Parses the HaFAS data for trip request
+        Parses the HaFAS data for a trip request
 
         :param data: Formatted HaFAS response
         :return: Leg objects

@@ -20,7 +20,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
             products: Dict[str, bool]
     ) -> dict:
         """
-        Creates the HaFAS request for Station Board (departure/arrival)
+        Creates the HaFAS request for a station board request (departure/arrival)
 
         :param station: Station to get departures/arrivals for
         :param request_type: ARRIVAL or DEPARTURE
@@ -28,7 +28,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
         :param max_trips: Maximum number of trips that can be returned
         :param products: Allowed products (e.g. ICE,IC)
         :param duration: Time in which trips are searched
-        :return: Request for HaFAS
+        :return: Request body for HaFAS
         """
         # TODO: More options
         return {
@@ -52,7 +52,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
             self: ProfileInterface,
             data: HafasResponse) -> List[Leg]:
         """
-        Parses the HaFAS data for the station board request
+        Parses the HaFAS data for a station board request
 
         :param data: Formatted HaFAS response
         :return: List of journey objects

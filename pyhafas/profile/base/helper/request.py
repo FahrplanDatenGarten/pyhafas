@@ -12,16 +12,34 @@ from pyhafas.types.hafas_response import HafasResponse
 
 class BaseRequestHelper(RequestHelperInterface):
     def calculate_checksum(self: ProfileInterface, data: str) -> str:
+        """
+        Calculates the checksum of the request (required for most profiles)
+
+        :param data: Complete body as string
+        :return: Checksum for the request
+        """
         return md5((data + self.salt).encode('utf-8')).hexdigest()
 
     def calculate_mic_mac(
             self: ProfileInterface,
             data: str) -> Tuple[str, str]:
+        """
+        Calculates the mic-mac for the request (required for some profiles)
+
+        :param data: Complete body as string
+        :return: Mic and mac to be sent to HaFAS
+        """
         mic = md5(data.encode('utf-8')).hexdigest()
         mac = self.calculate_checksum(mic)
         return mic, mac
 
     def url_formatter(self: ProfileInterface, data: str) -> str:
+        """
+        Formats the URL for HaFAS (adds the checksum or mic-mac)
+
+        :param data: Complete body as string
+        :return: Request-URL (maybe with checksum or mic-mac)
+        """
         url = self.baseUrl
 
         if self.addChecksum or self.addMicMac:
@@ -39,6 +57,12 @@ class BaseRequestHelper(RequestHelperInterface):
         return url
 
     def request(self: ProfileInterface, body) -> HafasResponse:
+        """
+        Sends the request and does a basic parsing of the response and error handling
+
+        :param body: Reqeust body as dict (without the `requestBody` of the profile)
+        :return: HafasRespone object or Exception when HaFAS response returns an error
+        """
         data = {
             'svcReqL': [body]
         }

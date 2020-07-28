@@ -5,6 +5,7 @@ from pyhafas.types.exceptions import ProductNotAvailableError
 
 
 class BaseFormatProductsFilterHelper(FormatProductsFilterHelperInterface):
+    """Helper for creating the products filter """
     def format_products_filter(
             self: ProfileInterface,
             requested_products: dict) -> dict:
@@ -12,7 +13,7 @@ class BaseFormatProductsFilterHelper(FormatProductsFilterHelperInterface):
         Create the products filter given to HaFAS
 
         :param requested_products: Mapping of Products to whether it's enabled or disabled
-        :return:
+        :return: value for HaFAS "jnyFltrL" attribute
         """
         products = self.defaultProducts
         for requested_product in requested_products:

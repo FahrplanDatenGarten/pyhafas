@@ -9,10 +9,10 @@ class BaseJourneyRequest(JourneyRequestInterface):
             self: ProfileInterface,
             journey: Journey) -> dict:
         """
-        Creates the HaFAS request for refreshing journey details
+        Creates the HaFAS request body for a journey request
 
         :param journey: Id of the journey (ctxRecon)
-        :return: Request for HaFAS
+        :return: Request body for HaFAS
         """
         return {
             'req': {
@@ -25,7 +25,7 @@ class BaseJourneyRequest(JourneyRequestInterface):
             self: ProfileInterface,
             data: HafasResponse) -> Journey:
         """
-        Parses the HaFAS response for journeys request
+        Parses the HaFAS response for a journey request
 
         :param data: Formatted HaFAS response
         :return: List of Journey objects

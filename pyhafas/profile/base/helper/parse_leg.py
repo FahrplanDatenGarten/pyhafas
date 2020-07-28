@@ -121,7 +121,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
         """
         Parses Legs (when multiple available)
 
-        :param jny: Journies object returned by HaFAS (contains secL list)
+        :param jny: Journeys object returned by HaFAS (contains secL list)
         :param common: Common object returned by HaFAS
         :param date: Parsed date of Journey (Departing date)
         :return: Parsed List of Leg objects

@@ -9,6 +9,11 @@ from pyhafas.types.exceptions import (AccessDeniedError, AuthenticationError,
 
 
 class BaseErrorCodesMapping(ErrorCodesMappingInterface):
+    """
+    Mapping of the HaFAS error code to the exception class
+
+    `default` defines the error when the error code cannot be found in the mapping
+    """
     default = GeneralHafasError
     AUTH = AuthenticationError
     R5000 = AccessDeniedError
