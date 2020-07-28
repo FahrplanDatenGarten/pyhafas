@@ -3,16 +3,16 @@ Code Structure
 
 Classes and methods
 -------------------
-pyHaFAS is build object-orientated with a lot of classes. You may know already the :class:`HafasClient <pyhafas.client.HafasClient>` and the :term:`profile`:superscript:`G` classes but there a lot more classes for internal use only.
+pyHaFAS is built object-orientated with a lot of classes. You may know already the :class:`HafasClient <pyhafas.client.HafasClient>` and the :term:`profile`:superscript:`G` classes but there a lot more classes for internal use only.
 For example the :class:`BaseProfile <pyhafas.profile.base>` class consists among others of :class:`BaseRequestHelper <pyhafas.profile.base.helper.BaseRequestHelper>`, :class:`BaseJourneyRequest <pyhafas.profile.base.requests.BaseJourneyRequest>` and very important the :class:`ProfileInterface <pyhafas.profile.interfaces>`
 
-Every class in a :term:`profile`:superscript:`G` has a `Interface` which defines abstract methods that the profile class must implement.
+Every class in a :term:`profile`:superscript:`G` has an `interface` that defines abstract methods that the profile class must implement.
 
 A more detailed view of the construction of a :term:`profile`:superscript:`G` is given on the page :doc:`profiles`.
 
 File Structure
 --------------
-pyHaFAS's code is splitted in multiple files. This files are sorted as shown in the structure below.
+pyHaFAS's code is split in multiple files. These files are sorted as shown in the structure below.
 
 * **/pyhafas** - base directory of source code
 
@@ -30,7 +30,7 @@ pyHaFAS's code is splitted in multiple files. This files are sorted as shown in 
 
   * **types** - Base directory of all types valid for all profiles
 
-    * **exceptions.py** - excptions pyHaFAS can raise
+    * **exceptions.py** - exceptions pyHaFAS can raise
     * **fptf.py** - most of the types important for pyHaFAS
     * **hafas_response.py** - contains  the :class:`HafasRepsonse <pyhafas.types.HafasResponse>` class
 

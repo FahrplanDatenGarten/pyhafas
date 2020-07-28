@@ -11,7 +11,7 @@ class HafasClient:
     The interface between the user's program and pyHaFAS internal code.
 
     :param profile: `Profile` to be used
-    :param ua: (optional, not recommended to change) The user-agent which will be send to HaFAS. By default "pyhafas", but is often overwritten by profile to emulate the app.
+    :param ua: (optional, not recommended to change) The user-agent which will be sent to HaFAS. By default "pyhafas", but is often overwritten by profile to emulate the app.
     :param debug: (optional) Whether debug mode should be enabled. Defaults to False.
     """
 
@@ -116,7 +116,7 @@ class HafasClient:
         :param origin: FPTF `Station` object or ID of origin/starting station
         :param destination: FPTF `Station` object or ID of destination/ending station
         :param date: Date and Time when to search
-        :param via: (optional) List of via stations. The route is calculated via all of this stations in the order of the list. The stations have to be a FPTF `Station` object or the ID of the station. Default is no via stations.
+        :param via: (optional) List of via stations. The route is calculated via all of these stations in the order of the list. The stations have to be a FPTF `Station` object or the ID of the station. The default is no via stations.
         :param min_change_time: (optional) Minimum transfer/change time at each station. Default is the default that HaFAS specifies internal.
         :param max_changes: (optional) Maximum number of changes. Default is unlimited.
         :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.

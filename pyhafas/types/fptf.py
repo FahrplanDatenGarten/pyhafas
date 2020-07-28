@@ -141,7 +141,7 @@ class Leg:
     :vartype mode: Mode
     :ivar name: Name of the trip (e.g. ICE 123) (maybe `None`)
     :vartype name: Optional[str]
-    :ivar cancelled: Whether the trip is cancelled in complete (not only some stops)
+    :ivar cancelled: Whether the trip is completely cancelled (not only some stops)
     :vartype cancelled: bool
     :ivar distance: Distance of the walk trip in metres. Only set if `mode` is `Mode.WALKING` otherwise None
     :vartype distance: Optional[int]
@@ -185,7 +185,7 @@ class Leg:
         :param mode: (optional) Type of transport vehicle - Must be a part of the FPTF `Mode` enum. Defaults to `Mode.TRAIN`
         :param name: (optional) Name of the trip (e.g. ICE 123). Defaults to None
         :param cancelled: (optional) Whether the trip is cancelled. Defaults to False
-        :param distance: (optional) Distance of the walk trip in metres. Defaults to None
+        :param distance: (optional) Distance of the walk trip in meters. Defaults to None
         :param departure_delay: (optional) Delay at the departure station. Defaults to None
         :param departure_platform: (optional) Real-time platform at the departure station. Defaults to None
         :param arrival_delay: (optional) Delay at the arrival station. Defaults to None
