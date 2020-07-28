@@ -28,7 +28,7 @@ Sample Starter Code
 -------------------
 Below is a sample code for an easy usage. It has multiple parts:
 
-1. It imports the `HafasClient` and the `DBProfile` of pyHaFAS and creates the `HafasClient` with the :term:`profile`:superscript:`G`. The `DBProfile` is the :term:`profile`:superscript:`G` belonging to the HaFAS deployment of Deutsche Bahn.
+1. It imports the :class:`HafasClient <pyhafas.client.HafasClient>` and the :class:`DBProfile <pyhafas.profile.db.DBProfile>` of pyHaFAS and creates the :class:`HafasClient <pyhafas.client.HafasClient>` with the :term:`profile`:superscript:`G`. The :class:`DBProfile <pyhafas.profile.db.DBProfile>` is the :term:`profile`:superscript:`G` belonging to the HaFAS deployment of Deutsche Bahn.
 
 2. It searches for locations (stations) with the term "Berlin" and prints the result
 
