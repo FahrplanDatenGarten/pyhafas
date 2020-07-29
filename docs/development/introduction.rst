@@ -6,6 +6,6 @@ In special we are happy if you help us with the issues having the `help wanted <
 
 We want to give you an easy start with coding on pyHaFAS, so please read the pages in the category "for developers".
 
-Most of pyHaFAS code is documented with docstrings in the code directly but not rendered in the HTML documentation.
+Most of pyHaFAS code is documented with docstrings in the code directly. Most of these docstrings are also rendered in this HTML docs on the page :doc:`/development/api`.
 
 If you need help you can always write to us. Good ways for that are on the GitHub Issue or if the question is general, join our matrix-room `#pyhafas:matrix.org <https://matrix.to/#/#pyhafas:matrix.org>`_
