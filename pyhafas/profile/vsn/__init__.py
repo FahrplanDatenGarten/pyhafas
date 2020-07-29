@@ -2,6 +2,9 @@ from pyhafas.profile import BaseProfile
 
 
 class VSNProfile(BaseProfile):
+    """
+    Profile for the HaFAS of "Verkehrsverbund Süd-Niedersachsen" (VSN) - local transportation provider
+    """
     baseUrl = "https://fahrplaner.vsninfo.de/hafas/mgate.exe"
     defaultUserAgent = "vsn/5.3.1 (iPad; iOS 13.3; Scale/2.00)"
 

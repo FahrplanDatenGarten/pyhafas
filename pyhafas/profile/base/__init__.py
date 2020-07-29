@@ -26,6 +26,9 @@ class BaseProfile(
         BaseStationBoardRequest,
         BaseTripRequest,
         ProfileInterface):
+    """
+    Profile for a "normal" HaFAS. Only for other profiles usage as basis.
+    """
     baseUrl: str = ""
     defaultUserAgent: str = 'pyhafas'
 

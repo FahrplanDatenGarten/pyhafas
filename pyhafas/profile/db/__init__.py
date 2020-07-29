@@ -2,6 +2,9 @@ from pyhafas.profile.base import BaseProfile
 
 
 class DBProfile(BaseProfile):
+    """
+    Profile of the HaFAS of Deutsche Bahn (DB) - German Railway - Regional and long-distance trains throughout Germany
+    """
     baseUrl = "https://reiseauskunft.bahn.de/bin/mgate.exe"
     defaultUserAgent = "DB Navigator/19.10.04 (iPhone; iOS 13.1.2; Scale/2.00)"
 
