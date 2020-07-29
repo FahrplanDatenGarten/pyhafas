@@ -37,6 +37,7 @@ Even better than creating an issue is creating a pull request. If you want to do
    development/introduction
    development/code_structure
    development/profiles
+   development/api
 
 .. toctree::
    :caption: General

@@ -43,3 +43,4 @@ Here are the minimum required variables of a profile (generated from :class:`Pro
 .. autoclass:: pyhafas.profile.interfaces.ProfileInterface
    :members:
    :undoc-members:
+   :noindex:

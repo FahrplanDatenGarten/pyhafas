@@ -3,7 +3,7 @@ from enum import Enum
 
 class StationBoardRequestType(Enum):
     """
-    Mapping of StationBoard requests
+    Mapping of StationBoard request from client to HaFAS
     """
     DEPARTURE = 'DEP'
     ARRIVAL = 'ARR'
