@@ -1,7 +1,8 @@
+from pyhafas.profile.vsn.requests.journey import VSNJourneyRequest
 from pyhafas.profile import BaseProfile
 
 
-class VSNProfile(BaseProfile):
+class VSNProfile(VSNJourneyRequest, BaseProfile):
     """
     Profile for the HaFAS of "Verkehrsverbund Süd-Niedersachsen" (VSN) - local transportation provider
     """
