@@ -63,23 +63,23 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                         departure=self.parse_datetime(
                             stopover.get('dTimeS'),
                             date) if stopover.get('dTimeS') is not None else None,
-                        departureDelay=self.parse_datetime(
+                        departure_delay=self.parse_datetime(
                             stopover['dTimeR'],
                             date) - self.parse_datetime(
                             stopover['dTimeS'],
                             date) if stopover.get('dTimeR') is not None else None,
-                        departurePlatform=stopover.get(
+                        departure_platform=stopover.get(
                             'dPlatfR',
                             stopover.get('dPlatfS')),
                         arrival=self.parse_datetime(
                             stopover['aTimeS'],
                             date) if stopover.get('aTimeS') is not None else None,
-                        arrivalDelay=self.parse_datetime(
+                        arrival_delay=self.parse_datetime(
                             stopover['aTimeR'],
                             date) - self.parse_datetime(
                             stopover['aTimeS'],
                             date) if stopover.get('aTimeR') is not None else None,
-                        arrivalPlatform=stopover.get(
+                        arrival_platform=stopover.get(
                             'aPlatfR',
                             stopover.get('aPlatfS')),
                     ))
@@ -92,23 +92,23 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                 departure=self.parse_datetime(
                     departure['dTimeS'],
                     date),
-                departureDelay=self.parse_datetime(
+                departure_delay=self.parse_datetime(
                     departure['dTimeR'],
                     date) - self.parse_datetime(
                     departure['dTimeS'],
                     date) if departure.get('dTimeR') is not None else None,
-                departurePlatform=departure.get(
+                departure_platform=departure.get(
                     'dPlatfR',
                     departure.get('dPlatfS')),
                 arrival=self.parse_datetime(
                     arrival['aTimeS'],
                     date),
-                arrivalDelay=self.parse_datetime(
+                arrival_delay=self.parse_datetime(
                     arrival['aTimeR'],
                     date) - self.parse_datetime(
                     arrival['aTimeS'],
                     date) if arrival.get('aTimeR') is not None else None,
-                arrivalPlatform=arrival.get(
+                arrival_platform=arrival.get(
                     'aPlatfR',
                     arrival.get('aPlatfS')),
                 stopovers=leg_stopovers)
@@ -121,7 +121,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
         """
         Parses Legs (when multiple available)
 
-        :param jny: Journies object returned by HaFAS (contains secL list)
+        :param jny: Journeys object returned by HaFAS (contains secL list)
         :param common: Common object returned by HaFAS
         :param date: Parsed date of Journey (Departing date)
         :return: Parsed List of Leg objects

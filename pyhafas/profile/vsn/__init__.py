@@ -2,6 +2,9 @@ from pyhafas.profile import BaseProfile
 
 
 class VSNProfile(BaseProfile):
+    """
+    Profile for the HaFAS of "Verkehrsverbund Süd-Niedersachsen" (VSN) - local transportation provider
+    """
     baseUrl = "https://fahrplaner.vsninfo.de/hafas/mgate.exe"
     defaultUserAgent = "vsn/5.3.1 (iPad; iOS 13.3; Scale/2.00)"
 
@@ -27,7 +30,7 @@ class VSNProfile(BaseProfile):
         }
     }
 
-    available_products = {
+    availableProducts = {
         'long_distance_express': [1],  # ICE
         'long_distance': [2],  # IC/EC/CNL
         'regional_express': [4],  # RE/IR
@@ -40,7 +43,7 @@ class VSNProfile(BaseProfile):
         'anruf_sammel_taxi': [512]  # Group Taxi
     }
 
-    default_products = [
+    defaultProducts = [
         'long_distance_express',
         'long_distance',
         'regional_express',

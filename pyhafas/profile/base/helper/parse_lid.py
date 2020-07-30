@@ -34,7 +34,7 @@ class BaseParseLidHelper(ParseLidHelperInterface):
         :param name: Station name (optional, if not given, LID is used)
         :param latitude: Latitude of the station (optional, if not given, LID is used)
         :param longitude: Longitude of the station (optional, if not given, LID is used)
-        :return: Station object
+        :return: Parsed LID as station object
         """
         parsedLid = self.parse_lid(lid)
         if latitude == 0 and longitude == 0 and parsedLid['X'] and parsedLid['Y']:

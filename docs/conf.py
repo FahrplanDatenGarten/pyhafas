@@ -20,12 +20,12 @@ import pyhafas
 
 # -- Project information -----------------------------------------------------
 
-project = 'pyhafas'
-copyright = '2020, n0emis'
-author = 'n0emis'
+project = 'pyHaFAS'
+copyright = '2020 n0emis, em0lar'
+author = 'n0emis, em0lar'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.0'
+release = '0.1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -43,7 +43,10 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx_autodoc_typehints',
     'sphinx.ext.viewcode',
+    "sphinx_rtd_theme",
 ]
+
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
 
 # Add any paths that contain templates here, relative to this directory.
 #templates_path = ['_templates']
@@ -60,24 +63,12 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 pygments_style = 'sphinx'
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-#html_static_path = ['_static']
+html_static_path = ['_static']
 
-html_theme_options = {
-    'description': 'A python client for the HAFAS (HaCon Fahrplan Auskunfts System)',
-    'github_user': 'n0emis',
-    'github_repo': 'pyhafas',
-    'github_button': True,
-    'github_banner': False,
-}
 
-# Custom sidebar templates, maps document names to template names.
-html_sidebars = {
-    '**': [
-        'about.html', 'navigation.html', 'searchbox.html',
-    ]
-}
+autoclass_content = "class"

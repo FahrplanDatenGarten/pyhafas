@@ -1,10 +1,11 @@
 import datetime
 from typing import Dict, List
 
+from pyhafas.types.station_board_request import StationBoardRequestType
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces.requests.station_board import \
     StationBoardRequestInterface
-from pyhafas.types.fptf import Leg, Station, StationBoardRequestType
+from pyhafas.types.fptf import Leg, Station
 from pyhafas.types.hafas_response import HafasResponse
 
 
@@ -14,20 +15,20 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
             station: Station,
             request_type: StationBoardRequestType,
             date: datetime.datetime,
-            max_journeys: int,
+            max_trips: int,
             duration: int,
             products: Dict[str, bool]
     ) -> dict:
         """
-        Creates the HaFAS request for Station Board (departure/arrival)
+        Creates the HaFAS request for a station board request (departure/arrival)
 
         :param station: Station to get departures/arrivals for
         :param request_type: ARRIVAL or DEPARTURE
         :param date: Date and time to get departures/arrival for
-        :param max_journeys: Maximum number of trips that can be returned
+        :param max_trips: Maximum number of trips that can be returned
         :param products: Allowed products (e.g. ICE,IC)
         :param duration: Time in which trips are searched
-        :return: Request for HaFAS
+        :return: Request body for HaFAS
         """
         # TODO: More options
         return {
@@ -36,7 +37,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
                 'stbLoc': {
                     'lid': 'A=1@L={}@'.format(station.id)
                 },
-                'maxJny': max_journeys,
+                'maxJny': max_trips,
                 'date': date.strftime("%Y%m%d"),
                 'time': date.strftime("%H%M%S"),
                 'dur': duration,
@@ -51,7 +52,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
             self: ProfileInterface,
             data: HafasResponse) -> List[Leg]:
         """
-        Parses the HaFAS data for the station board request
+        Parses the HaFAS data for a station board request
 
         :param data: Formatted HaFAS response
         :return: List of journey objects

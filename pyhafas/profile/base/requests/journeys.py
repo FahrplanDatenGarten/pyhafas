@@ -20,16 +20,16 @@ class BaseJourneysRequest(JourneysRequestInterface):
             products: Dict[str, bool]
     ) -> dict:
         """
-        Creates the HaFAS request for journeys
+        Creates the HaFAS request body for a journeys request
 
         :param origin: Origin station
         :param destination: Destionation station
         :param via: Via stations, maybe empty list)
         :param date: Date and time to search journeys for
-        :param min_change_time: Minimum time for changes at stations
+        :param min_change_time: Minimum transfer/change time at each station
         :param max_changes: Maximum number of changes
-        :param products: Allowed products (e.g. ICE,IC)
-        :return: Request for HaFAS
+        :param products: Allowed products (a product is a mean of transport like ICE,IC)
+        :return: Request body for HaFAS
         """
         # TODO: find out, what commented-out values mean and implement options
         return {
@@ -84,7 +84,7 @@ class BaseJourneysRequest(JourneysRequestInterface):
             self: ProfileInterface,
             data: HafasResponse) -> List[Journey]:
         """
-        Parses the HaFAS data for journeys request
+        Parses the HaFAS response for a journeys request
 
         :param data: Formatted HaFAS response
         :return: List of Journey objects

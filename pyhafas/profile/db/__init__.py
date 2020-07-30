@@ -2,6 +2,9 @@ from pyhafas.profile.base import BaseProfile
 
 
 class DBProfile(BaseProfile):
+    """
+    Profile of the HaFAS of Deutsche Bahn (DB) - German Railway - Regional and long-distance trains throughout Germany
+    """
     baseUrl = "https://reiseauskunft.bahn.de/bin/mgate.exe"
     defaultUserAgent = "DB Navigator/19.10.04 (iPhone; iOS 13.1.2; Scale/2.00)"
 
@@ -26,7 +29,7 @@ class DBProfile(BaseProfile):
         }
     }
 
-    available_products = {
+    availableProducts = {
         'long_distance_express': [1],  # ICE
         'long_distance': [2],  # IC/EC
         'regional_express': [4],  # RE/IR
@@ -39,7 +42,7 @@ class DBProfile(BaseProfile):
         'taxi': [512]  # Group Taxi
     }
 
-    default_products = [
+    defaultProducts = [
         'long_distance_express',
         'long_distance',
         'regional_express',

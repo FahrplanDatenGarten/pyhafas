@@ -26,6 +26,9 @@ class BaseProfile(
         BaseStationBoardRequest,
         BaseTripRequest,
         ProfileInterface):
+    """
+    Profile for a "normal" HaFAS. Only for other profiles usage as basis.
+    """
     baseUrl: str = ""
     defaultUserAgent: str = 'pyhafas'
 
@@ -33,13 +36,10 @@ class BaseProfile(
     addChecksum: bool = False
     salt: str = ""
 
-    locale: str = 'de-DE'
-    timezone: str = 'Europe/Berlin'
-
     requestBody: dict = {}
 
-    available_products: Dict[str, List[int]] = {}
-    default_products: List[str] = []
+    availableProducts: Dict[str, List[int]] = {}
+    defaultProducts: List[str] = []
 
     def __init__(self, ua=defaultUserAgent):
         self.userAgent = ua

@@ -1,17 +1,14 @@
 import datetime
 from enum import Enum
-from typing import List, Optional, Union
-
-
-class StationBoardRequestType(Enum):
-    DEPARTURE = 'DEP'
-    ARRIVAL = 'ARR'
-
-    def __repr__(self):
-        return '<%s.%s>' % (self.__class__.__name__, self.name)
+from typing import List, Optional
 
 
 class Mode(Enum):
+    """
+    FPTF `Mode` object
+
+    The mode of a `Leg` specifies the general type of transport vehicle (it can also be a walking leg)
+    """
     TRAIN = 'train'
     BUS = 'bus'
     WATERCRAFT = 'watercraft'
@@ -27,68 +24,230 @@ class Mode(Enum):
 
 
 class Station:
-    def __init__(self, id: Union[str, int], **kwargs):
-        self.id = id
-        self.name: Optional[str] = kwargs.get('name')
-        self.latitude: Optional[float] = kwargs.get('latitude')
-        self.longitude: Optional[float] = kwargs.get('longitude')
+    """
+    FPTF `Station` object
 
-    def __repr__(self):
-        return "%s(%r)" % (self.__class__, self.__dict__)
+    A station is a point where vehicles stop. It may be a larger building or just a small stop without special infrastructure.
 
+    :ivar id: ID of the Station
+    :vartype id: str
+    :ivar name: Name of the Station (maybe `None`)
+    :vartype name: Optional[str]
+    :ivar latitude: Latitude coordinate of the Station (maybe `None`)
+    :vartype latitude: Optional[float]
+    :ivar longitude: Longitude coordinate of the Station (maybe `None`)
+    :vartype longitude: Optional[float]
+    """
 
-class Journey:
-    def __init__(self, id: Union[str, int], **kwargs):
-        self.id = id
-        self.date: Optional[datetime.date] = kwargs.get('date')
-        self.duration: Optional[datetime.timedelta] = kwargs.get('duration')
-        self.legs: Optional[List[Leg]] = kwargs.get('legs')
+    def __init__(
+            self,
+            id: str,
+            name: Optional[str] = None,
+            latitude: Optional[float] = None,
+            longitude: Optional[float] = None):
+        """
+        FPTF `Station` object
 
-    def __repr__(self):
-        return "%s(%r)" % (self.__class__, self.__dict__)
-
-
-class Leg:
-    def __init__(self, id: Union[str, int], **kwargs):
-        self.id = id
-        self.name: Optional[str] = kwargs.get('name')
-        self.origin: Station = kwargs['origin']
-        self.mode: Mode = kwargs.get('mode', Mode.TRAIN)
-        self.cancelled: bool = kwargs.get('cancelled', False)
-        self.destination: Station = kwargs['destination']
-        self.departure: datetime.datetime = kwargs['departure']
-        self.departureDelay: Optional[datetime.timedelta] = kwargs.get(
-            'departureDelay', None)
-        self.departurePlatform: Optional[str] = kwargs.get(
-            'departurePlatform', None)
-        self.arrival: datetime.datetime = kwargs['arrival']
-        self.arrivalDelay: Optional[datetime.timedelta] = kwargs.get(
-            'arrivalDelay', None)
-        self.arrivalPlatform: Optional[str] = kwargs.get(
-            'arrivalPlatform', None)
-        self.stopovers: Optional[List[Stopover]
-                                 ] = kwargs.get('stopovers', None)
-        self.distance: Optional[int] = kwargs.get('distance', None)
+        :param id: Internal ID of the station
+        :param name: (optional) Name of the station. Defaults to None
+        :param latitude: (optional) Latitude coordinate of the station. Defaults to None
+        :param longitude: (optional) Longitude coordinate of the station. Defaults to None
+        """
+        self.id: str = id
+        self.name: Optional[str] = name
+        self.latitude: Optional[float] = latitude
+        self.longitude: Optional[float] = longitude
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
 
 
 class Stopover:
-    def __init__(self, **kwargs):
-        self.stop: Station = kwargs.get('stop')
-        self.cancelled: bool = kwargs.get('cancelled', False)
-        self.arrival: Optional[datetime.datetime] = kwargs.get('arrival', None)
-        self.arrivalDelay: Optional[datetime.timedelta] = kwargs.get(
-            'arrivalDelay', None)
-        self.arrivalPlatform: Optional[str] = kwargs.get(
-            'arrivalPlatform', None)
-        self.departure: Optional[datetime.datetime] = kwargs.get(
-            'departure', None)
-        self.departureDelay: Optional[datetime.timedelta] = kwargs.get(
-            'departureDelay', None)
-        self.departurePlatform: Optional[str] = kwargs.get(
-            'departurePlatform', None)
+    """
+    FPTF `Stopover` object
+
+    A stopover represents a vehicle stopping at a stop/station at a specific time.
+
+    :ivar stop: Station where the vehicle is stopping
+    :vartype stop: Station
+    :ivar cancelled: Whether the stop is cancelled
+    :vartype cancelled: bool
+    :ivar arrival: Planned arrival date and time at the station (maybe `None`)
+    :vartype arrival: Optional[datetime.datetime]
+    :ivar arrivalDelay: Arrival delay at the station (maybe `None`)
+    :vartype arrivalDelay: Optional[datetime.timedelta]
+    :ivar arrivalPlatform: Real-time arrival platform at the station (maybe `None`)
+    :vartype arrivalPlatform: Optional[str]
+    :ivar departure: Planned departure date and time at the station (maybe `None`)
+    :vartype departure: Optional[datetime.datetime]
+    :ivar departureDelay: Departure delay at the station (maybe `None`)
+    :vartype departureDelay: Optional[datetime.timedelta]
+    :ivar departurePlatform: Real-time departure platform at the station (maybe `None`)
+    :vartype departurePlatform: Optional[str]
+    """
+
+    def __init__(
+            self,
+            stop: Station,
+            cancelled: bool = False,
+            arrival: Optional[datetime.datetime] = None,
+            arrival_delay: Optional[datetime.timedelta] = None,
+            arrival_platform: Optional[str] = None,
+            departure: Optional[datetime.datetime] = None,
+            departure_delay: Optional[datetime.timedelta] = None,
+            departure_platform: Optional[str] = None,
+    ):
+        """
+
+        :param stop: Station where the vehicle is stopping
+        :param cancelled: (optional) Whether the stop is cancelled. Defaults to `False`
+        :param arrival: (optional) Planned arrival date and time at the station. Defaults to `None`
+        :param arrival_delay: (optional) Arrival delay at the station. Defaults to `None`
+        :param arrival_platform: (optional) Real-time arrival platform at the station. Defaults to `None`
+        :param departure: (optional) Planned departure date and time at the station. Defaults to `None`
+        :param departure_delay: (optional) Departure delay at the station. Defaults to `None`
+        :param departure_platform: (optional) Real-time departure platform at the station. Defaults to `None`
+        """
+        self.stop: Station = stop
+        self.cancelled: bool = cancelled
+        self.arrival: Optional[datetime.datetime] = arrival
+        self.arrivalDelay: Optional[datetime.timedelta] = arrival_delay
+        self.arrivalPlatform: Optional[str] = arrival_platform
+        self.departure: Optional[datetime.datetime] = departure
+        self.departureDelay: Optional[datetime.timedelta] = departure_delay
+        self.departurePlatform: Optional[str] = departure_platform
+
+    def __repr__(self):
+        return "%s(%r)" % (self.__class__, self.__dict__)
+
+
+class Leg:
+    """
+    FPTF `Leg` object
+
+    A leg or also named trip is most times part of a journey and defines a journey with only one specific vehicle from A to B.
+
+    :ivar id: ID of the Journey
+    :vartype id: str
+    :ivar origin: FPTF `Station` object of the origin station
+    :vartype origin: Station
+    :ivar destination: FPTF `Station` object of the destination station
+    :vartype destination: Station
+    :ivar departure: Planned Date and Time of the departure
+    :vartype departure: datetime.datetime
+    :ivar arrival: Planned Date and Time of the arrival
+    :vartype arrival: datetime.datetime
+    :ivar mode: Type of transport vehicle - Must be a part of the FPTF `Mode` enum. Defaults to `Mode.TRAIN`
+    :vartype mode: Mode
+    :ivar name: Name of the trip (e.g. ICE 123) (maybe `None`)
+    :vartype name: Optional[str]
+    :ivar cancelled: Whether the trip is completely cancelled (not only some stops)
+    :vartype cancelled: bool
+    :ivar distance: Distance of the walk trip in metres. Only set if `mode` is `Mode.WALKING` otherwise None
+    :vartype distance: Optional[int]
+    :ivar departureDelay: Delay at the departure station (maybe `None`)
+    :vartype departureDelay: Optional[datetime.timedelta]
+    :ivar departurePlatform: Real-time platform at the departure station (maybe `None`)
+    :vartype departurePlatform: Optional[str]
+    :ivar arrivalDelay: Delay at the arrival station (maybe `None`)
+    :vartype arrivalDelay: Optional[datetime.timedelta]
+    :ivar arrivalPlatform: Real-time platform at the arrival station (maybe `None`)
+    :vartype arrivalPlatform: Optional[str]
+    :ivar stopovers: List of FPTF `Stopover` objects (maybe `None`)
+    :vartype stopovers: Optional[List[Stopover]]
+    """
+
+    def __init__(
+            self,
+            id: str,
+            origin: Station,
+            destination: Station,
+            departure: datetime.datetime,
+            arrival: datetime.datetime,
+            mode: Mode = Mode.TRAIN,
+            name: Optional[str] = None,
+            cancelled: bool = False,
+            distance: Optional[int] = None,
+            departure_delay: Optional[datetime.timedelta] = None,
+            departure_platform: Optional[str] = None,
+            arrival_delay: Optional[datetime.timedelta] = None,
+            arrival_platform: Optional[str] = None,
+            stopovers: Optional[List[Stopover]] = None
+    ):
+        """
+        FPTF `Leg` object
+
+        :param id: Internal ID of the station
+        :param origin: FPTF `Station` object of the origin station
+        :param destination: FPTF `Station` object of the destination station
+        :param departure: Planned date and Time of the departure
+        :param arrival: Planned date and Time of the arrival
+        :param mode: (optional) Type of transport vehicle - Must be a part of the FPTF `Mode` enum. Defaults to `Mode.TRAIN`
+        :param name: (optional) Name of the trip (e.g. ICE 123). Defaults to None
+        :param cancelled: (optional) Whether the trip is cancelled. Defaults to False
+        :param distance: (optional) Distance of the walk trip in meters. Defaults to None
+        :param departure_delay: (optional) Delay at the departure station. Defaults to None
+        :param departure_platform: (optional) Real-time platform at the departure station. Defaults to None
+        :param arrival_delay: (optional) Delay at the arrival station. Defaults to None
+        :param arrival_platform: (optional) Platform at the arrival station. Defaults to None
+        :param stopovers: (optional) List of FPTF `Stopover` objects. Defaults to None
+        """
+        # Mandatory Variables
+        self.id = id
+        self.origin: Station = origin
+        self.destination: Station = destination
+        self.departure: datetime.datetime = departure
+        self.arrival: datetime.datetime = arrival
+
+        # Optional Variables
+        self.mode: Mode = mode
+        self.name: Optional[str] = name
+        self.cancelled: bool = cancelled
+        self.distance: Optional[int] = distance
+        self.departureDelay: Optional[datetime.timedelta] = departure_delay
+        self.departurePlatform: Optional[str] = departure_platform
+        self.arrivalDelay: Optional[datetime.timedelta] = arrival_delay
+        self.arrivalPlatform: Optional[str] = arrival_platform
+        self.stopovers: Optional[List[Stopover]] = stopovers
+
+    def __repr__(self):
+        return "%s(%r)" % (self.__class__, self.__dict__)
+
+
+class Journey:
+    """
+    FPTF `Journey` object
+
+    A journey is a computed set of directions to get from A to B at a specific time. It would typically be the result of a route planning algorithm.
+
+    :ivar id: ID of the Journey
+    :vartype id: str
+    :ivar date: Starting date of the journey (maybe `None`)
+    :vartype date: Optional[datetime.date]
+    :ivar duration: Duration of the complete journey (maybe `None`)
+    :vartype duration: Optional[datetime.timedelta]
+    :ivar legs: Longitude coordinate of the Station (maybe `None`)
+    :vartype legs: Optional[List[Leg]]
+    """
+
+    def __init__(
+            self,
+            id: str,
+            date: Optional[datetime.date] = None,
+            duration: Optional[datetime.timedelta] = None,
+            legs: Optional[List[Leg]] = None):
+        """
+        FPTF `Journey` object
+
+        :param id: Internal ID of the station
+        :param date: (optional) Name of the station
+        :param duration: (optional) Latitude coordinate of the station. Defaults to None
+        :param legs: (optional) Longitude coordinate of the station. Defaults to None
+        """
+        self.id: str = id
+        self.date: Optional[datetime.date] = date
+        self.duration: Optional[datetime.timedelta] = duration
+        self.legs: Optional[List[Leg]] = legs
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)

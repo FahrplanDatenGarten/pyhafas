@@ -9,10 +9,10 @@ from pyhafas.types.hafas_response import HafasResponse
 class BaseLocationRequest(LocationRequestInterface):
     def format_location_request(self: ProfileInterface, term: str):
         """
-        Creates the HaFAS request for location search.
+        Creates the HaFAS request body for a location search request.
 
         :param term: Search term
-        :return: Request for HaFAS
+        :return: Request body for HaFAS
         """
         return {
             "req": {
@@ -31,7 +31,7 @@ class BaseLocationRequest(LocationRequestInterface):
             self: ProfileInterface,
             data: HafasResponse) -> List[Station]:
         """
-        Parses the HaFAS data for the location request
+        Parses the HaFAS response for a location request
 
         :param data: Formatted HaFAS response
         :return: List of Station objects
