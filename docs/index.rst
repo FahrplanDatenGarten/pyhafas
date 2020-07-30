@@ -33,6 +33,7 @@ Even better than creating an issue is creating a pull request. If you want to do
 
 .. toctree::
    :caption: For developers
+   :maxdepth: 2
 
    development/introduction
    development/code_structure
