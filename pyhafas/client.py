@@ -3,7 +3,7 @@ from typing import Dict, List, Union, Optional
 
 from pyhafas.types.station_board_request import StationBoardRequestType
 from pyhafas.profile import ProfileInterface
-from pyhafas.types.fptf import Journey, Leg, Station
+from pyhafas.types.fptf import Journey, Leg, Station, StationBoardLeg
 
 
 class HafasClient:
@@ -31,9 +31,11 @@ class HafasClient:
             max_journeys: Optional[int] = None,  # Deprecated, will be removed in 0.2.0
             max_trips: int = -1,
             duration: int = -1,
-            products: Dict[str, bool] = {}) -> List[Leg]:
+            products: Dict[str, bool] = {}) -> List[StationBoardLeg]:
         """
         Returns departing trips at the specified station
+
+        To get detailed information on the trip use the `trip` method with the id
 
         :param station: FPTF `Station` object or ID of station
         :param date: Date and Time when to search
@@ -41,7 +43,7 @@ class HafasClient:
         :param max_trips: (optional) Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param duration: (optional) Minutes after `date` in which is search is made. Default is "whatever HaFAS wants"
         :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.
-        :return: List of FPTF `Leg` objects with departing trips
+        :return: List of FPTF `StationBoardLeg` objects with departing trips
         """
         if not isinstance(station, Station):
             station = Station(id=station)
@@ -59,7 +61,7 @@ class HafasClient:
         )
         res = self.profile.request(body)
 
-        return self.profile.parse_station_board_request(res)
+        return self.profile.parse_station_board_request(res, "d")
 
     def arrivals(
             self,
@@ -68,9 +70,11 @@ class HafasClient:
             max_journeys: Optional[int] = None,  # Deprecated, will be removed in 0.2.0
             max_trips: int = -1,
             duration: int = -1,
-            products: Dict[str, bool] = {}) -> List[Leg]:
+            products: Dict[str, bool] = {}) -> List[StationBoardLeg]:
         """
         Returns arriving trips at the specified station
+
+        To get detailed information on the trip use the `trip` method with the id
 
         :param station: FPTF `Station` object or ID of station
         :param date: Date and Time when to search
@@ -78,7 +82,7 @@ class HafasClient:
         :param max_trips: (optional) Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param duration: (optional) Minutes after `date` in which is search is made. Default is "whatever HaFAS wants"
         :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.
-        :return: List of FPTF `Leg` objects with arriving trips
+        :return: List of FPTF `StationBoardLeg` objects with arriving trips
         """
         if not isinstance(station, Station):
             station = Station(id=station)
@@ -96,7 +100,7 @@ class HafasClient:
         )
         res = self.profile.request(body)
 
-        return self.profile.parse_station_board_request(res)
+        return self.profile.parse_station_board_request(res, "a")
 
     def journeys(
             self,

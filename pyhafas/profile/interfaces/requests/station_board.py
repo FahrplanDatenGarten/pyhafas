@@ -3,7 +3,7 @@ import datetime
 from typing import Dict, List
 
 from pyhafas.types.station_board_request import StationBoardRequestType
-from pyhafas.types.fptf import Leg, Station
+from pyhafas.types.fptf import Leg, Station, StationBoardLeg
 from pyhafas.types.hafas_response import HafasResponse
 
 
@@ -30,11 +30,15 @@ class StationBoardRequestInterface(abc.ABC):
         """
         pass
 
-    def parse_station_board_request(self, data: HafasResponse) -> List[Leg]:
+    def parse_station_board_request(
+            self,
+            data: HafasResponse,
+            departure_arrival_prefix: str) -> List[StationBoardLeg]:
         """
         Parses the HaFAS data for a station board request
 
         :param data: Formatted HaFAS response
-        :return: List of journey objects
+        :param departure_arrival_prefix: Prefix for specifying whether its for arrival or departure
+        :return: List of StationBoardLeg objects
         """
         pass

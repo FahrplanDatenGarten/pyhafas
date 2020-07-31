@@ -1,12 +1,12 @@
 import datetime
 from typing import Dict, List
 
-from pyhafas.types.station_board_request import StationBoardRequestType
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces.requests.station_board import \
     StationBoardRequestInterface
-from pyhafas.types.fptf import Leg, Station
+from pyhafas.types.fptf import Station, StationBoardLeg
 from pyhafas.types.hafas_response import HafasResponse
+from pyhafas.types.station_board_request import StationBoardRequestType
 
 
 class BaseStationBoardRequest(StationBoardRequestInterface):
@@ -50,25 +50,42 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
 
     def parse_station_board_request(
             self: ProfileInterface,
-            data: HafasResponse) -> List[Leg]:
+            data: HafasResponse,
+            departure_arrival_prefix: str) -> List[StationBoardLeg]:
         """
         Parses the HaFAS data for a station board request
 
         :param data: Formatted HaFAS response
-        :return: List of journey objects
+        :param departure_arrival_prefix: Prefix for specifying whether its for arrival or departure (either a for arrival or d for departure)
+        :return: List of StationBoardLeg objects
         """
         legs = []
-        try:
+        if not data.res.get('jnyL', False):
+            return legs
+        else:
             for raw_leg in data.res['jnyL']:
-                leg = self.parse_leg(
-                    raw_leg,
-                    data.res['common'],
-                    raw_leg['stopL'][0],
-                    raw_leg['stopL'][-1],
-                    self.parse_date(raw_leg['date'])
-                )
-                legs.append(leg)
-        except KeyError:
-            pass
+                date = self.parse_date(raw_leg['date'])
 
-        return legs
+                try:
+                    platform = raw_leg['stbStop'][departure_arrival_prefix + 'PltfR']['txt'] if raw_leg['stbStop'].get(departure_arrival_prefix + 'PltfR') is not None else raw_leg['stbStop'][departure_arrival_prefix + 'PltfS']['txt']
+                except KeyError:
+                    platform = raw_leg['stbStop'].get(departure_arrival_prefix + 'PlatfR', raw_leg['stbStop'].get(departure_arrival_prefix + 'PlatfS', None))
+
+                legs.append(StationBoardLeg(
+                    id=raw_leg['jid'],
+                    name=data.common['prodL'][raw_leg['prodX']]['name'],
+                    direction=raw_leg['dirTxt'],
+                    date_time=self.parse_datetime(
+                        raw_leg['stbStop'][departure_arrival_prefix + 'TimeS'],
+                        date
+                    ),
+                    station=self.parse_lid_to_station(data.common['locL'][raw_leg['stbStop']['locX']]['lid']),
+                    platform=platform,
+                    delay=self.parse_datetime(
+                            raw_leg['stbStop'][departure_arrival_prefix + 'TimeR'],
+                            date) - self.parse_datetime(
+                            raw_leg['stbStop'][departure_arrival_prefix + 'TimeS'],
+                            date) if raw_leg['stbStop'].get(departure_arrival_prefix + 'TimeR') is not None else None,
+                    cancelled=bool(raw_leg['stbStop'].get(departure_arrival_prefix + 'Cncl', False))
+                ))
+            return legs

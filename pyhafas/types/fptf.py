@@ -127,7 +127,7 @@ class Leg:
 
     A leg or also named trip is most times part of a journey and defines a journey with only one specific vehicle from A to B.
 
-    :ivar id: ID of the Journey
+    :ivar id: ID of the Leg
     :vartype id: str
     :ivar origin: FPTF `Station` object of the origin station
     :vartype origin: Station
@@ -248,6 +248,66 @@ class Journey:
         self.date: Optional[datetime.date] = date
         self.duration: Optional[datetime.timedelta] = duration
         self.legs: Optional[List[Leg]] = legs
+
+    def __repr__(self):
+        return "%s(%r)" % (self.__class__, self.__dict__)
+
+
+class StationBoardLeg:
+    """
+    `StationBoardLeg` object
+
+    Returned at Station Board-Requests. This requests do not have enough information for a FPTF `Leg` object.
+    With the ID a `trip` request can be made to get detailed information about the trip
+
+    :ivar id: ID of the Leg
+    :vartype id: str
+    :ivar name: Name of the trip (e.g. ICE 123)
+    :vartype name: str
+    :ivar direction: Direction text of the trip (e.g. Berlin Central Station)
+    :vartype direction: str
+    :ivar station: FPTF `Station` object of the departing/arriving station
+    :vartype station: Station
+    :ivar date_time: Planned Date and Time of the departure/arrival
+    :vartype date_time: datetime.datetime
+    :ivar cancelled: Whether the stop or trip cancelled
+    :vartype cancelled: bool
+    :ivar delay: Delay at the departure station (maybe `None`)
+    :vartype delay: Optional[datetime.timedelta]
+    :ivar platform: Real-time platform at the station (maybe `None`)
+    :vartype platform: Optional[str]
+    """
+    def __init__(
+            self,
+            id: str,
+            name: str,
+            direction: str,
+            station: Station,
+            date_time: datetime.datetime,
+            cancelled: bool,
+            delay: Optional[datetime.timedelta] = None,
+            platform: Optional[str] = None
+    ):
+        """
+        `StationBoardLeg` object
+
+        :param id: ID of the Leg
+        :param name: Name of the trip (e.g. ICE 123)
+        :param direction: Direction text of the trip (e.g. Berlin Central Station)
+        :param station: FPTF `Station` object of the departing/arriving station
+        :param date_time: Planned Date and Time of the departure/arrival
+        :param cancelled: Whether the stop or trip cancelled
+        :param delay: (optional) Delay at the departure station. Defaults to `None`
+        :param platform: (optional) Real-time platform at the station. Defaults to `None`
+        """
+        self.id: str = id
+        self.name: str = name
+        self.direction: str = direction
+        self.station: Station = station
+        self.dateTime: datetime.datetime = date_time
+        self.cancelled: bool = cancelled
+        self.delay: Optional[datetime.timedelta] = delay
+        self.platform: Optional[str] = platform
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
