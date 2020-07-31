@@ -28,7 +28,6 @@ class HafasClient:
             self,
             station: Union[Station, str],
             date: datetime.datetime,
-            max_journeys: Optional[int] = None,  # Deprecated, will be removed in 0.2.0
             max_trips: int = -1,
             duration: int = -1,
             products: Dict[str, bool] = {}) -> List[StationBoardLeg]:
@@ -39,7 +38,6 @@ class HafasClient:
 
         :param station: FPTF `Station` object or ID of station
         :param date: Date and Time when to search
-        :param max_journeys: (optional, deprecated, will be removed in 0.2.0) Use `max_trips` instead - Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param max_trips: (optional) Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param duration: (optional) Minutes after `date` in which is search is made. Default is "whatever HaFAS wants"
         :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.
@@ -47,9 +45,6 @@ class HafasClient:
         """
         if not isinstance(station, Station):
             station = Station(id=station)
-
-        if max_journeys is not None:
-            max_trips = max_journeys
 
         body = self.profile.format_station_board_request(
             station,
@@ -67,7 +62,6 @@ class HafasClient:
             self,
             station: Union[Station, str],
             date: datetime.datetime,
-            max_journeys: Optional[int] = None,  # Deprecated, will be removed in 0.2.0
             max_trips: int = -1,
             duration: int = -1,
             products: Dict[str, bool] = {}) -> List[StationBoardLeg]:
@@ -78,7 +72,6 @@ class HafasClient:
 
         :param station: FPTF `Station` object or ID of station
         :param date: Date and Time when to search
-        :param max_journeys: (optional, deprecated, will be removed in 0.2.0) Use `max_trips` instead - Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param max_trips: (optional) Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param duration: (optional) Minutes after `date` in which is search is made. Default is "whatever HaFAS wants"
         :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.
@@ -86,9 +79,6 @@ class HafasClient:
         """
         if not isinstance(station, Station):
             station = Station(id=station)
-
-        if max_journeys is not None:
-            max_trips = max_journeys
 
         body = self.profile.format_station_board_request(
             station,

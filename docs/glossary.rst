@@ -11,6 +11,9 @@ Glossary
       Abbreviation for `Friendly Public Transport Format <https://github.com/public-transport/friendly-public-transport-format/blob/master/spec/readme.md>`_
       - Used as the basis for returned data
 
+   Station Board
+      Generalization for :func:`arrivals <pyhafas.client.HafasClient.arrivals>` and :func:`departures <pyhafas.client.HafasClient.departures>` requests
+
    product
       A product is the generalization of all means of transport. When this term is used, all types of transport are meant (e.g. busses, regional trains, ferries).
 

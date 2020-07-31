@@ -44,3 +44,4 @@ Even better than creating an issue is creating a pull request. If you want to do
    :caption: General
 
    glossary
+   changelog

@@ -9,12 +9,13 @@ Most other pyHaFAS-specific words are defined in the :doc:`/glossary`.
 If one of these words is used in this documentation it's marked as a link with a superscript G as follows: :term:`profile`:superscript:`G`
 
 
-======= =======
-Term    Meaning
-======= =======
-profile Customization for each HaFAS deployment - Contains the endpoint, tokens and possible changes for the deployment
-FPTF    Abbreviation for `Friendly Public Transport Format <https://github.com/public-transport/friendly-public-transport-format/blob/master/spec/readme.md>`_ - Used as the basis for returned data
-======= =======
+============= =======
+Term          Meaning
+============= =======
+profile       Customization for each HaFAS deployment - Contains the endpoint, tokens and possible changes for the deployment
+FPTF          Abbreviation for `Friendly Public Transport Format <https://github.com/public-transport/friendly-public-transport-format/blob/master/spec/readme.md>`_ - Used as the basis for returned data
+Station Board Generalization for :func:`arrivals <pyhafas.client.HafasClient.arrivals>` and :func:`departures <pyhafas.client.HafasClient.departures>` requests
+============= =======
 
 Installation
 ------------
