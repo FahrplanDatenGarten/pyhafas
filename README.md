@@ -18,7 +18,7 @@ That’s it!
 For development is **recommended** to use a ``venv``.
 
 ```bash
-$ python3.6 -m venv .venv
+$ python3 -m venv .venv
 $ source .venv/bin/activate
 $ python setup.py develop
 ```
