@@ -6,6 +6,7 @@ from pyhafas.types.exceptions import ProductNotAvailableError
 
 class BaseFormatProductsFilterHelper(FormatProductsFilterHelperInterface):
     """Helper for creating the products filter """
+
     def format_products_filter(
             self: ProfileInterface,
             requested_products: dict) -> dict:

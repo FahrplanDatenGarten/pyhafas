@@ -67,9 +67,15 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
                 date = self.parse_date(raw_leg['date'])
 
                 try:
-                    platform = raw_leg['stbStop'][departure_arrival_prefix + 'PltfR']['txt'] if raw_leg['stbStop'].get(departure_arrival_prefix + 'PltfR') is not None else raw_leg['stbStop'][departure_arrival_prefix + 'PltfS']['txt']
+                    platform = raw_leg['stbStop'][departure_arrival_prefix + 'PltfR']['txt'] if \
+                        raw_leg['stbStop'].get(departure_arrival_prefix + 'PltfR') is not None else \
+                        raw_leg['stbStop'][departure_arrival_prefix + 'PltfS']['txt']
                 except KeyError:
-                    platform = raw_leg['stbStop'].get(departure_arrival_prefix + 'PlatfR', raw_leg['stbStop'].get(departure_arrival_prefix + 'PlatfS', None))
+                    platform = raw_leg['stbStop'].get(
+                        departure_arrival_prefix + 'PlatfR',
+                        raw_leg['stbStop'].get(
+                            departure_arrival_prefix + 'PlatfS',
+                            None))
 
                 legs.append(StationBoardLeg(
                     id=raw_leg['jid'],
@@ -82,10 +88,10 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
                     station=self.parse_lid_to_station(data.common['locL'][raw_leg['stbStop']['locX']]['lid']),
                     platform=platform,
                     delay=self.parse_datetime(
-                            raw_leg['stbStop'][departure_arrival_prefix + 'TimeR'],
-                            date) - self.parse_datetime(
-                            raw_leg['stbStop'][departure_arrival_prefix + 'TimeS'],
-                            date) if raw_leg['stbStop'].get(departure_arrival_prefix + 'TimeR') is not None else None,
+                        raw_leg['stbStop'][departure_arrival_prefix + 'TimeR'],
+                        date) - self.parse_datetime(
+                        raw_leg['stbStop'][departure_arrival_prefix + 'TimeS'],
+                        date) if raw_leg['stbStop'].get(departure_arrival_prefix + 'TimeR') is not None else None,
                     cancelled=bool(raw_leg['stbStop'].get(departure_arrival_prefix + 'Cncl', False))
                 ))
             return legs

@@ -47,12 +47,12 @@ class ProfileInterface(
 
     locale: str
     """(used in future) Locale used for i18n. Should be an IETF Language-Region Tag
-    
+
     Examples: https://tools.ietf.org/html/bcp47#appendix-A
     """
     timezone: str
     """(used in future) Timezone HaFAS lives in. Should be part of tzdata.
-    
+
     Example: "Europe/Berlin"
     """
 

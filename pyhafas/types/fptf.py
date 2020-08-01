@@ -277,6 +277,7 @@ class StationBoardLeg:
     :ivar platform: Real-time platform at the station (maybe `None`)
     :vartype platform: Optional[str]
     """
+
     def __init__(
             self,
             id: str,

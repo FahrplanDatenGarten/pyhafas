@@ -1,9 +1,9 @@
 import datetime
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Union
 
-from pyhafas.types.station_board_request import StationBoardRequestType
 from pyhafas.profile import ProfileInterface
 from pyhafas.types.fptf import Journey, Leg, Station, StationBoardLeg
+from pyhafas.types.station_board_request import StationBoardRequestType
 
 
 class HafasClient:

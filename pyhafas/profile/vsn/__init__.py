@@ -1,5 +1,5 @@
-from pyhafas.profile.vsn.requests.journey import VSNJourneyRequest
 from pyhafas.profile import BaseProfile
+from pyhafas.profile.vsn.requests.journey import VSNJourneyRequest
 
 
 class VSNProfile(VSNJourneyRequest, BaseProfile):

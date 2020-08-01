@@ -1,5 +1,5 @@
-from pyhafas.profile.base import BaseJourneyRequest
 from pyhafas.profile import ProfileInterface
+from pyhafas.profile.base import BaseJourneyRequest
 from pyhafas.profile.interfaces.requests.journey import JourneyRequestInterface
 from pyhafas.types.fptf import Journey
 

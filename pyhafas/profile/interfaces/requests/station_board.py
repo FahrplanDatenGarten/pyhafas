@@ -2,9 +2,9 @@ import abc
 import datetime
 from typing import Dict, List
 
-from pyhafas.types.station_board_request import StationBoardRequestType
-from pyhafas.types.fptf import Leg, Station, StationBoardLeg
+from pyhafas.types.fptf import Station, StationBoardLeg
 from pyhafas.types.hafas_response import HafasResponse
+from pyhafas.types.station_board_request import StationBoardRequestType
 
 
 class StationBoardRequestInterface(abc.ABC):

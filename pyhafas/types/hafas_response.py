@@ -15,6 +15,7 @@ class HafasResponse:
     :ivar data: json parsed raw response of HaFAS
     :vartype data: dict
     """
+
     def __init__(self, raw_hafas_response: requests.Response,
                  mapping: ErrorCodesMappingInterface):
         """
