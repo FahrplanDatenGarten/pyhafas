@@ -19,8 +19,8 @@ class ParseLidHelperInterface(abc.ABC):
             self,
             lid: str,
             name: str = "",
-            latitude: int = 0,
-            longitude: int = 0) -> Station:
+            latitude: float = 0,
+            longitude: float = 0) -> Station:
         """
         Parses the LID given by HaFAS to a station object
 

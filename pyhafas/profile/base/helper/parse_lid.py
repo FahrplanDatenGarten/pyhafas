@@ -25,8 +25,8 @@ class BaseParseLidHelper(ParseLidHelperInterface):
             self: ProfileInterface,
             lid: str,
             name: str = "",
-            latitude: int = 0,
-            longitude: int = 0) -> Station:
+            latitude: float = 0,
+            longitude: float = 0) -> Station:
         """
         Parses the LID given by HaFAS to a station object
 
@@ -38,8 +38,8 @@ class BaseParseLidHelper(ParseLidHelperInterface):
         """
         parsedLid = self.parse_lid(lid)
         if latitude == 0 and longitude == 0 and parsedLid['X'] and parsedLid['Y']:
-            latitude = int(int(parsedLid['Y']) / 1000000)
-            longitude = int(int(parsedLid['X']) / 1000000)
+            latitude = float(float(parsedLid['Y']) / 1000000)
+            longitude = float(float(parsedLid['X']) / 1000000)
 
         return Station(
             id=parsedLid['L'],

@@ -39,11 +39,11 @@ class BaseLocationRequest(LocationRequestInterface):
         stations = []
         for stn in data.res['match']['locL']:
             try:
-                latitude: int = stn['crd']['y'] / 1000000
-                longitude: int = stn['crd']['x'] / 1000000
+                latitude: float = stn['crd']['y'] / 1000000
+                longitude: float = stn['crd']['x'] / 1000000
             except KeyError:
-                latitude: int = 0
-                longitude: int = 0
+                latitude: float = 0
+                longitude: float = 0
             stations.append(
                 self.parse_lid_to_station(
                     stn['lid'],
