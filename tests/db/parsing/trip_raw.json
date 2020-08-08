@@ -1,0 +1,957 @@
+{
+  "ver": "1.16",
+  "ext": "DB.R19.04.a",
+  "lang": "deu",
+  "id": "t466dpvw4m8zx4w8",
+  "cInfo": {
+    "code": "OK",
+    "url": "",
+    "msg": ""
+  },
+  "svcResL": [
+    {
+      "meth": "JourneyDetails",
+      "err": "OK",
+      "res": {
+        "common": {
+          "locL": [
+            {
+              "lid": "A=1@O=Hennef(Sieg)@X=7284588@Y=50773331@U=80@L=8002753@",
+              "type": "S",
+              "name": "Hennef(Sieg)",
+              "icoX": 2,
+              "extId": "8002753",
+              "state": "F",
+              "crd": {
+                "x": 7285694,
+                "y": 50773178,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 56
+            },
+            {
+              "lid": "A=1@O=Düren@X=6482454@Y=50809513@U=80@L=8000084@",
+              "type": "S",
+              "name": "Düren",
+              "icoX": 3,
+              "extId": "8000084",
+              "state": "F",
+              "crd": {
+                "x": 6482238,
+                "y": 50809513,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 59
+            },
+            {
+              "lid": "A=1@O=Siegburg/Bonn@X=7203029@Y=50793916@U=80@L=8005556@",
+              "type": "S",
+              "name": "Siegburg/Bonn",
+              "icoX": 3,
+              "extId": "8005556",
+              "state": "F",
+              "crd": {
+                "x": 7202616,
+                "y": 50794051,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 825
+            },
+            {
+              "lid": "A=1@O=Troisdorf@X=7150892@Y=50813926@U=80@L=8000135@",
+              "type": "S",
+              "name": "Troisdorf",
+              "icoX": 2,
+              "extId": "8000135",
+              "state": "F",
+              "crd": {
+                "x": 7150712,
+                "y": 50813720,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 56
+            },
+            {
+              "lid": "A=1@O=Spich@X=7114917@Y=50826727@U=80@L=8005629@",
+              "type": "S",
+              "name": "Spich",
+              "icoX": 0,
+              "extId": "8005629",
+              "state": "F",
+              "crd": {
+                "x": 7114576,
+                "y": 50826934,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 560
+            },
+            {
+              "lid": "A=1@O=Porz-Wahn@X=7079266@Y=50858135@U=80@L=8004873@",
+              "type": "S",
+              "name": "Porz-Wahn",
+              "icoX": 2,
+              "extId": "8004873",
+              "state": "F",
+              "crd": {
+                "x": 7079239,
+                "y": 50858126,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 56
+            },
+            {
+              "lid": "A=1@O=Köln/Bonn Flughafen@X=7119304@Y=50878900@U=80@L=8003330@",
+              "type": "S",
+              "name": "Köln/Bonn Flughafen",
+              "icoX": 3,
+              "extId": "8003330",
+              "state": "F",
+              "crd": {
+                "x": 7119259,
+                "y": 50878909,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 59
+            },
+            {
+              "lid": "A=1@O=Köln Frankfurter Straße@X=7051264@Y=50915217@U=80@L=8003358@",
+              "type": "S",
+              "name": "Köln Frankfurter Straße",
+              "icoX": 2,
+              "extId": "8003358",
+              "state": "F",
+              "crd": {
+                "x": 7051157,
+                "y": 50915361,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 56
+            },
+            {
+              "lid": "A=1@O=Köln Trimbornstr@X=6996736@Y=50935856@U=80@L=8003320@",
+              "type": "S",
+              "name": "Köln Trimbornstr",
+              "icoX": 4,
+              "extId": "8003320",
+              "state": "F",
+              "crd": {
+                "x": 6996754,
+                "y": 50935910,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 56
+            },
+            {
+              "lid": "A=1@O=Köln Messe/Deutz Gl. 9-10@X=6974640@Y=50941303@U=80@L=8083368@",
+              "type": "S",
+              "name": "Köln Messe/Deutz Gl. 9-10",
+              "icoX": 4,
+              "extId": "8083368",
+              "state": "F",
+              "crd": {
+                "x": 6974658,
+                "y": 50941285,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 319,
+              "entry": true
+            },
+            {
+              "lid": "A=1@O=Köln Hbf@X=6958730@Y=50943029@U=80@L=8000207@",
+              "type": "S",
+              "name": "Köln Hbf",
+              "icoX": 3,
+              "extId": "8000207",
+              "state": "F",
+              "crd": {
+                "x": 6959197,
+                "y": 50942823,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 319
+            },
+            {
+              "lid": "A=1@O=Köln Hansaring@X=6952563@Y=50949133@U=80@L=8003392@",
+              "type": "S",
+              "name": "Köln Hansaring",
+              "icoX": 2,
+              "extId": "8003392",
+              "state": "F",
+              "crd": {
+                "x": 6952698,
+                "y": 50949124,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 312
+            },
+            {
+              "lid": "A=1@O=Köln-Ehrenfeld@X=6917280@Y=50951533@U=80@L=8000208@",
+              "type": "S",
+              "name": "Köln-Ehrenfeld",
+              "icoX": 3,
+              "extId": "8000208",
+              "state": "F",
+              "crd": {
+                "x": 6917244,
+                "y": 50951605,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 59
+            },
+            {
+              "lid": "A=1@O=Köln-Müngersdorf Technologiepark@X=6888200@Y=50948396@U=80@L=8003375@",
+              "type": "S",
+              "name": "Köln-Müngersdorf Technologiepark",
+              "icoX": 0,
+              "extId": "8003375",
+              "state": "F",
+              "crd": {
+                "x": 6888173,
+                "y": 50948423,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 48
+            },
+            {
+              "lid": "A=1@O=Lövenich@X=6834436@Y=50942930@U=80@L=8003732@",
+              "type": "S",
+              "name": "Lövenich",
+              "icoX": 0,
+              "extId": "8003732",
+              "state": "F",
+              "crd": {
+                "x": 6834606,
+                "y": 50942921,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 48
+            },
+            {
+              "lid": "A=1@O=Köln-Weiden West@X=6815136@Y=50940899@U=80@L=8003383@",
+              "type": "S",
+              "name": "Köln-Weiden West",
+              "icoX": 0,
+              "extId": "8003383",
+              "state": "F",
+              "crd": {
+                "x": 6814956,
+                "y": 50940872,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 304
+            },
+            {
+              "lid": "A=1@O=Frechen-Königsdorf@X=6777849@Y=50936503@U=80@L=8002389@",
+              "type": "S",
+              "name": "Frechen-Königsdorf",
+              "icoX": 0,
+              "extId": "8002389",
+              "state": "F",
+              "crd": {
+                "x": 6778262,
+                "y": 50936539,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 48
+            },
+            {
+              "lid": "A=1@O=Horrem@X=6713495@Y=50916250@U=80@L=8000178@",
+              "type": "S",
+              "name": "Horrem",
+              "icoX": 2,
+              "extId": "8000178",
+              "state": "F",
+              "crd": {
+                "x": 6713378,
+                "y": 50916556,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 56
+            },
+            {
+              "lid": "A=1@O=Sindorf@X=6681107@Y=50903711@U=80@L=8005575@",
+              "type": "S",
+              "name": "Sindorf",
+              "icoX": 2,
+              "extId": "8005575",
+              "state": "F",
+              "crd": {
+                "x": 6669816,
+                "y": 50899333,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 56
+            },
+            {
+              "lid": "A=1@O=Buir@X=6574513@Y=50862405@U=80@L=8001264@",
+              "type": "S",
+              "name": "Buir",
+              "icoX": 2,
+              "extId": "8001264",
+              "state": "F",
+              "crd": {
+                "x": 6574504,
+                "y": 50862414,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 56
+            },
+            {
+              "lid": "A=1@O=Merzenich@X=6518051@Y=50840031@U=80@L=8003990@",
+              "type": "S",
+              "name": "Merzenich",
+              "icoX": 2,
+              "extId": "8003990",
+              "state": "F",
+              "crd": {
+                "x": 6517809,
+                "y": 50839896,
+                "z": 0,
+                "type": "WGS84",
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 568
+            }
+          ],
+          "prodL": [
+            {
+              "name": "S 19",
+              "nameS": "19",
+              "number": "19",
+              "icoX": 0,
+              "cls": 16,
+              "oprX": 0,
+              "prodCtx": {
+                "name": "S     19",
+                "num": "32377",
+                "line": "19",
+                "lineId": "4_8003S__19",
+                "matchId": "19",
+                "catOut": "S",
+                "catOutS": "s",
+                "catOutL": "S-Bahn",
+                "catIn": "s",
+                "catCode": "4",
+                "admin": "8003S_"
+              }
+            }
+          ],
+          "polyL": [
+            {
+              "delta": true,
+              "dim": 3,
+              "type": "WGS84",
+              "crdEncYX": "ks{tHq~mk@ii@tcHuEx`@cClOgV|oAwEjR}CzIgFnL}FnK_KvOsKnPVl@{AbC??}[~h@qFbLoEjMiHjZyfAdaF\\VuU|dAsGtUc@pB??}@`EaBhMoDtPfBpA??_A~FcBULJeRbp@_I`SmGlLKYeGzIk`Ct}CA?Ma@_TdXsKpJ}LdHwHtDESiI`EsCFoIwBsLuGgBcB?AsAkA}EeEwFkGsFoIgDyGcH}SmDqRw@eHi@uJOgIPwlAQwLcAiIqC}GuCkEgA}@gXaLVyBWxBEA??mSkIkGmA{Hn@yDjCuBfEg@xBq@`FEtEV|D`Jbt@`@tGFtK[xIiAtJgBpI}ClIiBbDsEzFg_@nWc}BxuBuC`EaCxEqCnJ{A`Ky@hN????AdFf@nP`F~r@UD~Exk@TfJMdGy@`IuAdGcO~[Cp@LTgW`f@@@}@dBgQv]KQ??wLtVcFtLeXb{@HHIIcMv^aIlW??uG`SPRQS{Jv[{@~FsC{@??d@xGAjL[pJQCPBs@fRm@jH{@|Oo@|B??VD}@bUMnv@cApGaAzBuA|AyAD??n@pB{e@xh@FLoCxEw@zB??TTeBrKyAtPoAzF}BjEcHdIiBfFu@jGElCRzGbDjX`Dxm@I@HAhAzQhAn`@ODnEzo@~HrgBqATpAUdBh[NE|@dOODC?nAvTlAtVtZtkG????NfCRExKzyB??dKrsBzF~dAlAhPpCjXSFfLhcAxBvOnChOlx@blDnS~v@|Y|hA??lQxl@n{@p{CJKKJvZteA??bhB`pG????jt@`iCNMOLjbAtmD??RSfCpI??bxB|wHjH`UfIhR??~IxN~TrX??KRdfAdpA????huApaB",
+              "crdEncZ": "????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????",
+              "crdEncS": "NNNKNNKNKNNNNNNMNLNNMNNNNMNNNNNNNMNNKNNNNNNNNNNNNNNNKNLNNNKMNNMNNKNNNNNNMNNNLNLNKNLNMNMNKNNNKNNMNNNKNNNNLNLNNNNNNNNNNKNNNNKNNNNNNNNNNLNNNKNNNNNNNNKNNNNNNKNNNMMNMNMNKNNNNNMNNNNNNNNNNNNNNNNNNNNKNKNNNKNNNNNLNNNNNNNNNNNNNNNNNMNNNNNNNNNN",
+              "crdEncF": "????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????",
+              "ppLocRefL": [
+                {
+                  "ppIdx": 0,
+                  "locX": 0
+                },
+                {
+                  "ppIdx": 12,
+                  "locX": 2
+                },
+                {
+                  "ppIdx": 18,
+                  "locX": 3
+                },
+                {
+                  "ppIdx": 34,
+                  "locX": 4
+                },
+                {
+                  "ppIdx": 43,
+                  "locX": 5
+                },
+                {
+                  "ppIdx": 70,
+                  "locX": 6
+                },
+                {
+                  "ppIdx": 101,
+                  "locX": 7
+                },
+                {
+                  "ppIdx": 123,
+                  "locX": 8
+                },
+                {
+                  "ppIdx": 141,
+                  "locX": 9
+                },
+                {
+                  "ppIdx": 149,
+                  "locX": 10
+                },
+                {
+                  "ppIdx": 151,
+                  "locX": 11
+                },
+                {
+                  "ppIdx": 171,
+                  "locX": 12
+                },
+                {
+                  "ppIdx": 177,
+                  "locX": 13
+                },
+                {
+                  "ppIdx": 187,
+                  "locX": 14
+                },
+                {
+                  "ppIdx": 189,
+                  "locX": 15
+                },
+                {
+                  "ppIdx": 194,
+                  "locX": 16
+                },
+                {
+                  "ppIdx": 201,
+                  "locX": 17
+                },
+                {
+                  "ppIdx": 207,
+                  "locX": 18
+                },
+                {
+                  "ppIdx": 218,
+                  "locX": 19
+                },
+                {
+                  "ppIdx": 222,
+                  "locX": 20
+                },
+                {
+                  "ppIdx": 231,
+                  "locX": 1
+                }
+              ]
+            }
+          ],
+          "layerL": [
+            {
+              "id": "standard",
+              "name": "standard",
+              "index": 0,
+              "annoCnt": 0
+            }
+          ],
+          "crdSysL": [
+            {
+              "id": "standard",
+              "index": 0,
+              "type": "WGS84",
+              "dim": 3
+            }
+          ],
+          "opL": [
+            {
+              "name": "DB Regio AG NRW",
+              "icoX": 1
+            }
+          ],
+          "remL": [
+            {
+              "type": "A",
+              "code": "FB",
+              "prio": 260,
+              "icoX": 5,
+              "txtN": "Fahrradmitnahme begrenzt möglich"
+            },
+            {
+              "type": "A",
+              "code": "K2",
+              "prio": 300,
+              "icoX": 6,
+              "txtN": "nur 2. Klasse"
+            },
+            {
+              "type": "A",
+              "code": "EH",
+              "prio": 560,
+              "icoX": 7,
+              "txtN": "Fahrzeuggebundene Einstiegshilfe vorhanden"
+            }
+          ],
+          "icoL": [
+            {
+              "res": "S"
+            },
+            {
+              "res": "RE",
+              "txt": "DB Regio AG NRW"
+            },
+            {
+              "res": "Bus"
+            },
+            {
+              "res": "ICE"
+            },
+            {
+              "res": "RB"
+            },
+            {
+              "res": "attr_bike"
+            },
+            {
+              "res": "attr_2nd"
+            },
+            {
+              "res": "attr_info"
+            }
+          ]
+        },
+        "journey": {
+          "jid": "1|227083|0|80|5082020",
+          "date": "20200805",
+          "prodX": 0,
+          "dirTxt": "Düren",
+          "status": "P",
+          "isRchbl": true,
+          "stopL": [
+            {
+              "locX": 0,
+              "idx": 0,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "120200",
+              "dProgType": "PROGNOSED",
+              "dDirTxt": "Düren",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 2,
+              "idx": 1,
+              "aProdX": 0,
+              "aPlatfS": "1",
+              "aOutR": true,
+              "aTimeS": "120600",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "1",
+              "dInR": true,
+              "dTimeS": "120700",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 3,
+              "idx": 2,
+              "aProdX": 0,
+              "aPlatfS": "1",
+              "aOutR": true,
+              "aTimeS": "121200",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "1",
+              "dInR": true,
+              "dTimeS": "121300",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 4,
+              "idx": 3,
+              "aProdX": 0,
+              "aPlatfS": "1",
+              "aOutR": true,
+              "aTimeS": "121500",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "1",
+              "dInR": true,
+              "dTimeS": "121600",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 5,
+              "idx": 4,
+              "aProdX": 0,
+              "aPlatfS": "1",
+              "aOutR": true,
+              "aTimeS": "121900",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "1",
+              "dInR": true,
+              "dTimeS": "121900",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 6,
+              "idx": 5,
+              "aProdX": 0,
+              "aPlatfS": "2",
+              "aOutR": true,
+              "aTimeS": "122300",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "122400",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 7,
+              "idx": 6,
+              "aProdX": 0,
+              "aPlatfS": "1",
+              "aOutR": true,
+              "aTimeS": "122900",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "1",
+              "dInR": true,
+              "dTimeS": "122900",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 8,
+              "idx": 7,
+              "aProdX": 0,
+              "aPlatfS": "2",
+              "aOutR": true,
+              "aTimeS": "123400",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "123400",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 9,
+              "idx": 8,
+              "aProdX": 0,
+              "aPlatfS": "10",
+              "aOutR": true,
+              "aTimeS": "123600",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "10",
+              "dInR": true,
+              "dTimeS": "123700",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 10,
+              "idx": 9,
+              "aProdX": 0,
+              "aPlatfS": "11 B-C",
+              "aOutR": true,
+              "aTimeS": "123900",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "11 B-C",
+              "dInR": true,
+              "dTimeS": "124000",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 11,
+              "idx": 10,
+              "aProdX": 0,
+              "aPlatfS": "1",
+              "aOutR": true,
+              "aTimeS": "124200",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "1",
+              "dInR": true,
+              "dTimeS": "124200",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 12,
+              "idx": 11,
+              "aProdX": 0,
+              "aPlatfS": "2",
+              "aOutR": true,
+              "aTimeS": "124500",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "124600",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 13,
+              "idx": 12,
+              "aProdX": 0,
+              "aPlatfS": "2",
+              "aOutR": true,
+              "aTimeS": "124800",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "124900",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 14,
+              "idx": 13,
+              "aProdX": 0,
+              "aPlatfS": "2",
+              "aOutR": true,
+              "aTimeS": "125100",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "125200",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 15,
+              "idx": 14,
+              "aProdX": 0,
+              "aPlatfS": "2",
+              "aOutR": true,
+              "aTimeS": "125300",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "125400",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 16,
+              "idx": 15,
+              "aProdX": 0,
+              "aPlatfS": "2",
+              "aOutR": true,
+              "aTimeS": "125600",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "125700",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 17,
+              "idx": 16,
+              "aProdX": 0,
+              "aPlatfS": "2",
+              "aOutR": true,
+              "aTimeS": "130000",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "130100",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 18,
+              "idx": 17,
+              "aProdX": 0,
+              "aPlatfS": "1",
+              "aOutR": true,
+              "aTimeS": "130300",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "1",
+              "dInR": true,
+              "dTimeS": "130300",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 19,
+              "idx": 18,
+              "aProdX": 0,
+              "aPlatfS": "2",
+              "aOutR": true,
+              "aTimeS": "130900",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "131000",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 20,
+              "idx": 19,
+              "aProdX": 0,
+              "aPlatfS": "2",
+              "aOutR": true,
+              "aTimeS": "131300",
+              "aTZOffset": 120,
+              "dProdX": 0,
+              "dPlatfS": "2",
+              "dInR": true,
+              "dTimeS": "131300",
+              "dTZOffset": 120,
+              "type": "N"
+            },
+            {
+              "locX": 1,
+              "idx": 20,
+              "aProdX": 0,
+              "aPlatfS": "5",
+              "aOutR": true,
+              "aTimeS": "131700",
+              "aProgType": "PROGNOSED",
+              "aTZOffset": 120,
+              "type": "N"
+            }
+          ],
+          "sDaysL": [
+            {
+              "sDaysR": "fährt täglich, nicht 10. bis 21. Aug 2020, 31. Aug ",
+              "sDaysB": "FFFFFFFFFFFFFFFFFFFFFFFFA040858207EFFFFFFE3FFFFFFFFFFFFFFFFE001FF7FFFFFFFFFFFFFFFFFFFFFFFFF0",
+              "fLocX": 0,
+              "tLocX": 2
+            },
+            {
+              "sDaysR": "fährt täglich, nicht 10. bis 14. Aug 2020,  17. bis 21. Aug 2020 ",
+              "sDaysB": "FFFFFFFFFFFFFFFFFFFFFFFFA040858207EFFFFFFE3FFFFFFFFFFFFFFFFE0C1FFFFFFFFFFFFFFFFFFFFFFFFFFFF0",
+              "fLocX": 2,
+              "tLocX": 18
+            },
+            {
+              "sDaysR": "fährt Mo - Fr, So, nicht 10. bis 14. Aug 2020,  17. bis 21. Aug 2020; auch 3. Okt ",
+              "sDaysB": "FDBB77EFDFBF7EFDFBF7EFDFA040858207EFDFBF7E3DFBF7EFDFBF7EFDFA040FDFBF7EFDFFF7EFDFBF7EFDFBF7E0",
+              "fLocX": 18,
+              "tLocX": 1
+            }
+          ],
+          "polyG": {
+            "polyXL": [
+              0
+            ],
+            "layerX": 0,
+            "crdSysX": 0
+          },
+          "msgL": [
+            {
+              "type": "REM",
+              "remX": 0,
+              "fLocX": 0,
+              "tLocX": 1,
+              "fIdx": 0,
+              "tIdx": 20,
+              "tagL": [
+                "RES_JNY_DTL"
+              ]
+            },
+            {
+              "type": "REM",
+              "remX": 1,
+              "fLocX": 0,
+              "tLocX": 1,
+              "fIdx": 0,
+              "tIdx": 20,
+              "tagL": [
+                "RES_JNY_DTL"
+              ]
+            },
+            {
+              "type": "REM",
+              "remX": 2,
+              "fLocX": 0,
+              "tLocX": 1,
+              "fIdx": 0,
+              "tIdx": 20,
+              "tagL": [
+                "RES_JNY_DTL"
+              ]
+            }
+          ],
+          "subscr": "F"
+        },
+        "fpB": "20191215",
+        "fpE": "20201212",
+        "planrtTS": "1596901647"
+      }
+    }
+  ]
+}

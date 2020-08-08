@@ -61,6 +61,9 @@ class Station:
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
 
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
 
 class Stopover:
     """
@@ -119,6 +122,9 @@ class Stopover:
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
+
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
 
 
 class Leg:
@@ -213,6 +219,9 @@ class Leg:
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
 
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
 
 class Journey:
     """
@@ -251,6 +260,9 @@ class Journey:
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
+
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
 
 
 class StationBoardLeg:
@@ -312,3 +324,6 @@ class StationBoardLeg:
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)
+
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__

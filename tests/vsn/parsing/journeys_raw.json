@@ -1,0 +1,1751 @@
+{
+  "ver": "1.24",
+  "lang": "deu",
+  "id": "fx6kftt842gtw688",
+  "err": "OK",
+  "svcResL": [
+    {
+      "meth": "TripSearch",
+      "err": "OK",
+      "res": {
+        "common": {
+          "locL": [
+            {
+              "lid": "A=1@O=Göttingen@X=9926069@Y=51536812@U=80@L=8000128@",
+              "type": "S",
+              "name": "Göttingen",
+              "icoX": 0,
+              "extId": "8000128",
+              "state": "F",
+              "crd": {
+                "x": 9926069,
+                "y": 51536812,
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 47,
+              "entry": true,
+              "mMastLocX": 1
+            },
+            {
+              "lid": "A=1@O=Göttingen@X=9926069@Y=51536812@U=80@L=9033817@",
+              "type": "S",
+              "name": "Göttingen",
+              "icoX": 0,
+              "extId": "9033817",
+              "state": "F",
+              "crd": {
+                "x": 9926069,
+                "y": 51536812,
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "meta": true,
+              "pCls": 559,
+              "isMainMast": true
+            },
+            {
+              "lid": "A=1@O=Lenglern@X=9871199@Y=51588428@U=80@L=8003644@",
+              "type": "S",
+              "name": "Lenglern",
+              "icoX": 1,
+              "extId": "8003644",
+              "state": "F",
+              "crd": {
+                "x": 9871199,
+                "y": 51588428,
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "pCls": 8,
+              "entry": true,
+              "mMastLocX": 3
+            },
+            {
+              "lid": "A=1@O=Lenglern@X=9871199@Y=51588428@U=80@L=9054995@",
+              "type": "S",
+              "name": "Lenglern",
+              "icoX": 1,
+              "extId": "9054995",
+              "state": "F",
+              "crd": {
+                "x": 9871199,
+                "y": 51588428,
+                "layerX": 0,
+                "crdSysX": 0
+              },
+              "meta": true,
+              "pCls": 552,
+              "isMainMast": true
+            }
+          ],
+          "prodL": [
+            {
+              "pid": "L::3::Zug::B3929504222::N2_____RB85::*",
+              "name": "RB85",
+              "nameS": "RB85",
+              "number": "RB85",
+              "icoX": 1,
+              "cls": 8,
+              "oprX": 0,
+              "prodCtx": {
+                "name": "    RB85",
+                "num": "74902",
+                "line": "RB85",
+                "matchId": "74902",
+                "catOut": "Zug     ",
+                "catOutS": "DPN",
+                "catOutL": "Nahreisezug",
+                "catIn": "DPN",
+                "catCode": "3",
+                "admin": "N2____"
+              }
+            },
+            {
+              "pid": "L::3::Zug::B3929504222::N2_____RB85::*",
+              "name": "RB85",
+              "nameS": "RB85",
+              "number": "RB85",
+              "icoX": 1,
+              "cls": 8,
+              "oprX": 1,
+              "prodCtx": {
+                "name": "    RB85",
+                "num": "74902",
+                "line": "RB85",
+                "lineId": "N2_____RB85",
+                "matchId": "74902",
+                "catOut": "Zug     ",
+                "catOutS": "DPN",
+                "catOutL": "Nahreisezug",
+                "catIn": "DPN",
+                "catCode": "3",
+                "admin": "N2____"
+              }
+            },
+            {
+              "pid": "L::3::Zug::B3929504222::N2_____RB85::*",
+              "name": "RB85",
+              "nameS": "RB85",
+              "number": "RB85",
+              "icoX": 1,
+              "cls": 8,
+              "oprX": 1,
+              "prodCtx": {
+                "name": "    RB85",
+                "num": "74906",
+                "line": "RB85",
+                "lineId": "N2_____RB85",
+                "matchId": "74906",
+                "catOut": "Zug     ",
+                "catOutS": "DPN",
+                "catOutL": "Nahreisezug",
+                "catIn": "DPN",
+                "catCode": "3",
+                "admin": "N2____"
+              }
+            },
+            {
+              "pid": "L::3::Zug::B3929504222::N2_____RB85::*",
+              "name": "RB85",
+              "nameS": "RB85",
+              "number": "RB85",
+              "icoX": 1,
+              "cls": 8,
+              "oprX": 1,
+              "prodCtx": {
+                "name": "    RB85",
+                "num": "74910",
+                "line": "RB85",
+                "lineId": "N2_____RB85",
+                "matchId": "74910",
+                "catOut": "Zug     ",
+                "catOutS": "DPN",
+                "catOutL": "Nahreisezug",
+                "catIn": "DPN",
+                "catCode": "3",
+                "admin": "N2____"
+              }
+            }
+          ],
+          "polyL": [
+            {
+              "delta": true,
+              "dim": 2,
+              "crdEncYX": "axpyH}tq{@saI|uI",
+              "crdEncS": "NN",
+              "crdEncF": "??",
+              "ppLocRefL": [
+                {
+                  "ppIdx": 0,
+                  "locX": 0
+                },
+                {
+                  "ppIdx": 1,
+                  "locX": 2
+                }
+              ],
+              "lDrawStyleX": 0
+            }
+          ],
+          "layerL": [
+            {
+              "id": "standard",
+              "name": "standard",
+              "index": 0,
+              "annoCnt": 0
+            }
+          ],
+          "crdSysL": [
+            {
+              "id": "standard",
+              "index": 0,
+              "type": "WGS84"
+            }
+          ],
+          "opL": [
+            {
+              "name": "NordWestBahn",
+              "icoX": 2
+            },
+            {
+              "name": "NordWestBahn",
+              "icoX": 2,
+              "id": "605"
+            }
+          ],
+          "remL": [
+            {
+              "type": "A",
+              "code": "PB",
+              "prio": 200,
+              "icoX": 3,
+              "txtN": "Pflicht zur Bedeckung von Mund und Nase"
+            },
+            {
+              "type": "A",
+              "code": "FK",
+              "prio": 260,
+              "icoX": 4,
+              "txtN": "Fahrradmitnahme begrenzt möglich"
+            },
+            {
+              "type": "A",
+              "code": "NW",
+              "prio": 899,
+              "icoX": 3,
+              "txtN": "Linie der NordWestBahn, Info unter 01806 600161"
+            },
+            {
+              "type": "R",
+              "code": "text.realtime.connection.irregular",
+              "icoX": 6,
+              "txtN": ""
+            }
+          ],
+          "himL": [
+            {
+              "hid": "15528",
+              "act": true,
+              "head": "Corona-Präventionsmaßnahme",
+              "text": "Derzeit gilt die Mund-Nasen-Bedeckungspflicht im ÖPNV. Danke, dass Sie sich und andere Fahrgäste schützen und zur Sicherheit des Bus- und Bahnfahrens beitragen!",
+              "icoX": 5,
+              "prio": 1,
+              "prod": 65535,
+              "lModDate": "20200602",
+              "lModTime": "153245",
+              "sDate": "20200424",
+              "sTime": "150000",
+              "eDate": "20201231",
+              "eTime": "235900",
+              "sDaily": "000000",
+              "eDaily": "235900",
+              "comp": "VBN",
+              "catRefL": [
+                0
+              ],
+              "pubChL": [
+                {
+                  "name": "timetable",
+                  "fDate": "20200424",
+                  "fTime": "150000",
+                  "tDate": "20201231",
+                  "tTime": "235900"
+                }
+              ]
+            }
+          ],
+          "icoL": [
+            {
+              "res": "prod_ice",
+              "fg": {
+                "r": 255,
+                "g": 255,
+                "b": 255
+              },
+              "bg": {
+                "r": 150,
+                "g": 25,
+                "b": 29
+              }
+            },
+            {
+              "res": "prod_reg",
+              "fg": {
+                "r": 255,
+                "g": 255,
+                "b": 255
+              },
+              "bg": {
+                "r": 82,
+                "g": 38,
+                "b": 125
+              }
+            },
+            {
+              "res": "NWB",
+              "txt": "NordWestBahn"
+            },
+            {
+              "res": "INFO"
+            },
+            {
+              "res": "attr_bike"
+            },
+            {
+              "res": "HIM2"
+            },
+            {
+              "res": "rt_warn"
+            },
+            {
+              "res": "cl_all"
+            }
+          ],
+          "himMsgCatL": [
+            {
+              "id": 2
+            }
+          ],
+          "lDrawStyleL": [
+            {
+              "sIcoX": 1,
+              "type": "SOLID",
+              "bg": {
+                "r": 82,
+                "g": 38,
+                "b": 125
+              }
+            },
+            {
+              "type": "SOLID",
+              "bg": {
+                "r": 82,
+                "g": 38,
+                "b": 125
+              }
+            }
+          ]
+        },
+        "outConL": [
+          {
+            "cid": "C-0",
+            "date": "20200809",
+            "dur": "000900",
+            "chg": 0,
+            "sDays": {
+              "sDaysR": "täglich",
+              "sDaysB": "FFFFFFFFFFFFFFFFFFFFFFFFF0000001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0"
+            },
+            "dep": {
+              "locX": 0,
+              "idx": 0,
+              "dProdX": 0,
+              "dPltfS": {
+                "type": "PL",
+                "txt": "4"
+              },
+              "dTimeS": "071000",
+              "dProgType": "PROGNOSED",
+              "type": "N"
+            },
+            "arr": {
+              "locX": 2,
+              "idx": 1,
+              "aPltfS": {
+                "type": "PL",
+                "txt": "1"
+              },
+              "aTimeS": "071900",
+              "aProgType": "PROGNOSED",
+              "type": "N"
+            },
+            "secL": [
+              {
+                "type": "JNY",
+                "dep": {
+                  "locX": 0,
+                  "idx": 0,
+                  "dProdX": 0,
+                  "dPltfS": {
+                    "type": "PL",
+                    "txt": "4"
+                  },
+                  "dTimeS": "071000",
+                  "dTimeR": "071000",
+                  "dProgType": "PROGNOSED",
+                  "type": "N"
+                },
+                "arr": {
+                  "locX": 2,
+                  "idx": 1,
+                  "aPltfS": {
+                    "type": "PL",
+                    "txt": "1"
+                  },
+                  "aTimeS": "071900",
+                  "aTimeR": "072000",
+                  "aProgType": "PROGNOSED",
+                  "type": "N"
+                },
+                "jny": {
+                  "jid": "1|147532|0|80|9082020",
+                  "prodX": 1,
+                  "dirTxt": "Paderborn Hbf",
+                  "dirFlg": "2",
+                  "status": "P",
+                  "isRchbl": true,
+                  "stopL": [
+                    {
+                      "locX": 0,
+                      "idx": 0,
+                      "dProdX": 1,
+                      "dTimeR": "071000",
+                      "dTimeS": "071000",
+                      "dProgType": "PROGNOSED",
+                      "dDirTxt": "Paderborn Hbf",
+                      "dDirFlg": "2",
+                      "type": "N"
+                    },
+                    {
+                      "locX": 2,
+                      "idx": 1,
+                      "aProdX": 1,
+                      "aTimeS": "071900",
+                      "aTimeR": "072000",
+                      "type": "N"
+                    }
+                  ],
+                  "polyG": {
+                    "polyXL": [
+                      0
+                    ],
+                    "layerX": 0,
+                    "crdSysX": 0
+                  },
+                  "freq": {
+                    "minC": 120,
+                    "maxC": 120,
+                    "numC": 2,
+                    "jnyL": [
+                      {
+                        "jid": "1|147533|0|80|9082020",
+                        "prodX": 2,
+                        "dirTxt": "Paderborn Hbf",
+                        "dirFlg": "2",
+                        "stopL": [
+                          {
+                            "locX": 0,
+                            "idx": 0,
+                            "dProdX": 2,
+                            "dTimeS": "091000",
+                            "dDirTxt": "Paderborn Hbf",
+                            "dDirFlg": "2",
+                            "type": "N"
+                          },
+                          {
+                            "locX": 2,
+                            "idx": 1,
+                            "aProdX": 2,
+                            "aTimeS": "091900",
+                            "type": "N"
+                          }
+                        ],
+                        "ctxRecon": "T$A=1@O=Göttingen@L=8000128@a=128@$A=1@O=Lenglern@L=8003644@a=128@$202008090910$202008090919$    RB85$$1$$$",
+                        "msgL": [
+                          {
+                            "type": "REM",
+                            "remX": 0,
+                            "sty": "I",
+                            "fLocX": 0,
+                            "tLocX": 2,
+                            "tagL": [
+                              "RES_JNY_DTL"
+                            ],
+                            "sort": 1126170624
+                          },
+                          {
+                            "type": "REM",
+                            "remX": 1,
+                            "sty": "I",
+                            "fLocX": 0,
+                            "tLocX": 2,
+                            "tagL": [
+                              "RES_JNY_DTL"
+                            ],
+                            "sort": 1141899264
+                          },
+                          {
+                            "type": "REM",
+                            "remX": 2,
+                            "sty": "I",
+                            "fLocX": 0,
+                            "tLocX": 2,
+                            "tagL": [
+                              "RES_JNY_DTL"
+                            ],
+                            "sort": 1309409280
+                          }
+                        ],
+                        "subscr": "F",
+                        "prodL": [
+                          {
+                            "prodX": 2,
+                            "fLocX": 0,
+                            "tLocX": 2,
+                            "fIdx": 0,
+                            "tIdx": 1
+                          }
+                        ],
+                        "sumLDrawStyleX": 0,
+                        "resLDrawStyleX": 1
+                      },
+                      {
+                        "jid": "1|147539|0|80|9082020",
+                        "prodX": 3,
+                        "dirTxt": "Paderborn Hbf",
+                        "dirFlg": "2",
+                        "stopL": [
+                          {
+                            "locX": 0,
+                            "idx": 0,
+                            "dProdX": 3,
+                            "dTimeS": "111000",
+                            "dDirTxt": "Paderborn Hbf",
+                            "dDirFlg": "2",
+                            "type": "N"
+                          },
+                          {
+                            "locX": 2,
+                            "idx": 1,
+                            "aProdX": 3,
+                            "aTimeS": "111900",
+                            "type": "N"
+                          }
+                        ],
+                        "ctxRecon": "T$A=1@O=Göttingen@L=8000128@a=128@$A=1@O=Lenglern@L=8003644@a=128@$202008091110$202008091119$    RB85$$1$$$",
+                        "msgL": [
+                          {
+                            "type": "REM",
+                            "remX": 0,
+                            "sty": "I",
+                            "fLocX": 0,
+                            "tLocX": 2,
+                            "tagL": [
+                              "RES_JNY_DTL"
+                            ],
+                            "sort": 1126170624
+                          },
+                          {
+                            "type": "REM",
+                            "remX": 1,
+                            "sty": "I",
+                            "fLocX": 0,
+                            "tLocX": 2,
+                            "tagL": [
+                              "RES_JNY_DTL"
+                            ],
+                            "sort": 1141899264
+                          },
+                          {
+                            "type": "REM",
+                            "remX": 2,
+                            "sty": "I",
+                            "fLocX": 0,
+                            "tLocX": 2,
+                            "tagL": [
+                              "RES_JNY_DTL"
+                            ],
+                            "sort": 1309409280
+                          }
+                        ],
+                        "subscr": "F",
+                        "prodL": [
+                          {
+                            "prodX": 3,
+                            "fLocX": 0,
+                            "tLocX": 2,
+                            "fIdx": 0,
+                            "tIdx": 1
+                          }
+                        ],
+                        "sumLDrawStyleX": 0,
+                        "resLDrawStyleX": 1
+                      }
+                    ]
+                  },
+                  "ctxRecon": "T$A=1@O=Göttingen@L=8000128@a=128@$A=1@O=Lenglern@L=8003644@a=128@$202008090710$202008090719$    RB85$$1$$$",
+                  "msgL": [
+                    {
+                      "type": "REM",
+                      "remX": 0,
+                      "sty": "I",
+                      "fLocX": 0,
+                      "tLocX": 2,
+                      "tagL": [
+                        "RES_JNY_DTL"
+                      ],
+                      "sort": 1126170624
+                    },
+                    {
+                      "type": "REM",
+                      "remX": 1,
+                      "sty": "I",
+                      "fLocX": 0,
+                      "tLocX": 2,
+                      "tagL": [
+                        "RES_JNY_DTL"
+                      ],
+                      "sort": 1141899264
+                    },
+                    {
+                      "type": "REM",
+                      "remX": 2,
+                      "sty": "I",
+                      "fLocX": 0,
+                      "tLocX": 2,
+                      "tagL": [
+                        "RES_JNY_DTL"
+                      ],
+                      "sort": 1309409280
+                    },
+                    {
+                      "type": "HIM",
+                      "himX": 0,
+                      "sty": "M",
+                      "fLocX": 0,
+                      "tLocX": 0,
+                      "tagL": [
+                        "RES_GLB_HDR_H3",
+                        "SUM_GLB_HDR_H3"
+                      ],
+                      "sort": 807680508
+                    }
+                  ],
+                  "subscr": "F",
+                  "prodL": [
+                    {
+                      "prodX": 1,
+                      "fLocX": 0,
+                      "tLocX": 2,
+                      "fIdx": 0,
+                      "tIdx": 1
+                    }
+                  ],
+                  "sumLDrawStyleX": 0,
+                  "resLDrawStyleX": 1
+                }
+              }
+            ],
+            "ctxRecon": "¶HKI¶T$A=1@O=Göttingen@L=8000128@a=128@$A=1@O=Lenglern@L=8003644@a=128@$202008090710$202008090719$    RB85$$1$$$",
+            "freq": {
+              "minC": 120
+            },
+            "trfRes": {
+              "statusCode": "OK",
+              "fareSetL": [
+                {
+                  "desc": "Verbund: VSN |  2 |  Startzone 200 |  Zielzone 281",
+                  "fareL": [
+                    {
+                      "name": "Einzelfahrschein",
+                      "desc": "Gültig für Einzelpersonen",
+                      "prc": 330,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "Einzelfahrschein Kinder",
+                      "desc": "6 - 14 Jahre",
+                      "prc": 220,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "4er Karte",
+                      "prc": 1150,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "4er Karte Kinder",
+                      "prc": 770,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "7-Tage-Karte",
+                      "desc": "Gültig 7 aufeinanderfolgende Tag, Mitnahmemöglichkeit",
+                      "prc": 2500,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "8er Karte",
+                      "desc": "VSN-Tarif",
+                      "prc": 2260,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "8er Karte Kinder",
+                      "desc": "VSN-Tarif",
+                      "prc": 1490,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "Tageskarte",
+                      "prc": 700,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "Fahrradtageskarte (nur Zug)",
+                      "prc": 450,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "Kleingruppenkarte",
+                      "desc": "Gültig für bis zu 5 Personen",
+                      "prc": 1320,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "Komfortzuschlag",
+                      "desc": "1. Klasse oder AST-Verkehr",
+                      "prc": 170,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "Monatskarte",
+                      "prc": 7500,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "Schülermonatskarte",
+                      "prc": 5550,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "Schülerwochenkarte",
+                      "prc": 1850,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "SchülerFreizeitKarte",
+                      "desc": "VSN-Tarif",
+                      "prc": 1280,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "ABO-Karte",
+                      "desc": "Gültig mindestens 12 Monate",
+                      "prc": 6250,
+                      "cur": "EUR"
+                    },
+                    {
+                      "name": "Fahrradmonatskarte (nur Zug)",
+                      "prc": 2500,
+                      "cur": "EUR"
+                    }
+                  ]
+                }
+              ],
+              "bkgData": {
+                "common": {
+                  "FEL": [
+                    {
+                      "XV": [
+                        "20190801",
+                        "0"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "200"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "281"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "200"
+                      ],
+                      "ON": [
+                        "Göttingen"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "281"
+                      ],
+                      "ON": [
+                        "Lenglern"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "2"
+                      ],
+                      "ON": [
+                        "2"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "8000128"
+                      ],
+                      "ON": [
+                        "Göttingen"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "0"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "Einzelfahrschein",
+                        "Gültig für Einzelpersonen"
+                      ],
+                      "PN": [
+                        "Einzelfahrschein"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "Einzelfahrschein Kinder",
+                        "6 - 14 Jahre"
+                      ],
+                      "PN": [
+                        "Einzelfahrschein Kinder"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "4er Karte",
+                        ""
+                      ],
+                      "PN": [
+                        "4er Karte"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "4er Karte Kinder",
+                        ""
+                      ],
+                      "PN": [
+                        "4er Karte Kinder"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "7-Tage-Karte",
+                        "Gültig 7 aufeinanderfolgende Tag, Mitnahmemöglichkeit"
+                      ],
+                      "PN": [
+                        "7-Tage-Karte"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "8er Karte",
+                        "VSN-Tarif"
+                      ],
+                      "PN": [
+                        "8er Karte"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "8er Karte Kinder",
+                        "VSN-Tarif"
+                      ],
+                      "PN": [
+                        "8er Karte Kinder"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "Tageskarte",
+                        ""
+                      ],
+                      "PN": [
+                        "Tageskarte"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "Fahrradtageskarte (nur Zug)",
+                        ""
+                      ],
+                      "PN": [
+                        "Fahrradtageskarte (nur Zug)"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "Kleingruppenkarte",
+                        "Gültig für bis zu 5 Personen"
+                      ],
+                      "PN": [
+                        "Kleingruppenkarte"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "Komfortzuschlag",
+                        "1. Klasse oder AST-Verkehr"
+                      ],
+                      "PN": [
+                        "Komfortzuschlag"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "Monatskarte",
+                        ""
+                      ],
+                      "PN": [
+                        "Monatskarte"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "Schülermonatskarte",
+                        ""
+                      ],
+                      "PN": [
+                        "Schülermonatskarte"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "Schülerwochenkarte",
+                        ""
+                      ],
+                      "PN": [
+                        "Schülerwochenkarte"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "SchülerFreizeitKarte",
+                        "VSN-Tarif"
+                      ],
+                      "PN": [
+                        "SchülerFreizeitKarte"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "ABO-Karte",
+                        "Gültig mindestens 12 Monate"
+                      ],
+                      "PN": [
+                        "ABO-Karte"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    },
+                    {
+                      "ID": [
+                        "-1"
+                      ],
+                      "ON": [
+                        "Fahrradmonatskarte (nur Zug)",
+                        ""
+                      ],
+                      "PN": [
+                        "Fahrradmonatskarte (nur Zug)"
+                      ],
+                      "XV": [
+                        "-1"
+                      ]
+                    }
+                  ]
+                },
+                "BOG": {
+                  "BOGL": [
+                    {
+                      "P": "~0-",
+                      "BOL": [
+                        {
+                          "P": "~0-.0-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 330,
+                            "VR": 700
+                          },
+                          "PRD": 8,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.1-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 220,
+                            "VR": 700
+                          },
+                          "PRD": 9,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.2-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 1150,
+                            "VR": 700
+                          },
+                          "PRD": 10,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.3-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 770,
+                            "VR": 700
+                          },
+                          "PRD": 11,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.4-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 2500,
+                            "VR": 700
+                          },
+                          "PRD": 12,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.5-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 2260,
+                            "VR": 700
+                          },
+                          "PRD": 13,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.6-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 1490,
+                            "VR": 700
+                          },
+                          "PRD": 14,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.7-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 700,
+                            "VR": 700
+                          },
+                          "PRD": 15,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.8-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 450,
+                            "VR": 700
+                          },
+                          "PRD": 16,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.9-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 1320,
+                            "VR": 700
+                          },
+                          "PRD": 17,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.10-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 170,
+                            "VR": 700
+                          },
+                          "PRD": 18,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.11-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 7500,
+                            "VR": 700
+                          },
+                          "PRD": 19,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.12-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 5550,
+                            "VR": 700
+                          },
+                          "PRD": 20,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.13-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 1850,
+                            "VR": 700
+                          },
+                          "PRD": 21,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.14-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 1280,
+                            "VR": 700
+                          },
+                          "PRD": 22,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.15-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 6250,
+                            "VR": 700
+                          },
+                          "PRD": 23,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        },
+                        {
+                          "P": "~0-.16-",
+                          "VT": "VBN-1",
+                          "FS": "",
+                          "DV": 7,
+                          "PRC": {
+                            "CUR": "EUR",
+                            "AMT": 2500,
+                            "VR": 700
+                          },
+                          "PRD": 24,
+                          "FP": {
+                            "NV": [
+                              {
+                                "N": "OKat"
+                              },
+                              {
+                                "N": "UKat"
+                              }
+                            ]
+                          },
+                          "LVL": 5,
+                          "SV": {
+                            "OL": 1,
+                            "OS": 6,
+                            "DL": 2
+                          },
+                          "TV": {
+                            "BD": "20200809",
+                            "BT": "071000"
+                          },
+                          "FF": false
+                        }
+                      ],
+                      "DESCR": [
+                        "2",
+                        ""
+                      ],
+                      "OPT": false,
+                      "ALT": true,
+                      "SEQ": false
+                    }
+                  ],
+                  "OPT": false,
+                  "ALT": true,
+                  "SEQ": false
+                },
+                "errCode": 0,
+                "errMsg": "no relation between 31520128 and 31523644 on 20200809 for bits 2"
+              },
+              "totalPrice": {
+                "amount": 330,
+                "currency": "EUR",
+                "prefix": "ab"
+              }
+            },
+            "ovwTrfRefL": [
+              {
+                "type": "F",
+                "fareSetX": 0,
+                "fareX": 0
+              }
+            ],
+            "msgL": [
+              {
+                "type": "REM",
+                "remX": 3,
+                "sty": "M",
+                "tagL": [
+                  "SUM_HOME_CON_L"
+                ],
+                "sort": 294649856,
+                "persist": false
+              }
+            ],
+            "conSubscr": "F",
+            "recState": "U",
+            "cksum": "f9c61a81_3",
+            "cksumDti": "dc729302_3"
+          }
+        ],
+        "outCtxScrB": "2|OB|MT#11#346030#346030#346039#346039#0#0#5#345464#1#-2147483646#0#1#2|PDH#33157b8067374584d09ef5c267b0afdd|RD#8082020|RT#214447|US#1",
+        "outCtxScrF": "2|OF|MT#11#346030#346030#346039#346039#0#0#5#345464#1#-2147483646#0#1#2|PDH#33157b8067374584d09ef5c267b0afdd|RD#8082020|RT#214447|US#1",
+        "fpB": "20191215",
+        "fpE": "20201212",
+        "planrtTS": "1596915849",
+        "outConGrpL": [
+          {
+            "name": "Alle Verbindungen",
+            "icoX": 7,
+            "grpid": "cl_all",
+            "conScoringL": [
+              {
+                "type": "DT",
+                "conScoreL": [
+                  {
+                    "score": 7714182376550563839,
+                    "scoreS": "07714182376550563839",
+                    "conRefL": [
+                      0
+                    ]
+                  }
+                ],
+                "name": "Abfahrtszeit"
+              },
+              {
+                "type": "AT",
+                "conScoreL": [
+                  {
+                    "score": 7714142794131963903,
+                    "scoreS": "07714142794131963903",
+                    "conRefL": [
+                      0
+                    ]
+                  }
+                ],
+                "name": "Ankunftszeit"
+              },
+              {
+                "type": "TI",
+                "conScoreL": [
+                  {
+                    "score": 9223331734798467071,
+                    "scoreS": "09223331734798467071",
+                    "conRefL": [
+                      0
+                    ]
+                  }
+                ],
+                "name": "Dauer"
+              }
+            ],
+            "initScoringType": "DT"
+          }
+        ]
+      }
+    }
+  ]
+}
