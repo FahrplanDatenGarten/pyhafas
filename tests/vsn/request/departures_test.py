@@ -11,4 +11,4 @@ def test_vsn_departures_request():
         date=datetime.datetime.now(),
         max_trips=5
     )
-    assert len(departures) <= 5
+    assert departures
