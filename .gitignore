@@ -6,3 +6,4 @@ dist
 *.egg*
 .idea
 .mypy_cache
+.coverage
