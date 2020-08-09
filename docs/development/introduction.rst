@@ -13,9 +13,8 @@ If you need help you can always write to us. Good ways for that are on the GitHu
 Testing
 -------
 Before you submit your pull request please run the tests. They are also automatically run when you create the pull request.
-You can execute the tests with the following command:
+You can execute the tests with the following command in the root directory of the project:
 
 .. code:: console
 
-    $ cd tests
     $ pytest
