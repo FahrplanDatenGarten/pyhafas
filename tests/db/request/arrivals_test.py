@@ -4,7 +4,7 @@ from pyhafas import HafasClient
 from pyhafas.profile import DBProfile
 
 
-def test_db_departures_request():
+def test_db_arrivals_request():
     client = HafasClient(DBProfile())
     arrivals = client.arrivals(
         station="8011160",

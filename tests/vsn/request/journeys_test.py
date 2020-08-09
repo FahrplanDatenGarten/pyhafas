@@ -4,7 +4,7 @@ from pyhafas import HafasClient
 from pyhafas.profile import VSNProfile
 
 
-def test_vsn_departures_request():
+def test_vsn_journeys_request():
     client = HafasClient(VSNProfile())
     journeys = client.journeys(
         destination="009033817",

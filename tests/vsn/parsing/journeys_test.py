@@ -56,9 +56,9 @@ def test_vsn_journeys_parsing():
                     cancelled=False,
                     distance=None,
                     departure_delay=datetime.timedelta(seconds=0),
-                    departure_platform=None,
+                    departure_platform='4',
                     arrival_delay=datetime.timedelta(seconds=60),
-                    arrival_platform=None,
+                    arrival_platform='1',
                     stopovers=[
                         Stopover(
                             stop=Station(

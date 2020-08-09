@@ -6,7 +6,7 @@ from pyhafas.types.fptf import Station
 from tests.types import PyTestHafasResponse
 
 
-def test_db_locatons_parsing():
+def test_db_locations_parsing():
     directory = os.path.dirname(os.path.realpath(__file__))
     raw_hafas_json_file = open(directory + "/locations_raw.json", "r")
     hafas_response = PyTestHafasResponse(raw_hafas_json_file.read())

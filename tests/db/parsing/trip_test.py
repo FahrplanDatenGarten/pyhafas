@@ -7,7 +7,7 @@ from pyhafas.types.fptf import Leg, Mode, Station, Stopover
 from tests.types import PyTestHafasResponse
 
 
-def test_db_journeys_parsing():
+def test_db_trips_parsing():
     directory = os.path.dirname(os.path.realpath(__file__))
     raw_hafas_json_file = open(directory + "/trip_raw.json", "r")
     hafas_response = PyTestHafasResponse(raw_hafas_json_file.read())
