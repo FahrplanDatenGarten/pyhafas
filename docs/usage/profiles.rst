@@ -68,3 +68,8 @@ anruf_sammel_taxi     Group Taxi
 Default Products
 ^^^^^^^^^^^^^^^^
 All available products specified above are enabled by default.
+
+Specialities
+^^^^^^^^^^^^
+
+* The `max_trips` filter in station board (departures/arrival) requests seems not to work

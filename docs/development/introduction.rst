@@ -9,3 +9,12 @@ We want to give you an easy start with coding on pyHaFAS, so please read the pag
 Most of pyHaFAS code is documented with docstrings in the code directly. Most of these docstrings are also rendered in this HTML docs on the page :doc:`/development/api`.
 
 If you need help you can always write to us. Good ways for that are on the GitHub Issue or if the question is general, join our matrix-room `#pyhafas:matrix.org <https://matrix.to/#/#pyhafas:matrix.org>`_
+
+Testing
+-------
+Before you submit your pull request please run the tests. They are also automatically run when you create the pull request.
+You can execute the tests with the following command in the root directory of the project:
+
+.. code:: console
+
+    $ pytest
