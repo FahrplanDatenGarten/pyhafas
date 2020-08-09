@@ -70,7 +70,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                             date) if stopover.get('dTimeR') is not None else None,
                         departure_platform=stopover.get(
                             'dPlatfR',
-                            stopover.get('dPlatfS')),
+                            stopover.get('dPlatfS', stopover.get('dPltfR', stopover.get('dPltfS', {})).get('txt'))),
                         arrival=self.parse_datetime(
                             stopover['aTimeS'],
                             date) if stopover.get('aTimeS') is not None else None,
@@ -81,7 +81,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                             date) if stopover.get('aTimeR') is not None else None,
                         arrival_platform=stopover.get(
                             'aPlatfR',
-                            stopover.get('aPlatfS')),
+                            stopover.get('aPlatfS', stopover.get('aPltfR', stopover.get('aPltfS', {})).get('txt'))),
                     ))
             return Leg(
                 id=journey['jid'],
@@ -99,7 +99,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                     date) if departure.get('dTimeR') is not None else None,
                 departure_platform=departure.get(
                     'dPlatfR',
-                    departure.get('dPlatfS')),
+                    departure.get('dPlatfS', departure.get('dPltfR', departure.get('dPltfS', {})).get('txt'))),
                 arrival=self.parse_datetime(
                     arrival['aTimeS'],
                     date),
@@ -110,7 +110,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                     date) if arrival.get('aTimeR') is not None else None,
                 arrival_platform=arrival.get(
                     'aPlatfR',
-                    arrival.get('aPlatfS')),
+                    arrival.get('aPlatfS', arrival.get('aPltfR', arrival.get('aPltfS', {})).get('txt'))),
                 stopovers=leg_stopovers)
 
     def parse_legs(
