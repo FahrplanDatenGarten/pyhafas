@@ -3,9 +3,4 @@ python:
   - 3.6
   - 3.7
   - 3.8
-before_install:
-  - pip install codecov
-  - pip install pytest-cov
-script: pytest --cov=pyhafas # run tests
-after_success:
-  - codecov
+script: pytest # run tests
