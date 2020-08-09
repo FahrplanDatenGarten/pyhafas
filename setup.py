@@ -32,7 +32,7 @@ setup(
     license='MIT',
     install_requires=['requests==2.24.*',
                       'pycryptodome==3.9.*'],
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(include=['pyhafas', 'pyhafas.*']),
     zip_safe=True,
     classifiers=[
         'Development Status :: 4 - Beta',
