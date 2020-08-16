@@ -100,7 +100,8 @@ class HafasClient:
             via: List[Union[Station, str]] = [],
             min_change_time: int = 0,
             max_changes: int = -1,
-            products: Dict[str, bool] = {}
+            products: Dict[str, bool] = {},
+            max_journeys: int = -1
     ) -> List[Journey]:
         """
         Returns possible journeys between two destinations
@@ -114,6 +115,7 @@ class HafasClient:
         :param min_change_time: (optional) Minimum transfer/change time at each station. Default is the default that HaFAS specifies internal.
         :param max_changes: (optional) Maximum number of changes. Default is unlimited.
         :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.
+        :param max_journeys: (optional) Maximum number of returned journeys. Default is the default that HaFAS specifies internal.
         :return: List of FPTF `Journey` objects
         """
         if not isinstance(origin, Station):
@@ -131,7 +133,8 @@ class HafasClient:
             date,
             min_change_time,
             max_changes,
-            products
+            products,
+            max_journeys
         )
         res = self.profile.request(body)
 

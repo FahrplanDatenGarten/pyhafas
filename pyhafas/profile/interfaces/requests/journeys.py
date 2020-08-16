@@ -16,7 +16,8 @@ class JourneysRequestInterface(abc.ABC):
             date: datetime.datetime,
             min_change_time: int,
             max_changes: int,
-            products: Dict[str, bool]
+            products: Dict[str, bool],
+            max_journeys: int
     ) -> dict:
         """
         Creates the HaFAS request body for a journeys request
@@ -28,6 +29,7 @@ class JourneysRequestInterface(abc.ABC):
         :param min_change_time: Minimum transfer/change time at each station
         :param max_changes: Maximum number of changes
         :param products: Allowed products (a product is a mean of transport like ICE,IC)
+        :param max_journeys: Maximum number of returned journeys
         :return: Request body for HaFAS
         """
         pass

@@ -17,7 +17,8 @@ class BaseJourneysRequest(JourneysRequestInterface):
             date: datetime.datetime,
             min_change_time: int,
             max_changes: int,
-            products: Dict[str, bool]
+            products: Dict[str, bool],
+            max_journeys: int
     ) -> dict:
         """
         Creates the HaFAS request body for a journeys request
@@ -29,6 +30,7 @@ class BaseJourneysRequest(JourneysRequestInterface):
         :param min_change_time: Minimum transfer/change time at each station
         :param max_changes: Maximum number of changes
         :param products: Allowed products (a product is a mean of transport like ICE,IC)
+        :param max_journeys: Maximum number of returned journeys
         :return: Request body for HaFAS
         """
         # TODO: find out, what commented-out values mean and implement options
@@ -55,6 +57,7 @@ class BaseJourneysRequest(JourneysRequestInterface):
                 ],
                 'minChgTime': min_change_time,
                 'maxChg': max_changes,
+                'numF': max_journeys,
                 # 'getPasslist': False,
                 # 'gisFltrL': [],
                 # 'getTariff': False,
@@ -62,7 +65,6 @@ class BaseJourneysRequest(JourneysRequestInterface):
                 # 'getPT': True,
                 # 'getIV': False,
                 # 'getPolyline': False,
-                # 'numF': 1,
                 # 'outFrwd': True,
                 # 'trfReq': {
                 #    'jnyCl': 2,
