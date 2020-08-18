@@ -1,5 +1,5 @@
 import datetime
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces.requests.station_board import \
@@ -17,7 +17,8 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
             date: datetime.datetime,
             max_trips: int,
             duration: int,
-            products: Dict[str, bool]
+            products: Dict[str, bool],
+            direction: Optional[Station]
     ) -> dict:
         """
         Creates the HaFAS request for a station board request (departure/arrival)
@@ -28,6 +29,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
         :param max_trips: Maximum number of trips that can be returned
         :param products: Allowed products (e.g. ICE,IC)
         :param duration: Time in which trips are searched
+        :param direction: Direction (end) station of the train. If none, filter will not be applied
         :return: Request body for HaFAS
         """
         # TODO: More options
@@ -37,6 +39,9 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
                 'stbLoc': {
                     'lid': 'A=1@L={}@'.format(station.id)
                 },
+                'dirLoc': {
+                    'lid': 'A=1@L={}@'.format(direction.id)
+                } if direction is not None else None,
                 'maxJny': max_trips,
                 'date': date.strftime("%Y%m%d"),
                 'time': date.strftime("%H%M%S"),

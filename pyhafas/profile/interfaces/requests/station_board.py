@@ -1,6 +1,6 @@
 import abc
 import datetime
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from pyhafas.types.fptf import Station, StationBoardLeg
 from pyhafas.types.hafas_response import HafasResponse
@@ -15,7 +15,8 @@ class StationBoardRequestInterface(abc.ABC):
             date: datetime.datetime,
             max_trips: int,
             duration: int,
-            products: Dict[str, bool]
+            products: Dict[str, bool],
+            direction: Optional[Station]
     ) -> dict:
         """
         Creates the HaFAS request for Station Board (departure/arrival)
@@ -26,6 +27,7 @@ class StationBoardRequestInterface(abc.ABC):
         :param max_trips: Maximum number of trips that can be returned
         :param products: Allowed products (a product is a mean of transport like ICE,IC)
         :param duration: Time in which trips are searched
+        :param direction: Direction (end) station of the train. If none, filter will not be applied
         :return: Request body for HaFAS
         """
         pass

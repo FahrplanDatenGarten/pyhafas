@@ -1,5 +1,5 @@
 import datetime
-from typing import Dict, List, Union
+from typing import Dict, List, Optional, Union
 
 from pyhafas.profile import ProfileInterface
 from pyhafas.types.fptf import Journey, Leg, Station, StationBoardLeg
@@ -30,7 +30,8 @@ class HafasClient:
             date: datetime.datetime,
             max_trips: int = -1,
             duration: int = -1,
-            products: Dict[str, bool] = {}) -> List[StationBoardLeg]:
+            products: Dict[str, bool] = {},
+            direction: Optional[Union[Station, str]] = None) -> List[StationBoardLeg]:
         """
         Returns departing trips at the specified station
 
@@ -41,10 +42,14 @@ class HafasClient:
         :param max_trips: (optional) Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param duration: (optional) Minutes after `date` in which is search is made. Default is "whatever HaFAS wants"
         :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.
+        :param direction: (optional) Direction (end) station of the vehicle. Default is any direction station is allowed
         :return: List of FPTF `StationBoardLeg` objects with departing trips
         """
         if not isinstance(station, Station):
             station = Station(id=station)
+
+        if not isinstance(direction, Station) and direction is not None:
+            direction = Station(id=direction)
 
         body = self.profile.format_station_board_request(
             station,
@@ -52,7 +57,8 @@ class HafasClient:
             date,
             max_trips,
             duration,
-            products
+            products,
+            direction
         )
         res = self.profile.request(body)
 
@@ -64,7 +70,8 @@ class HafasClient:
             date: datetime.datetime,
             max_trips: int = -1,
             duration: int = -1,
-            products: Dict[str, bool] = {}) -> List[StationBoardLeg]:
+            products: Dict[str, bool] = {},
+            direction: Optional[Union[Station, str]] = None) -> List[StationBoardLeg]:
         """
         Returns arriving trips at the specified station
 
@@ -75,10 +82,14 @@ class HafasClient:
         :param max_trips: (optional) Maximum number of trips to be returned. Default is "whatever HaFAS wants"
         :param duration: (optional) Minutes after `date` in which is search is made. Default is "whatever HaFAS wants"
         :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.
+        :param direction: (optional) Direction (end) station of the vehicle. Default is any direction station is allowed
         :return: List of FPTF `StationBoardLeg` objects with arriving trips
         """
         if not isinstance(station, Station):
             station = Station(id=station)
+
+        if not isinstance(direction, Station) and direction is not None:
+            direction = Station(id=direction)
 
         body = self.profile.format_station_board_request(
             station,
@@ -86,7 +97,8 @@ class HafasClient:
             date,
             max_trips,
             duration,
-            products
+            products,
+            direction
         )
         res = self.profile.request(body)
 
