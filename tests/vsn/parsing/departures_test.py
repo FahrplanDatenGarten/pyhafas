@@ -21,7 +21,7 @@ def test_vsn_departures_parsing():
             name='Bremen Hbf',
             latitude=53.083478,
             longitude=8.813833),
-        date_time=datetime.datetime(2020, 8, 1, 17, 44),
+        date_time=VSNProfile().timezone.localize(datetime.datetime(2020, 8, 1, 17, 44)),
         cancelled=False,
         delay=datetime.timedelta(
             seconds=3480),

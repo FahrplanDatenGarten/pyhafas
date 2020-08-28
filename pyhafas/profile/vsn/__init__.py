@@ -1,3 +1,5 @@
+import pytz
+
 from pyhafas.profile import BaseProfile
 from pyhafas.profile.vsn.requests.journey import VSNJourneyRequest
 
@@ -13,7 +15,7 @@ class VSNProfile(VSNJourneyRequest, BaseProfile):
     addMicMac = True
 
     locale = 'de-DE'
-    timezone = 'Europe/Berlin'
+    timezone = pytz.timezone('Europe/Berlin')
 
     requestBody = {
         'client': {

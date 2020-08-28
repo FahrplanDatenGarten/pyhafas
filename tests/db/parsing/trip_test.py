@@ -25,8 +25,8 @@ def test_db_trips_parsing():
             latitude=50.809513,
             longitude=6.482454
         ),
-        departure=datetime.datetime(2020, 8, 5, 12, 2),
-        arrival=datetime.datetime(2020, 8, 5, 13, 17),
+        departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 2)),
+        arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 17)),
         mode=Mode.TRAIN,
         name='S 19',
         cancelled=False,
@@ -47,7 +47,7 @@ def test_db_trips_parsing():
                 arrival=None,
                 arrival_delay=None,
                 arrival_platform=None,
-                departure=datetime.datetime(2020, 8, 5, 12, 2),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 2)),
                 departure_delay=None,
                 departure_platform='2'
             ), Stopover(
@@ -58,10 +58,10 @@ def test_db_trips_parsing():
                     longitude=7.203029
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 6),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 6)),
                 arrival_delay=None,
                 arrival_platform='1',
-                departure=datetime.datetime(2020, 8, 5, 12, 7),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 7)),
                 departure_delay=None,
                 departure_platform='1'
             ), Stopover(
@@ -72,10 +72,10 @@ def test_db_trips_parsing():
                     longitude=7.150892
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 12),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 12)),
                 arrival_delay=None,
                 arrival_platform='1',
-                departure=datetime.datetime(2020, 8, 5, 12, 13),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 13)),
                 departure_delay=None,
                 departure_platform='1'
             ), Stopover(
@@ -86,10 +86,10 @@ def test_db_trips_parsing():
                     longitude=7.114917
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 15),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 15)),
                 arrival_delay=None,
                 arrival_platform='1',
-                departure=datetime.datetime(2020, 8, 5, 12, 16),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 16)),
                 departure_delay=None,
                 departure_platform='1'
             ), Stopover(
@@ -100,10 +100,10 @@ def test_db_trips_parsing():
                     longitude=7.079266
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 19),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 19)),
                 arrival_delay=None,
                 arrival_platform='1',
-                departure=datetime.datetime(2020, 8, 5, 12, 19),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 19)),
                 departure_delay=None,
                 departure_platform='1'
             ), Stopover(
@@ -114,10 +114,10 @@ def test_db_trips_parsing():
                     longitude=7.119304
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 23),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 23)),
                 arrival_delay=None,
                 arrival_platform='2',
-                departure=datetime.datetime(2020, 8, 5, 12, 24),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 24)),
                 departure_delay=None,
                 departure_platform='2'
             ), Stopover(
@@ -128,10 +128,10 @@ def test_db_trips_parsing():
                     longitude=7.051264
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 29),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 29)),
                 arrival_delay=None,
                 arrival_platform='1',
-                departure=datetime.datetime(2020, 8, 5, 12, 29),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 29)),
                 departure_delay=None,
                 departure_platform='1'
             ), Stopover(
@@ -141,10 +141,10 @@ def test_db_trips_parsing():
                     latitude=50.935856,
                     longitude=6.996736),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 34),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 34)),
                 arrival_delay=None,
                 arrival_platform='2',
-                departure=datetime.datetime(2020, 8, 5, 12, 34),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 34)),
                 departure_delay=None,
                 departure_platform='2'
             ), Stopover(
@@ -154,10 +154,10 @@ def test_db_trips_parsing():
                     latitude=50.941303,
                     longitude=6.97464),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 36),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 36)),
                 arrival_delay=None,
                 arrival_platform='10',
-                departure=datetime.datetime(2020, 8, 5, 12, 37),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 37)),
                 departure_delay=None,
                 departure_platform='10'
             ), Stopover(
@@ -168,10 +168,10 @@ def test_db_trips_parsing():
                     longitude=6.95873
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 39),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 39)),
                 arrival_delay=None,
                 arrival_platform='11 B-C',
-                departure=datetime.datetime(2020, 8, 5, 12, 40),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 40)),
                 departure_delay=None,
                 departure_platform='11 B-C'
             ), Stopover(
@@ -182,10 +182,10 @@ def test_db_trips_parsing():
                     longitude=6.952563
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 42),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 42)),
                 arrival_delay=None,
                 arrival_platform='1',
-                departure=datetime.datetime(2020, 8, 5, 12, 42),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 42)),
                 departure_delay=None,
                 departure_platform='1'
             ), Stopover(
@@ -195,10 +195,10 @@ def test_db_trips_parsing():
                     latitude=50.951533,
                     longitude=6.91728),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 45),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 45)),
                 arrival_delay=None,
                 arrival_platform='2',
-                departure=datetime.datetime(2020, 8, 5, 12, 46),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 46)),
                 departure_delay=None,
                 departure_platform='2'
             ), Stopover(
@@ -209,10 +209,10 @@ def test_db_trips_parsing():
                     longitude=6.8882
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 48),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 48)),
                 arrival_delay=None,
                 arrival_platform='2',
-                departure=datetime.datetime(2020, 8, 5, 12, 49),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 49)),
                 departure_delay=None,
                 departure_platform='2'
             ), Stopover(
@@ -223,10 +223,10 @@ def test_db_trips_parsing():
                     longitude=6.834436
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 51),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 51)),
                 arrival_delay=None,
                 arrival_platform='2',
-                departure=datetime.datetime(2020, 8, 5, 12, 52),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 52)),
                 departure_delay=None,
                 departure_platform='2'
             ), Stopover(
@@ -237,10 +237,10 @@ def test_db_trips_parsing():
                     longitude=6.815136
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 53),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 53)),
                 arrival_delay=None,
                 arrival_platform='2',
-                departure=datetime.datetime(2020, 8, 5, 12, 54),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 54)),
                 departure_delay=None,
                 departure_platform='2'
             ), Stopover(
@@ -251,10 +251,10 @@ def test_db_trips_parsing():
                     longitude=6.777849
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 12, 56),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 56)),
                 arrival_delay=None,
                 arrival_platform='2',
-                departure=datetime.datetime(2020, 8, 5, 12, 57),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 57)),
                 departure_delay=None,
                 departure_platform='2'
             ), Stopover(
@@ -265,10 +265,10 @@ def test_db_trips_parsing():
                     longitude=6.713495
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 13, 0),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 0)),
                 arrival_delay=None,
                 arrival_platform='2',
-                departure=datetime.datetime(2020, 8, 5, 13, 1),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 1)),
                 departure_delay=None,
                 departure_platform='2'
             ), Stopover(
@@ -278,10 +278,10 @@ def test_db_trips_parsing():
                     latitude=50.903711,
                     longitude=6.681107
                 ), cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 13, 3),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 3)),
                 arrival_delay=None,
                 arrival_platform='1',
-                departure=datetime.datetime(2020, 8, 5, 13, 3),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 3)),
                 departure_delay=None,
                 departure_platform='1'
             ), Stopover(
@@ -292,10 +292,10 @@ def test_db_trips_parsing():
                     longitude=6.574513
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 13, 9),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 9)),
                 arrival_delay=None,
                 arrival_platform='2',
-                departure=datetime.datetime(2020, 8, 5, 13, 10),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 10)),
                 departure_delay=None,
                 departure_platform='2'
             ), Stopover(
@@ -306,10 +306,10 @@ def test_db_trips_parsing():
                     longitude=6.518051
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 13, 13),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 13)),
                 arrival_delay=None,
                 arrival_platform='2',
-                departure=datetime.datetime(2020, 8, 5, 13, 13),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 13)),
                 departure_delay=None,
                 departure_platform='2'
             ),
@@ -321,7 +321,7 @@ def test_db_trips_parsing():
                     longitude=6.482454
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 5, 13, 17),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 17)),
                 arrival_delay=None,
                 arrival_platform='5',
                 departure=None,

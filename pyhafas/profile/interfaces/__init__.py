@@ -1,10 +1,11 @@
 from abc import ABC
 from typing import Dict, List
 
+import pytz
+
+from pyhafas.profile.interfaces.helper.date_time import DateTimeHelperInterface
 from pyhafas.profile.interfaces.helper.format_products_filter import \
     FormatProductsFilterHelperInterface
-from pyhafas.profile.interfaces.helper.parse_date_time import \
-    ParseDateTimeHelperInterface
 from pyhafas.profile.interfaces.helper.parse_leg import ParseLegHelperInterface
 from pyhafas.profile.interfaces.helper.parse_lid import ParseLidHelperInterface
 from pyhafas.profile.interfaces.helper.request import RequestHelperInterface
@@ -22,7 +23,7 @@ class ProfileInterface(
         RequestHelperInterface,
         FormatProductsFilterHelperInterface,
         ParseLidHelperInterface,
-        ParseDateTimeHelperInterface,
+        DateTimeHelperInterface,
         ParseLegHelperInterface,
         LocationRequestInterface,
         JourneyRequestInterface,
@@ -50,11 +51,8 @@ class ProfileInterface(
 
     Examples: https://tools.ietf.org/html/bcp47#appendix-A
     """
-    timezone: str
-    """(used in future) Timezone HaFAS lives in. Should be part of tzdata.
-
-    Example: "Europe/Berlin"
-    """
+    timezone: pytz.tzinfo
+    """Timezone HaFAS lives in. Should be a `pytz` `timezone` object"""
 
     requestBody: dict
     """Static part of the request body sent to HaFAS. Normally contains informations about the client and another authentication"""

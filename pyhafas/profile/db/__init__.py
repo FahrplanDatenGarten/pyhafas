@@ -1,3 +1,5 @@
+import pytz
+
 from pyhafas.profile.base import BaseProfile
 
 
@@ -12,7 +14,7 @@ class DBProfile(BaseProfile):
     addChecksum = True
 
     locale = 'de-DE'
-    timezone = 'Europe/Berlin'
+    timezone = pytz.timezone('Europe/Berlin')
 
     requestBody = {
         'client': {

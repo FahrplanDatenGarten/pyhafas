@@ -2,7 +2,7 @@ import abc
 import datetime
 
 
-class ParseDateTimeHelperInterface(abc.ABC):
+class DateTimeHelperInterface(abc.ABC):
     @abc.abstractmethod
     def parse_datetime(
             self,
@@ -35,5 +35,15 @@ class ParseDateTimeHelperInterface(abc.ABC):
 
         :param date_string: Date returned from HaFAS
         :return: Parsed date object
+        """
+        pass
+
+    @abc.abstractmethod
+    def transform_datetime_parameter_timezone(self, date_time: datetime.datetime) -> datetime.datetime:
+        """
+        Transfers datetime parameters incoming by the user to the profile timezone
+
+        :param date_time: datetime parameter incoming by user. Can be timezone aware or unaware
+        :return: Timezone aware datetime object in profile timezone
         """
         pass

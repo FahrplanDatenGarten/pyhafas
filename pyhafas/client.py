@@ -51,6 +51,8 @@ class HafasClient:
         if not isinstance(direction, Station) and direction is not None:
             direction = Station(id=direction)
 
+        date = self.profile.transform_datetime_parameter_timezone(date)
+
         body = self.profile.format_station_board_request(
             station,
             StationBoardRequestType.DEPARTURE,
@@ -90,6 +92,8 @@ class HafasClient:
 
         if not isinstance(direction, Station) and direction is not None:
             direction = Station(id=direction)
+
+        date = self.profile.transform_datetime_parameter_timezone(date)
 
         body = self.profile.format_station_board_request(
             station,
@@ -137,6 +141,8 @@ class HafasClient:
         for via_station in via:
             if not isinstance(via_station, Station):
                 via[via.index(via_station)] = Station(via_station)
+
+        date = self.profile.transform_datetime_parameter_timezone(date)
 
         body = self.profile.format_journeys_request(
             origin,

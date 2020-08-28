@@ -17,9 +17,9 @@ format_products_filter
    :undoc-members:
    :show-inheritance:
 
-parse_date_time
+date_time
 ^^^^^^^^^^^^^^^
-.. automodule:: pyhafas.profile.interfaces.helper.parse_date_time
+.. automodule:: pyhafas.profile.interfaces.helper.date_time
    :members:
    :undoc-members:
    :show-inheritance:

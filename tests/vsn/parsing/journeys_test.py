@@ -37,20 +37,20 @@ def test_vsn_journeys_parsing():
                         latitude=51.588428,
                         longitude=9.871199
                     ),
-                    departure=datetime.datetime(
+                    departure=VSNProfile().timezone.localize(datetime.datetime(
                         2020,
                         8,
                         9,
                         7,
                         10
-                    ),
-                    arrival=datetime.datetime(
+                    )),
+                    arrival=VSNProfile().timezone.localize(datetime.datetime(
                         2020,
                         8,
                         9,
                         7,
                         19
-                    ),
+                    )),
                     mode=Mode.TRAIN,
                     name='RB85',
                     cancelled=False,
@@ -71,12 +71,12 @@ def test_vsn_journeys_parsing():
                             arrival=None,
                             arrival_delay=None,
                             arrival_platform=None,
-                            departure=datetime.datetime(
+                            departure=VSNProfile().timezone.localize(datetime.datetime(
                                 2020,
                                 8,
                                 9,
                                 7,
-                                10),
+                                10)),
                             departure_delay=datetime.timedelta(seconds=0),
                             departure_platform=None
                         ),
@@ -88,12 +88,12 @@ def test_vsn_journeys_parsing():
                                 longitude=9.871199
                             ),
                             cancelled=False,
-                            arrival=datetime.datetime(
+                            arrival=VSNProfile().timezone.localize(datetime.datetime(
                                 2020,
                                 8,
                                 9,
                                 7,
-                                19),
+                                19)),
                             arrival_delay=datetime.timedelta(seconds=60),
                             arrival_platform=None,
                             departure=None,

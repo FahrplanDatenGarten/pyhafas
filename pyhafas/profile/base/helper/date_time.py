@@ -1,11 +1,10 @@
 import datetime
 
 from pyhafas.profile import ProfileInterface
-from pyhafas.profile.interfaces.helper.parse_date_time import \
-    ParseDateTimeHelperInterface
+from pyhafas.profile.interfaces.helper.date_time import DateTimeHelperInterface
 
 
-class BaseParseDateTimeHelper(ParseDateTimeHelperInterface):
+class BaseDateTimeHelper(DateTimeHelperInterface):
     def parse_datetime(
             self: ProfileInterface,
             time_string: str,
@@ -26,13 +25,13 @@ class BaseParseDateTimeHelper(ParseDateTimeHelperInterface):
                 'Time string "{}" has wrong format'.format(time_string))
 
         dateOffset = int(time_string[:2]) if len(time_string) > 6 else 0
-        return datetime.datetime(
+        return self.timezone.localize(datetime.datetime(
             date.year,
             date.month,
             date.day,
             hour,
             minute,
-            second) + datetime.timedelta(days=dateOffset)
+            second) + datetime.timedelta(days=dateOffset))
 
     def parse_timedelta(
             self: ProfileInterface,
@@ -66,3 +65,18 @@ class BaseParseDateTimeHelper(ParseDateTimeHelperInterface):
         """
         dt = datetime.datetime.strptime(date_string, '%Y%m%d')
         return dt.date()
+
+    def transform_datetime_parameter_timezone(
+            self: ProfileInterface,
+            date_time: datetime.datetime) -> datetime.datetime:
+        """
+        Transfers datetime parameters incoming by the user to the profile timezone
+
+        :param date_time: datetime parameter incoming by user. Can be timezone aware or unaware
+        :return: Timezone aware datetime object in profile timezone
+        """
+        if date_time.tzinfo is not None and date_time.tzinfo.utcoffset(
+                date_time) is not None:
+            return date_time.astimezone(self.timezone)
+        else:
+            return self.timezone.localize(date_time)

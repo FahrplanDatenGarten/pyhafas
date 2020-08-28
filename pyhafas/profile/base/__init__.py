@@ -1,8 +1,8 @@
 from typing import Dict, List
 
+from pyhafas.profile.base.helper.date_time import BaseDateTimeHelper
 from pyhafas.profile.base.helper.format_products_filter import \
     BaseFormatProductsFilterHelper
-from pyhafas.profile.base.helper.parse_date_time import BaseParseDateTimeHelper
 from pyhafas.profile.base.helper.parse_leg import BaseParseLegHelper
 from pyhafas.profile.base.helper.parse_lid import BaseParseLidHelper
 from pyhafas.profile.base.helper.request import BaseRequestHelper
@@ -18,7 +18,7 @@ class BaseProfile(
         BaseRequestHelper,
         BaseFormatProductsFilterHelper,
         BaseParseLidHelper,
-        BaseParseDateTimeHelper,
+        BaseDateTimeHelper,
         BaseParseLegHelper,
         BaseLocationRequest,
         BaseJourneyRequest,

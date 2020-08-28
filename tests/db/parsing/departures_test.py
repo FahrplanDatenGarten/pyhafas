@@ -2,7 +2,6 @@ import datetime
 import os
 
 from pyhafas.profile import DBProfile
-from pyhafas.profile.vsn import VSNProfile
 from pyhafas.types.fptf import Station, StationBoardLeg
 
 from tests.types import PyTestHafasResponse
@@ -22,7 +21,7 @@ def test_db_departures_parsing():
             name='Berlin Hbf (tief)',
             latitude=52.525589,
             longitude=13.369549),
-        date_time=datetime.datetime(2020, 8, 5, 18, 16),
+        date_time=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 18, 16)),
         cancelled=False,
         delay=datetime.timedelta(
             seconds=0),

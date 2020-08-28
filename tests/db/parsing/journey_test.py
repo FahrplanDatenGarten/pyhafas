@@ -28,8 +28,8 @@ def test_db_journey_parsing():
                 name='Troisdorf',
                 latitude=50.813926,
                 longitude=7.150892),
-            departure=datetime.datetime(2020, 8, 8, 15, 7),
-            arrival=datetime.datetime(2020, 8, 8, 15, 12),
+            departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 8, 15, 7)),
+            arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 8, 15, 12)),
             mode=Mode.TRAIN,
             name='S 19',
             cancelled=False, distance=None,
@@ -48,7 +48,7 @@ def test_db_journey_parsing():
                 arrival=None,
                 arrival_delay=None,
                 arrival_platform=None,
-                departure=datetime.datetime(2020, 8, 8, 15, 7),
+                departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 8, 15, 7)),
                 departure_delay=datetime.timedelta(seconds=240),
                 departure_platform='1'
             ), Stopover(
@@ -59,7 +59,7 @@ def test_db_journey_parsing():
                     longitude=7.150892
                 ),
                 cancelled=False,
-                arrival=datetime.datetime(2020, 8, 8, 15, 12),
+                arrival=DBProfile().timezone.localize(datetime.datetime(2020, 8, 8, 15, 12)),
                 arrival_delay=datetime.timedelta(seconds=240),
                 arrival_platform='1',
                 departure=None,
