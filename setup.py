@@ -3,12 +3,8 @@
 import os
 import sys
 
-import setuptools
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup,find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -30,10 +26,9 @@ setup(
     author='Simeon Keske, Leo Maroni',
     author_email='dev@n0emis.eu, hello@em0lar.de',
     license='MIT',
-    install_requires=['requests==2.24.*',
-                      'pycryptodome==3.9.*',
-                      'pytz==2020.1'],
-    packages=setuptools.find_packages(include=['pyhafas', 'pyhafas.*']),
+    install_requires=['requests~=2.9',
+                      'pytz>=2013.6'],
+    packages=find_packages(include=['pyhafas', 'pyhafas.*']),
     zip_safe=True,
     classifiers=[
         'Development Status :: 4 - Beta',

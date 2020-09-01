@@ -1,8 +1,8 @@
-requests==2.24.*
-pycryptodome==3.9.*
-sphinx_autodoc_typehints==1.11.*
-sphinx-rtd-theme==0.5.*
-pytest==6.0.*
+requests~=2.9
+pytz>=2013.6
 
-pytz==2020.1
+pycryptodome~=3.9.8
+pytest~=6.0.1
 setuptools==47.1.0
+sphinx-rtd-theme==0.5.*
+sphinx_autodoc_typehints==1.11.0

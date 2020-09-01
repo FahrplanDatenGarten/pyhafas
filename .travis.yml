@@ -3,4 +3,15 @@ python:
   - 3.6
   - 3.7
   - 3.8
-script: pytest # run tests
+
+env:
+  - REQUESTS_VERSION="latest" PYTZ_VERSION="latest"
+  - REQUESTS_VERSION="latest" PYTZ_VERSION="oldest"
+  - REQUESTS_VERSION="oldest" PYTZ_VERSION="latest"
+  - REQUESTS_VERSION="oldest" PYTZ_VERSION="oldest"
+
+install:
+  - python setup.py install
+  - pip install tox-travis
+
+script: tox
