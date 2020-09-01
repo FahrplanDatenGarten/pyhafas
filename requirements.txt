@@ -4,5 +4,6 @@ pytz>=2013.6
 pycryptodome~=3.9.8
 pytest~=6.0.1
 setuptools==47.1.0
-sphinx-rtd-theme==0.5.*
-sphinx_autodoc_typehints==1.11.0
+sphinx-rtd-theme~=0.5.0
+sphinx_autodoc_typehints~=1.11.0
+Sphinx~=3.2.1
