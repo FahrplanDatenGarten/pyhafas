@@ -25,7 +25,7 @@ copyright = '2020 n0emis, em0lar'
 author = 'n0emis, em0lar'
 
 # The full version, including alpha/beta/rc tags
-release = '0.2.0'
+release = '0.3.0'
 
 
 # -- General configuration ---------------------------------------------------
