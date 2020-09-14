@@ -39,7 +39,9 @@ class DateTimeHelperInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def transform_datetime_parameter_timezone(self, date_time: datetime.datetime) -> datetime.datetime:
+    def transform_datetime_parameter_timezone(
+            self,
+            date_time: datetime.datetime) -> datetime.datetime:
         """
         Transfers datetime parameters incoming by the user to the profile timezone
 
