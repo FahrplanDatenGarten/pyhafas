@@ -51,7 +51,7 @@ class ProfileInterface(
 
     Examples: https://tools.ietf.org/html/bcp47#appendix-A
     """
-    timezone: pytz.tzinfo
+    timezone: pytz.tzinfo.tzinfo
     """Timezone HaFAS lives in. Should be a `pytz` `timezone` object"""
 
     requestBody: dict
