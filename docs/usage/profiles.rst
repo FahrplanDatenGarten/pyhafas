@@ -18,15 +18,15 @@ Available Products
 ===================== ==================
 pyHaFAS Internal Name Example Train Type
 ===================== ==================
-long_distance_express ICE
+long_distance_express ICE/ECE
 long_distance         IC/EC
-regional_express      RE/IR
+regional_express      RE/IRE
 regional              RB
 suburban              S
 bus                   BUS
 ferry                 F
 subway                U
-tram                  T
+tram                  STR/T
 taxi                  Group Taxi
 ===================== ==================
 
@@ -53,15 +53,15 @@ Available Products
 ===================== ==================
 pyHaFAS Internal Name Example Train Type
 ===================== ==================
-long_distance_express ICE
+long_distance_express ICE/ECE
 long_distance         IC/EC/CNL
-regional_express      RE/IR
+regional_express      RE/IRE
 regional              NV (e.g. RB)
 suburban              S
 bus                   BUS
 ferry                 F
 subway                U
-tram                  T
+tram                  STR/T
 anruf_sammel_taxi     Group Taxi
 ===================== ==================
 
