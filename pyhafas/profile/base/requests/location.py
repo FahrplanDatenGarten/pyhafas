@@ -7,11 +7,12 @@ from pyhafas.types.hafas_response import HafasResponse
 
 
 class BaseLocationRequest(LocationRequestInterface):
-    def format_location_request(self: ProfileInterface, term: str):
+    def format_location_request(self: ProfileInterface, term: str, rtype: str = 'S'):
         """
         Creates the HaFAS request body for a location search request.
 
         :param term: Search term
+        :param type: Result types. One of ['S' for stations, 'ALL' for addresses and stations]
         :return: Request body for HaFAS
         """
         return {
@@ -20,7 +21,7 @@ class BaseLocationRequest(LocationRequestInterface):
                     "field": "S",
                     "loc": {
                         "name": term,
-                        "type": "S"
+                        "type": rtype
                     }
                 }
             },

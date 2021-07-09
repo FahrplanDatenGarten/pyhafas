@@ -20,11 +20,13 @@ def test_db_journeys_parsing():
             id='1|226393|0|80|6082020',
             origin=Station(
                 id='8005556',
+                lid='A=1@O=Siegburg/Bonn@X=7203029@Y=50793916@U=80@L=8005556@',
                 name='Siegburg/Bonn',
                 latitude=50.793916,
                 longitude=7.203029),
             destination=Station(
                 id='8000135',
+                lid='A=1@O=Troisdorf@X=7150892@Y=50813926@U=80@L=8000135@',
                 name='Troisdorf',
                 latitude=50.813926,
                 longitude=7.150892),
@@ -41,6 +43,7 @@ def test_db_journeys_parsing():
             stopovers=[Stopover(
                 stop=Station(
                     id='8005556',
+                    lid='A=1@O=Siegburg/Bonn@X=7203029@Y=50793916@U=80@L=8005556@',
                     name='Siegburg/Bonn',
                     latitude=50.793916,
                     longitude=7.203029),
@@ -54,6 +57,7 @@ def test_db_journeys_parsing():
                 Stopover(
                     stop=Station(
                         id='8000135',
+                        lid='A=1@O=Troisdorf@X=7150892@Y=50813926@U=80@L=8000135@',
                         name='Troisdorf',
                         latitude=50.813926,
                         longitude=7.150892),
