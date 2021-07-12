@@ -16,11 +16,13 @@ def test_db_trips_parsing():
         id='1|227083|0|80|5082020',
         origin=Station(
             id='8002753',
+            lid='A=1@O=Hennef(Sieg)@X=7284588@Y=50773331@U=80@L=8002753@',
             name='Hennef(Sieg)',
             latitude=50.773331,
             longitude=7.284588),
         destination=Station(
             id='8000084',
+            lid='A=1@O=Düren@X=6482454@Y=50809513@U=80@L=8000084@',
             name='Düren',
             latitude=50.809513,
             longitude=6.482454
@@ -39,6 +41,7 @@ def test_db_trips_parsing():
             Stopover(
                 stop=Station(
                     id='8002753',
+                    lid='A=1@O=Hennef(Sieg)@X=7284588@Y=50773331@U=80@L=8002753@',
                     name='Hennef(Sieg)',
                     latitude=50.773331,
                     longitude=7.284588
@@ -53,6 +56,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8005556',
+                    lid='A=1@O=Siegburg/Bonn@X=7203029@Y=50793916@U=80@L=8005556@',
                     name='Siegburg/Bonn',
                     latitude=50.793916,
                     longitude=7.203029
@@ -67,6 +71,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8000135',
+                    lid='A=1@O=Troisdorf@X=7150892@Y=50813926@U=80@L=8000135@',
                     name='Troisdorf',
                     latitude=50.813926,
                     longitude=7.150892
@@ -81,6 +86,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8005629',
+                    lid='A=1@O=Spich@X=7114917@Y=50826727@U=80@L=8005629@',
                     name='Spich',
                     latitude=50.826727,
                     longitude=7.114917
@@ -95,6 +101,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8004873',
+                    lid='A=1@O=Porz-Wahn@X=7079266@Y=50858135@U=80@L=8004873@',
                     name='Porz-Wahn',
                     latitude=50.858135,
                     longitude=7.079266
@@ -109,6 +116,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8003330',
+                    lid='A=1@O=Köln/Bonn Flughafen@X=7119304@Y=50878900@U=80@L=8003330@',
                     name='Köln/Bonn Flughafen',
                     latitude=50.8789,
                     longitude=7.119304
@@ -123,6 +131,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8003358',
+                    lid='A=1@O=Köln Frankfurter Straße@X=7051264@Y=50915217@U=80@L=8003358@',
                     name='Köln Frankfurter Straße',
                     latitude=50.915217,
                     longitude=7.051264
@@ -137,6 +146,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8003320',
+                    lid='A=1@O=Köln Trimbornstr@X=6996736@Y=50935856@U=80@L=8003320@',
                     name='Köln Trimbornstr',
                     latitude=50.935856,
                     longitude=6.996736),
@@ -150,6 +160,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8083368',
+                    lid='A=1@O=Köln Messe/Deutz Gl. 9-10@X=6974640@Y=50941303@U=80@L=8083368@',
                     name='Köln Messe/Deutz Gl. 9-10',
                     latitude=50.941303,
                     longitude=6.97464),
@@ -163,6 +174,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8000207',
+                    lid='A=1@O=Köln Hbf@X=6958730@Y=50943029@U=80@L=8000207@',
                     name='Köln Hbf',
                     latitude=50.943029,
                     longitude=6.95873
@@ -177,6 +189,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8003392',
+                    lid='A=1@O=Köln Hansaring@X=6952563@Y=50949133@U=80@L=8003392@',
                     name='Köln Hansaring',
                     latitude=50.949133,
                     longitude=6.952563
@@ -191,6 +204,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8000208',
+                    lid='A=1@O=Köln-Ehrenfeld@X=6917280@Y=50951533@U=80@L=8000208@',
                     name='Köln-Ehrenfeld',
                     latitude=50.951533,
                     longitude=6.91728),
@@ -204,6 +218,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8003375',
+                    lid='A=1@O=Köln-Müngersdorf Technologiepark@X=6888200@Y=50948396@U=80@L=8003375@',
                     name='Köln-Müngersdorf Technologiepark',
                     latitude=50.948396,
                     longitude=6.8882
@@ -218,6 +233,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8003732',
+                    lid='A=1@O=Lövenich@X=6834436@Y=50942930@U=80@L=8003732@',
                     name='Lövenich',
                     latitude=50.94293,
                     longitude=6.834436
@@ -232,6 +248,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8003383',
+                    lid='A=1@O=Köln-Weiden West@X=6815136@Y=50940899@U=80@L=8003383@',
                     name='Köln-Weiden West',
                     latitude=50.940899,
                     longitude=6.815136
@@ -246,6 +263,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8002389',
+                    lid='A=1@O=Frechen-Königsdorf@X=6777849@Y=50936503@U=80@L=8002389@',
                     name='Frechen-Königsdorf',
                     latitude=50.936503,
                     longitude=6.777849
@@ -260,6 +278,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8000178',
+                    lid='A=1@O=Horrem@X=6713495@Y=50916250@U=80@L=8000178@',
                     name='Horrem',
                     latitude=50.91625,
                     longitude=6.713495
@@ -274,6 +293,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8005575',
+                    lid='A=1@O=Sindorf@X=6681107@Y=50903711@U=80@L=8005575@',
                     name='Sindorf',
                     latitude=50.903711,
                     longitude=6.681107
@@ -287,6 +307,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8001264',
+                    lid='A=1@O=Buir@X=6574513@Y=50862405@U=80@L=8001264@',
                     name='Buir',
                     latitude=50.862405,
                     longitude=6.574513
@@ -301,6 +322,7 @@ def test_db_trips_parsing():
             ), Stopover(
                 stop=Station(
                     id='8003990',
+                    lid='A=1@O=Merzenich@X=6518051@Y=50840031@U=80@L=8003990@',
                     name='Merzenich',
                     latitude=50.840031,
                     longitude=6.518051
@@ -316,6 +338,7 @@ def test_db_trips_parsing():
             Stopover(
                 stop=Station(
                     id='8000084',
+                    lid='A=1@O=Düren@X=6482454@Y=50809513@U=80@L=8000084@',
                     name='Düren',
                     latitude=50.809513,
                     longitude=6.482454

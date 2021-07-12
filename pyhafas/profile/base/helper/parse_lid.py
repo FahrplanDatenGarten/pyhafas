@@ -43,6 +43,7 @@ class BaseParseLidHelper(ParseLidHelperInterface):
 
         return Station(
             id=parsedLid['L'],
+            lid=lid,
             name=name or parsedLid['O'],
             latitude=latitude,
             longitude=longitude

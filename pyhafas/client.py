@@ -175,16 +175,17 @@ class HafasClient:
 
         return self.profile.parse_journey_request(res)
 
-    def locations(self, term: str) -> List[Station]:
+    def locations(self, term: str, rtype: str = 'S') -> List[Station]:
         """
-        Returns stations that are searched with the provided term
+        Returns stations (and addresses) that are searched with the provided term
 
         The further forward the station is in the list, the higher the similarity to the search term.
 
         :param term: Search term
+        :param rtype: Result types. One of ['S' for stations only, 'ALL' for addresses and stations]
         :return: List of FPTF `Station` objects
         """
-        body = self.profile.format_location_request(term)
+        body = self.profile.format_location_request(term, rtype)
         res = self.profile.request(body)
 
         return self.profile.parse_location_request(res)

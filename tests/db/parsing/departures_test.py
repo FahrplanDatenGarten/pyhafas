@@ -18,6 +18,7 @@ def test_db_departures_parsing():
         direction='Stralsund Hbf',
         station=Station(
             id='8098160',
+            lid='A=1@O=Berlin Hbf (tief)@X=13369549@Y=52525589@U=80@L=8098160@',
             name='Berlin Hbf (tief)',
             latitude=52.525589,
             longitude=13.369549),

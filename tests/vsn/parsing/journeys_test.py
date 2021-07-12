@@ -27,12 +27,14 @@ def test_vsn_journeys_parsing():
                     id='1|147532|0|80|9082020',
                     origin=Station(
                         id='8000128',
+                        lid='A=1@O=Göttingen@X=9926069@Y=51536812@U=80@L=8000128@',
                         name='Göttingen',
                         latitude=51.536812,
                         longitude=9.926069
                     ),
                     destination=Station(
                         id='8003644',
+                        lid='A=1@O=Lenglern@X=9871199@Y=51588428@U=80@L=8003644@',
                         name='Lenglern',
                         latitude=51.588428,
                         longitude=9.871199
@@ -63,6 +65,7 @@ def test_vsn_journeys_parsing():
                         Stopover(
                             stop=Station(
                                 id='8000128',
+                                lid='A=1@O=Göttingen@X=9926069@Y=51536812@U=80@L=8000128@',
                                 name='Göttingen',
                                 latitude=51.536812,
                                 longitude=9.926069
@@ -83,6 +86,7 @@ def test_vsn_journeys_parsing():
                         Stopover(
                             stop=Station(
                                 id='8003644',
+                                lid='A=1@O=Lenglern@X=9871199@Y=51588428@U=80@L=8003644@',
                                 name='Lenglern',
                                 latitude=51.588428,
                                 longitude=9.871199

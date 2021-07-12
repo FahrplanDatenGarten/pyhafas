@@ -29,8 +29,10 @@ class Station:
 
     A station is a point where vehicles stop. It may be a larger building or just a small stop without special infrastructure.
 
-    :ivar id: ID of the Station
+    :ivar id: ID of the Station. Typically a number but as a string
     :vartype id: str
+    :ivar lid: Location ID of the Station (maybe `None`). Long-form, containing multiple fields
+    :vartype lid: Optional[str]
     :ivar name: Name of the Station (maybe `None`)
     :vartype name: Optional[str]
     :ivar latitude: Latitude coordinate of the Station (maybe `None`)
@@ -42,6 +44,7 @@ class Station:
     def __init__(
             self,
             id: str,
+            lid: Optional[str] = None,
             name: Optional[str] = None,
             latitude: Optional[float] = None,
             longitude: Optional[float] = None):
@@ -49,11 +52,13 @@ class Station:
         FPTF `Station` object
 
         :param id: Internal ID of the station
+        :param lid: (optional) Internal Location ID of the station. Defaults to None
         :param name: (optional) Name of the station. Defaults to None
         :param latitude: (optional) Latitude coordinate of the station. Defaults to None
         :param longitude: (optional) Longitude coordinate of the station. Defaults to None
         """
         self.id: str = id
+        self.lid: Optional[str] = lid
         self.name: Optional[str] = name
         self.latitude: Optional[float] = latitude
         self.longitude: Optional[float] = longitude

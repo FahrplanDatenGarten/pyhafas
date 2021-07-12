@@ -18,6 +18,7 @@ def test_vsn_departures_parsing():
         direction='Frankfurt(Main) Hbf',
         station=Station(
             id='8000050',
+            lid='A=1@O=Bremen Hbf@X=8813833@Y=53083478@U=80@L=8000050@',
             name='Bremen Hbf',
             latitude=53.083478,
             longitude=8.813833),
