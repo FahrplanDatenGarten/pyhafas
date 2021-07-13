@@ -4,6 +4,10 @@ from pyhafas.profile.base import BaseProfile
 from pyhafas.profile.nvv.requests.journeys import NVVJourneysRequest
 
 class NVVProfile(NVVJourneysRequest, BaseProfile):
+    """
+    Profile for the HaFAs of "Nordhessischer Verkehrs Verbund"
+    (NVV) - local transportation provider
+    """
     baseUrl = "https://auskunft.nvv.de/bin/mgate.exe"
     defaultUserAgent = "NVV Mobil/5.3.1 (iPhone; IOS 13.1.2; Scale/2.00)"
 
