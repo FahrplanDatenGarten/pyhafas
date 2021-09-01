@@ -1,9 +1,11 @@
 import pytz
 
 from pyhafas.profile.base import BaseProfile
+from pyhafas.profile.nvv.requests.journey import NVVJourneyRequest
 from pyhafas.profile.nvv.requests.journeys import NVVJourneysRequest
 
-class NVVProfile(NVVJourneysRequest, BaseProfile):
+
+class NVVProfile(NVVJourneyRequest, NVVJourneysRequest, BaseProfile):
     """
     Profile for the HaFAs of "Nordhessischer Verkehrs Verbund"
     (NVV) - local transportation provider
