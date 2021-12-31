@@ -2,7 +2,7 @@ import abc
 import datetime
 from typing import Dict, List
 
-from pyhafas.types.fptf import Journey, Station
+from pyhafas.types.fptf import Journey, Station, Leg
 from pyhafas.types.hafas_response import HafasResponse
 
 
@@ -30,6 +30,29 @@ class JourneysRequestInterface(abc.ABC):
         :param max_changes: Maximum number of changes
         :param products: Allowed products (a product is a mean of transport like ICE,IC)
         :param max_journeys: Maximum number of returned journeys
+        :return: Request body for HaFAS
+        """
+        pass
+
+    @abc.abstractmethod
+    def format_search_from_leg_request(
+            self,
+            origin: Leg,
+            destination: Station,
+            via: List[Station],
+            min_change_time: int,
+            max_changes: int,
+            products: Dict[str, bool],
+    ) -> dict:
+        """
+        Creates the HaFAS request body for a search from leg request
+
+        :param origin: Origin leg
+        :param destination: Destionation station
+        :param via: Via stations, maybe empty list)
+        :param min_change_time: Minimum transfer/change time at each station
+        :param max_changes: Maximum number of changes
+        :param products: Allowed products (a product is a mean of transport like ICE,IC)
         :return: Request body for HaFAS
         """
         pass

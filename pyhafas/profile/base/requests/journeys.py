@@ -4,7 +4,7 @@ from typing import Dict, List
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.interfaces.requests.journeys import \
     JourneysRequestInterface
-from pyhafas.types.fptf import Journey, Station
+from pyhafas.types.fptf import Journey, Station, Leg
 from pyhafas.types.hafas_response import HafasResponse
 
 
@@ -80,6 +80,55 @@ class BaseJourneysRequest(JourneysRequestInterface):
             #    'rtMode': 'HYBRID'
             # },
             'meth': 'TripSearch'
+        }
+
+    def format_search_from_leg_request(
+            self: ProfileInterface,
+            origin: Leg,
+            destination: Station,
+            via: List[Station],
+            min_change_time: int,
+            max_changes: int,
+            products: Dict[str, bool],
+    ) -> dict:
+        """
+        Creates the HaFAS request body for a journeys request
+
+        :param origin: Origin leg
+        :param destination: Destionation station
+        :param via: Via stations, maybe empty list)
+        :param min_change_time: Minimum transfer/change time at each station
+        :param max_changes: Maximum number of changes
+        :param products: Allowed products (a product is a mean of transport like ICE,IC)
+        :return: Request body for HaFAS
+        """
+        return {
+            'req': {
+                'arrLocL': [{
+                    'lid': 'A=1@L={}@'.format(destination.id)
+                }],
+                'viaLocL': [{
+                    'loc': {
+                        'lid': 'A=1@L={}@'.format(via_station.id)
+                    }
+                } for via_station in via],
+                'locData': {
+                    'loc': {
+                        'lid': 'A=1@L={}@'.format(origin.origin.id)
+                    },
+                    'type': 'DEP',
+                    'date': origin.departure.strftime("%Y%m%d"),
+                    'time': origin.departure.strftime("%H%M%S")
+                },
+                'jnyFltrL': [
+                    self.format_products_filter(products)
+                ],
+                'minChgTime': min_change_time,
+                'maxChg': max_changes,
+                'jid': origin.id,
+                'sotMode': 'JI'
+            },
+            'meth': 'SearchOnTrip'
         }
 
     def parse_journeys_request(

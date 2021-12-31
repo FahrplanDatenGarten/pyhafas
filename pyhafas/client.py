@@ -158,6 +158,46 @@ class HafasClient:
 
         return self.profile.parse_journeys_request(res)
 
+    def journeys_from_leg(
+            self,
+            origin: Leg,
+            destination: Union[Station, str],
+            via: List[Union[Station, str]] = [],
+            min_change_time: int = 0,
+            max_changes: int = -1,
+            products: Dict[str, bool] = {},
+    ) -> List[Journey]:
+        """
+        Returns possible journeys from a leg to a destination
+
+        Possible journeys between two destinations are calculated by HaFAS and returned. It's also possible to add multiple via stations.
+
+        :param origin: FPTF `Leg` object from where to search
+        :param destination: FPTF `Station` object or ID of destination/ending station
+        :param via: (optional) List of via stations. The route is calculated via all of these stations in the order of the list. The stations have to be a FPTF `Station` object or the ID of the station. The default is no via stations.
+        :param min_change_time: (optional) Minimum transfer/change time at each station. Default is the default that HaFAS specifies internal.
+        :param max_changes: (optional) Maximum number of changes. Default is unlimited.
+        :param products: (optional) Dict of product name(s) and whether it should be enabled or not. Modifies the default products specified in the profile.
+        :return: List of FPTF `Journey` objects
+        """
+        if not isinstance(destination, Station):
+            destination = Station(destination)
+        for via_station in via:
+            if not isinstance(via_station, Station):
+                via[via.index(via_station)] = Station(via_station)
+
+        body = self.profile.format_search_from_leg_request(
+            origin,
+            destination,
+            via,
+            min_change_time,
+            max_changes,
+            products
+        )
+        res = self.profile.request(body)
+
+        return self.profile.parse_journeys_request(res)
+
     def journey(self, journey: Union[Journey, str]) -> Journey:
         """
         Returns information about a specific journey by its ID
