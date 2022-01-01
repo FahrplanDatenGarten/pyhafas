@@ -19,12 +19,12 @@ class DBProfile(BaseProfile):
     requestBody = {
         'client': {
             'id': 'DB',
-            'v': '16040000',
+            'v': '20100000',
             'type': 'IPH',
             'name': 'DB Navigator'
         },
-        'ext': 'DB.R19.04.a',
-        'ver': '1.16',
+        'ext': 'DB.R21.12.a',
+        'ver': '1.15',
         'auth': {
             'type': 'AID',
             'aid': 'n91dB8Z77MLdoR0K'
