@@ -41,7 +41,7 @@ class NASAProfile(NASAJourneyRequest, NASAJourneysRequest, BaseProfile):
         'suburban': [16],  # S
         'bus': [64, 128],  # BUS
         'tram': [32],  # T
-        'tourismTrain': [256],  # TT
+        'tourism_train': [256],  # TT
     }
 
     defaultProducts = [
@@ -51,5 +51,5 @@ class NASAProfile(NASAJourneyRequest, NASAJourneysRequest, BaseProfile):
         'suburban',
         'bus',
         'tram',
-        'tourismTrain',
+        'tourism_train',
     ]
