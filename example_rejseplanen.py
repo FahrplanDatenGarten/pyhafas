@@ -5,29 +5,34 @@ from pyhafas.profile import RKRPProfile
 
 client = HafasClient(RKRPProfile(), debug=True)
 
-id_nordhavn='8600653'
-id_kongebakken9='A=2@O=Kongebakken 9, 2765 Smørum, Egedal Kommune@X=12294403@Y=55749256@U=103@L=902400113@B=1@p=1618386996@'
+# Human input strings
+id_nordhavn = 'Nordhavn St.'
+id_kongebakken9 = 'Kongebakken 9, 2765 Smørum'
+
+# Resolve human string into Location-ID
+lids_kongebakken9 = client.locations(id_kongebakken9, rtype='ALL')
+lid_kongebakken9 = lids_kongebakken9[0].lid  # First is good-enough
+assert('Kongebakken 9, 2765 Smørum, Egedal Kommune' in lid_kongebakken9)
+
+lids_nordhavn = client.locations(id_nordhavn, rtype='ALL')
+lid_nordhavn = lids_nordhavn[0].lid  # First is good-enough
+assert('Nordhavn St' in lid_nordhavn)
 
 #print(client.departures(
-#    station=id_nordhavn,
+#    station=lid_nordhavn,
 #    date=datetime.datetime.now(),
 #    max_trips=5
 #))
 
 #print(client.arrivals(
-#    station=id_nordhavn,
+#    station=lid_nordhavn,
 #    date=datetime.datetime.now(),
 #    max_trips=5
 #))
 
-# Test searching for an address
-locs = client.locations("Kongebakken 9, 2765 Smørum", rtype='ALL')
-assert(locs[0].lid == id_kongebakken9)
-
-
 possibilities = client.journeys(
-    origin          = id_nordhavn,
-    destination     = id_kongebakken9,
+    origin          = lid_nordhavn,
+    destination     = lid_kongebakken9,
     date            = datetime.datetime.now(),
     min_change_time = 0,
     max_changes     = -1
