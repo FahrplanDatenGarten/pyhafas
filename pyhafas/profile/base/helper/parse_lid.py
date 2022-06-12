@@ -42,7 +42,7 @@ class BaseParseLidHelper(ParseLidHelperInterface):
             longitude = float(float(parsedLid['X']) / 1000000)
 
         return Station(
-            id=parsedLid['L'],
+            id=parsedLid.get('L') or parsedLid['b'],  # key 'L' not always present; if not, 'b' should be
             lid=lid,
             name=name or parsedLid['O'],
             latitude=latitude,
