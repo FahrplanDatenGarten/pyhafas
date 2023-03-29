@@ -41,5 +41,8 @@ class BaseProfile(
     availableProducts: Dict[str, List[int]] = {}
     defaultProducts: List[str] = []
 
-    def __init__(self, ua=defaultUserAgent):
-        self.userAgent = ua
+    def __init__(self, ua=None):
+        if ua:
+            self.userAgent = ua
+        else:
+            self.userAgent = self.defaultUserAgent

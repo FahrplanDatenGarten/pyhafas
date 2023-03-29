@@ -3,6 +3,10 @@ Changelog
 
 .. contents::
 
+v0.3.1
+------
+* [BUG] Fix setting of default user agent
+
 v0.3.0
 ------
 * [FEATURE] Add timezone awareness to all datetime time objects
