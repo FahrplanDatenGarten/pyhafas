@@ -4,10 +4,14 @@
 name: Python package
 
 on:
+  # run for changes in main branch
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  # also run weekly: Fridays at 11:47.
+  schedule:
+    - cron: "47 11 * * 6"
 
 jobs:
   build:
