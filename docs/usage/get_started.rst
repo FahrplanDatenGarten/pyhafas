@@ -37,6 +37,7 @@ Below is a sample code for easy usage. It has multiple parts:
 
 .. code:: python
 
+  import datetime
   from pyhafas import HafasClient
   from pyhafas.profile import DBProfile
 
@@ -47,7 +48,7 @@ Below is a sample code for easy usage. It has multiple parts:
   print(client.departures(
       station='8011160',
       date=datetime.datetime.now(),
-      max_journeys=5
+      max_trips=5
   ))
 
 What's next?
