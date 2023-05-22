@@ -30,19 +30,19 @@ class KVBProfile(BaseProfile):
     }
 
     availableProducts = {
-        'suburban': [1],  # S
-        'tram': [2],  # U
-        'bus': [8],  # BUS
-        'long_distance': [32],  # ICE/IC/EC
-        'regional': [46],  # RE/IR/RB
-        'taxibus': [256]  # taxi bus
+        's-bahn': [1],
+        'stadtbahn': [2],
+        'bus': [8],
+        'fernverkehr': [32],
+        'regionalverkehr': [46],
+        'taxibus': [256]
     }
 
     defaultProducts = [
-        'suburban',
-        'tram',
+        's-bahn',
+        'stadtbahn',
         'bus',
-        'long_distance',
-        'regional',
-        'taxibus'
+        'fernverkehr',
+        'regionalverkehr',
+        'taxibus',
     ]
