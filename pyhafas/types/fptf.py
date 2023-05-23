@@ -23,7 +23,15 @@ class Mode(Enum):
         return '<%s.%s>' % (self.__class__.__name__, self.name)
 
 
-class Station:
+class FPTFObject:
+    def __repr__(self):
+        return "%s(%r)" % (self.__class__, self.__dict__)
+
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
+
+class Station(FPTFObject):
     """
     FPTF `Station` object
 
@@ -63,14 +71,50 @@ class Station:
         self.latitude: Optional[float] = latitude
         self.longitude: Optional[float] = longitude
 
-    def __repr__(self):
-        return "%s(%r)" % (self.__class__, self.__dict__)
 
-    def __eq__(self, other):
-        return self.__dict__ == other.__dict__
+class Remark(FPTFObject):
+    """
+    A remark is a textual comment/information, usually added to a Stopover or Leg
+
+    :ivar remark_type: Type/Category of the remark. May have a different meaning depending on the network
+    :vartype remark_type: Optional[str]
+    :ivar code: Code of the remark. May have a different meaning depending on the network
+    :vartype code: Optional[str]
+    :ivar subject: Subject of the remark
+    :vartype subject: Optional[str]
+    :ivar text: Actual content of the remark
+    :vartype text: Optional[str]
+    :ivar priority: Priority of the remark, higher is better
+    :vartype priority: Optional[int]
+    :ivar trip_id: ID to a Trip added to this remark (e.g. a replacement train)
+    :vartype trip_id: Optional[str]
+    """
+    def __init__(
+            self,
+            remark_type: Optional[str] = None,
+            code: Optional[str] = None,
+            subject: Optional[str] = None,
+            text: Optional[str] = None,
+            priority: Optional[int] = None,
+            trip_id: Optional[str] = None):
+        """
+
+        :param remark_type: Type/Category of the remark. May have a different meaning depending on the network
+        :param code: Code of the remark. May have a different meaning depending on the network
+        :param subject: Subject of the remark
+        :param text: Actual content of the remark
+        :param priority: Priority of the remark, higher is better
+        :param trip_id: ID to a Trip added to this remark (e.g. a replacement train)
+        """
+        self.remark_type: Optional[str] = remark_type
+        self.code: Optional[str] = code
+        self.subject: Optional[str] = subject
+        self.text: Optional[str] = text
+        self.priority: Optional[int] = priority
+        self.trip_id: Optional[str] = trip_id
 
 
-class Stopover:
+class Stopover(FPTFObject):
     """
     FPTF `Stopover` object
 
@@ -92,6 +136,8 @@ class Stopover:
     :vartype departureDelay: Optional[datetime.timedelta]
     :ivar departurePlatform: Real-time departure platform at the station (maybe `None`)
     :vartype departurePlatform: Optional[str]
+    :ivar remarks: (optional) List of remarks
+    :vartype remarks: List[Remark]
     """
 
     def __init__(
@@ -104,6 +150,7 @@ class Stopover:
             departure: Optional[datetime.datetime] = None,
             departure_delay: Optional[datetime.timedelta] = None,
             departure_platform: Optional[str] = None,
+            remarks: Optional[List[Remark]] = None
     ):
         """
 
@@ -115,6 +162,7 @@ class Stopover:
         :param departure: (optional) Planned departure date and time at the station. Defaults to `None`
         :param departure_delay: (optional) Departure delay at the station. Defaults to `None`
         :param departure_platform: (optional) Real-time departure platform at the station. Defaults to `None`
+        :param remarks: (optional) List of remarks. Defaults to `[]`
         """
         self.stop: Station = stop
         self.cancelled: bool = cancelled
@@ -124,15 +172,12 @@ class Stopover:
         self.departure: Optional[datetime.datetime] = departure
         self.departureDelay: Optional[datetime.timedelta] = departure_delay
         self.departurePlatform: Optional[str] = departure_platform
-
-    def __repr__(self):
-        return "%s(%r)" % (self.__class__, self.__dict__)
-
-    def __eq__(self, other):
-        return self.__dict__ == other.__dict__
+        if remarks is None:
+            remarks = []
+        self.remarks: List[Remark] = remarks
 
 
-class Leg:
+class Leg(FPTFObject):
     """
     FPTF `Leg` object
 
@@ -166,6 +211,8 @@ class Leg:
     :vartype arrivalPlatform: Optional[str]
     :ivar stopovers: List of FPTF `Stopover` objects (maybe `None`)
     :vartype stopovers: Optional[List[Stopover]]
+    :ivar remarks: (optional) List of remarks
+    :vartype remarks: List[Remark]
     """
 
     def __init__(
@@ -183,7 +230,8 @@ class Leg:
             departure_platform: Optional[str] = None,
             arrival_delay: Optional[datetime.timedelta] = None,
             arrival_platform: Optional[str] = None,
-            stopovers: Optional[List[Stopover]] = None
+            stopovers: Optional[List[Stopover]] = None,
+            remarks: Optional[List[Remark]] = None
     ):
         """
         FPTF `Leg` object
@@ -202,6 +250,7 @@ class Leg:
         :param arrival_delay: (optional) Delay at the arrival station. Defaults to None
         :param arrival_platform: (optional) Platform at the arrival station. Defaults to None
         :param stopovers: (optional) List of FPTF `Stopover` objects. Defaults to None
+        :param remarks: (optional) List of remarks. Defaults to `[]`
         """
         # Mandatory Variables
         self.id = id
@@ -220,15 +269,12 @@ class Leg:
         self.arrivalDelay: Optional[datetime.timedelta] = arrival_delay
         self.arrivalPlatform: Optional[str] = arrival_platform
         self.stopovers: Optional[List[Stopover]] = stopovers
-
-    def __repr__(self):
-        return "%s(%r)" % (self.__class__, self.__dict__)
-
-    def __eq__(self, other):
-        return self.__dict__ == other.__dict__
+        if remarks is None:
+            remarks = []
+        self.remarks: List[Remark] = remarks
 
 
-class Journey:
+class Journey(FPTFObject):
     """
     FPTF `Journey` object
 
@@ -263,14 +309,8 @@ class Journey:
         self.duration: Optional[datetime.timedelta] = duration
         self.legs: Optional[List[Leg]] = legs
 
-    def __repr__(self):
-        return "%s(%r)" % (self.__class__, self.__dict__)
 
-    def __eq__(self, other):
-        return self.__dict__ == other.__dict__
-
-
-class StationBoardLeg:
+class StationBoardLeg(FPTFObject):
     """
     `StationBoardLeg` object
 
@@ -326,9 +366,3 @@ class StationBoardLeg:
         self.cancelled: bool = cancelled
         self.delay: Optional[datetime.timedelta] = delay
         self.platform: Optional[str] = platform
-
-    def __repr__(self):
-        return "%s(%r)" % (self.__class__, self.__dict__)
-
-    def __eq__(self, other):
-        return self.__dict__ == other.__dict__

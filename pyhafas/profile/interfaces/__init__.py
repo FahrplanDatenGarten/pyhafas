@@ -8,6 +8,7 @@ from pyhafas.profile.interfaces.helper.format_products_filter import \
     FormatProductsFilterHelperInterface
 from pyhafas.profile.interfaces.helper.parse_leg import ParseLegHelperInterface
 from pyhafas.profile.interfaces.helper.parse_lid import ParseLidHelperInterface
+from pyhafas.profile.interfaces.helper.parse_remark import ParseRemarkHelperInterface
 from pyhafas.profile.interfaces.helper.request import RequestHelperInterface
 from pyhafas.profile.interfaces.requests.journey import JourneyRequestInterface
 from pyhafas.profile.interfaces.requests.journeys import \
@@ -25,6 +26,7 @@ class ProfileInterface(
         ParseLidHelperInterface,
         DateTimeHelperInterface,
         ParseLegHelperInterface,
+        ParseRemarkHelperInterface,
         LocationRequestInterface,
         JourneyRequestInterface,
         JourneysRequestInterface,
