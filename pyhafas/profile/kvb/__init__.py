@@ -1,9 +1,10 @@
 import pytz
 
 from pyhafas.profile import BaseProfile
+from pyhafas.profile.kvb.requests.journeys import KVBJourneysRequest
 
 
-class KVBProfile(BaseProfile):
+class KVBProfile(KVBJourneysRequest, BaseProfile):
     """
     Profile of the HaFAS of Kölner Verkehrsbetriebe (KVB) - Regional in Cologne
     """
