@@ -43,7 +43,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                 arrival=self.parse_datetime(arrival['aTimeS'], date),
                 mode=Mode.WALKING,
                 name=None,
-                distance=gis['dist'] if gis is not None else None
+                distance=gis.get('dist') if gis is not None else None
             )
         else:
             leg_stopovers: List[Stopover] = []
