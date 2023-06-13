@@ -73,3 +73,30 @@ Specialities
 ^^^^^^^^^^^^
 
 * The `max_trips` filter in station board (departures/arrival) requests seems not to work
+
+Kölner Verkehrsbetriebe (KVB)
+-----------------------------
+Usage
+^^^^^^
+.. code:: python
+
+  from pyhafas.profile import KVBProfile
+  client = HafasClient(KVBProfile())
+
+Available Products
+^^^^^^^^^^^^^^^^^^
+
+===================== ==================
+pyHaFAS Internal Name Example Train Type
+===================== ==================
+s-bahn                S
+stadtbahn             U
+bus                   BUS
+fernverkehr           ICE/ECE/IC/EC
+regionalverkehr       RE/IRE
+taxibus               Group Taxi
+===================== ==================
+
+Default Products
+^^^^^^^^^^^^^^^^
+All available products specified above are enabled by default.
