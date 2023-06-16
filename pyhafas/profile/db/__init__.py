@@ -7,7 +7,6 @@ from pyhafas.profile.base.helper.format_products_filter import (
 from pyhafas.profile.base.helper.parse_leg import BaseParseLegHelper
 from pyhafas.profile.base.helper.parse_lid import BaseParseLidHelper
 from pyhafas.profile.base.helper.parse_remark import BaseParseRemarkHelper
-from pyhafas.profile.base.helper.request import BaseRequestHelper
 from pyhafas.profile.base.requests.journey import BaseJourneyRequest
 from pyhafas.profile.base.requests.journeys import BaseJourneysRequest
 from pyhafas.profile.base.requests.location import BaseLocationRequest
