@@ -13,11 +13,12 @@ from pyhafas.profile.base.requests.journeys import BaseJourneysRequest
 from pyhafas.profile.base.requests.location import BaseLocationRequest
 from pyhafas.profile.base.requests.station_board import BaseStationBoardRequest
 from pyhafas.profile.base.requests.trip import BaseTripRequest
+from pyhafas.profile.db.helper.request import DBRequestHelper
 from pyhafas.profile.interfaces import ProfileInterface
 
 
 class DBProfile(
-    BaseRequestHelper,
+    DBRequestHelper,
     BaseFormatProductsFilterHelper,
     BaseParseLidHelper,
     BaseDateTimeHelper,
