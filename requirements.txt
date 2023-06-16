@@ -1,5 +1,6 @@
 requests~=2.9
 pytz>=2013.6
+tenacity==8.2.2
 
 pycryptodome~=3.9.8
 pytest~=6.2.5
