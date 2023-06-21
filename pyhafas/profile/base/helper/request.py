@@ -3,6 +3,8 @@ from hashlib import md5
 from typing import Tuple
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 from pyhafas.profile import ProfileInterface
 from pyhafas.profile.base.mappings.error_codes import BaseErrorCodesMapping
@@ -11,6 +13,8 @@ from pyhafas.types.hafas_response import HafasResponse
 
 
 class BaseRequestHelper(RequestHelperInterface):
+    request_session = requests.session()
+
     def calculate_checksum(self: ProfileInterface, data: str) -> str:
         """
         Calculates the checksum of the request (required for most profiles)
@@ -56,6 +60,23 @@ class BaseRequestHelper(RequestHelperInterface):
 
         return url
 
+    def activate_retry(self: ProfileInterface) -> None:
+        self.request_session = requests.Session()
+
+        retries = 4
+        backoff_factor = 0.3
+
+        retry = Retry(
+            total=retries,
+            read=retries,
+            connect=retries,
+            backoff_factor=backoff_factor,
+        )
+
+        adapter = HTTPAdapter(max_retries=retry)
+        self.request_session.mount("http://", adapter)
+        self.request_session.mount("https://", adapter)
+
     def request(self: ProfileInterface, body) -> HafasResponse:
         """
         Sends the request and does a basic parsing of the response and error handling
@@ -69,7 +90,7 @@ class BaseRequestHelper(RequestHelperInterface):
         data.update(self.requestBody)
         data = json.dumps(data)
 
-        res = requests.post(
+        res = self.request_session.post(
             self.url_formatter(data),
             data=data,
             headers={
