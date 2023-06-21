@@ -3,7 +3,9 @@ import datetime
 from pyhafas import HafasClient
 from pyhafas.profile import DBProfile
 
-client = HafasClient(DBProfile(), debug=True)
+profile = DBProfile()
+profile.activate_retry()
+client = HafasClient(profile, debug=True)
 
 origin = 8096009
 destinations = [
