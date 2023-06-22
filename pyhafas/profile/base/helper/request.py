@@ -60,11 +60,8 @@ class BaseRequestHelper(RequestHelperInterface):
 
         return url
 
-    def activate_retry(self: ProfileInterface) -> None:
+    def activate_retry(self: ProfileInterface, retries: int = 4, backoff_factor: float = 1) -> None:
         self.request_session = requests.Session()
-
-        retries = 4
-        backoff_factor = 0.3
 
         retry = Retry(
             total=retries,
