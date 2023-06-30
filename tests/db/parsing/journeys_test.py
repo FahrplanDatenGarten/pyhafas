@@ -2,7 +2,7 @@ import datetime
 import os
 
 from pyhafas.profile import DBProfile
-from pyhafas.types.fptf import Journey, Leg, Mode, Station, Stopover
+from pyhafas.types.fptf import Journey, Leg, Mode, Station, Stopover, Remark
 
 from tests.types import PyTestHafasResponse
 
@@ -53,7 +53,8 @@ def test_db_journeys_parsing():
                 arrival_platform=None,
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 6, 12, 7)),
                 departure_delay=None,
-                departure_platform='1'),
+                departure_platform='1',
+                remarks=[]),
                 Stopover(
                     stop=Station(
                         id='8000135',
@@ -67,9 +68,36 @@ def test_db_journeys_parsing():
                     arrival_platform='1',
                     departure=None,
                     departure_delay=None,
-                    departure_platform=None
-            )
+                    departure_platform=None,
+                    remarks=[],
+                )
+            ],
+            remarks=[
+                Remark(
+                    remark_type='A',
+                    code='FB',
+                    subject=None,
+                    text='Fahrradmitnahme begrenzt möglich',
+                    priority=260,
+                    trip_id=None
+                ),
+                Remark(
+                    remark_type='A',
+                    code='K2',
+                    subject=None,
+                    text='nur 2. Klasse',
+                    priority=300,
+                    trip_id=None
+                ),
+                Remark(
+                    remark_type='A',
+                    code='EH',
+                    subject=None,
+                    text='Fahrzeuggebundene Einstiegshilfe vorhanden',
+                    priority=560,
+                    trip_id=None
+                )
             ]
-        )]
+        )],
     )]
     assert DBProfile().parse_journeys_request(hafas_response) == correct_journeys

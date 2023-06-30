@@ -2,7 +2,7 @@ import datetime
 import os
 
 from pyhafas.profile import DBProfile
-from pyhafas.types.fptf import Leg, Mode, Station, Stopover
+from pyhafas.types.fptf import Leg, Mode, Station, Stopover, Remark
 
 from tests.types import PyTestHafasResponse
 
@@ -52,7 +52,8 @@ def test_db_trips_parsing():
                 arrival_platform=None,
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 2)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8005556',
@@ -67,7 +68,8 @@ def test_db_trips_parsing():
                 arrival_platform='1',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 7)),
                 departure_delay=None,
-                departure_platform='1'
+                departure_platform='1',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8000135',
@@ -82,7 +84,8 @@ def test_db_trips_parsing():
                 arrival_platform='1',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 13)),
                 departure_delay=None,
-                departure_platform='1'
+                departure_platform='1',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8005629',
@@ -97,7 +100,8 @@ def test_db_trips_parsing():
                 arrival_platform='1',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 16)),
                 departure_delay=None,
-                departure_platform='1'
+                departure_platform='1',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8004873',
@@ -112,7 +116,8 @@ def test_db_trips_parsing():
                 arrival_platform='1',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 19)),
                 departure_delay=None,
-                departure_platform='1'
+                departure_platform='1',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8003330',
@@ -127,7 +132,8 @@ def test_db_trips_parsing():
                 arrival_platform='2',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 24)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8003358',
@@ -142,7 +148,8 @@ def test_db_trips_parsing():
                 arrival_platform='1',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 29)),
                 departure_delay=None,
-                departure_platform='1'
+                departure_platform='1',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8003320',
@@ -156,7 +163,8 @@ def test_db_trips_parsing():
                 arrival_platform='2',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 34)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8083368',
@@ -170,7 +178,8 @@ def test_db_trips_parsing():
                 arrival_platform='10',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 37)),
                 departure_delay=None,
-                departure_platform='10'
+                departure_platform='10',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8000207',
@@ -185,7 +194,8 @@ def test_db_trips_parsing():
                 arrival_platform='11 B-C',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 40)),
                 departure_delay=None,
-                departure_platform='11 B-C'
+                departure_platform='11 B-C',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8003392',
@@ -200,7 +210,8 @@ def test_db_trips_parsing():
                 arrival_platform='1',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 42)),
                 departure_delay=None,
-                departure_platform='1'
+                departure_platform='1',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8000208',
@@ -214,7 +225,8 @@ def test_db_trips_parsing():
                 arrival_platform='2',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 46)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8003375',
@@ -229,7 +241,8 @@ def test_db_trips_parsing():
                 arrival_platform='2',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 49)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8003732',
@@ -244,7 +257,8 @@ def test_db_trips_parsing():
                 arrival_platform='2',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 52)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8003383',
@@ -259,7 +273,8 @@ def test_db_trips_parsing():
                 arrival_platform='2',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 54)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8002389',
@@ -274,7 +289,8 @@ def test_db_trips_parsing():
                 arrival_platform='2',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 12, 57)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8000178',
@@ -289,7 +305,8 @@ def test_db_trips_parsing():
                 arrival_platform='2',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 1)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8005575',
@@ -303,7 +320,8 @@ def test_db_trips_parsing():
                 arrival_platform='1',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 3)),
                 departure_delay=None,
-                departure_platform='1'
+                departure_platform='1',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8001264',
@@ -318,7 +336,8 @@ def test_db_trips_parsing():
                 arrival_platform='2',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 10)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ), Stopover(
                 stop=Station(
                     id='8003990',
@@ -333,7 +352,8 @@ def test_db_trips_parsing():
                 arrival_platform='2',
                 departure=DBProfile().timezone.localize(datetime.datetime(2020, 8, 5, 13, 13)),
                 departure_delay=None,
-                departure_platform='2'
+                departure_platform='2',
+                remarks=[],
             ),
             Stopover(
                 stop=Station(
@@ -349,7 +369,34 @@ def test_db_trips_parsing():
                 arrival_platform='5',
                 departure=None,
                 departure_delay=None,
-                departure_platform=None
+                departure_platform=None,
+                remarks=[],
+            )
+        ],
+        remarks=[
+            Remark(
+                remark_type='A',
+                code='FB',
+                subject=None,
+                text='Fahrradmitnahme begrenzt möglich',
+                priority=260,
+                trip_id=None
+            ),
+            Remark(
+                remark_type='A',
+                code='K2',
+                subject=None,
+                text='nur 2. Klasse',
+                priority=300,
+                trip_id=None
+            ),
+            Remark(
+                remark_type='A',
+                code='EH',
+                subject=None,
+                text='Fahrzeuggebundene Einstiegshilfe vorhanden',
+                priority=560,
+                trip_id=None
             )
         ]
     )

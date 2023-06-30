@@ -43,7 +43,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                 arrival=self.parse_datetime(arrival['aTimeS'], date),
                 mode=Mode.WALKING,
                 name=None,
-                distance=gis['dist'] if gis is not None else None
+                distance=gis.get('dist') if gis is not None else None
             )
         else:
             leg_stopovers: List[Stopover] = []
@@ -83,6 +83,8 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                             arrival_platform=stopover.get(
                                 'aPlatfR',
                                 stopover.get('aPlatfS', stopover.get('aPltfR', stopover.get('aPltfS', {})).get('txt'))),
+                            remarks=[self.parse_remark(common['remL'][msg['remX']], common)
+                                     for msg in stopover.get('msgL', []) if msg.get('remX') is not None]
                         ))
 
             return Leg(
@@ -113,7 +115,9 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                 arrival_platform=arrival.get(
                     'aPlatfR',
                     arrival.get('aPlatfS', arrival.get('aPltfR', arrival.get('aPltfS', {})).get('txt'))),
-                stopovers=leg_stopovers)
+                stopovers=leg_stopovers,
+                remarks=[self.parse_remark(common['remL'][msg['remX']], common)
+                         for msg in journey.get('msgL', {}) if msg.get('remX') is not None])
 
     def parse_legs(
             self: ProfileInterface,
