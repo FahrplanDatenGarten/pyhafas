@@ -3,6 +3,12 @@ Changelog
 
 .. contents::
 
+v0.4.0
+------
+* [feature] Parse leg remarks
+* [feature] Add KVB Profile
+* [feature] Add optional retry parameter for requests. You might activate retries with the `activate_retry()` function on your profile
+
 v0.3.1
 ------
 * [BUG] Fix setting of default user agent
