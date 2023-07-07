@@ -3,7 +3,7 @@ import os
 
 from pyhafas.profile.vsn import VSNProfile
 from pyhafas.types.fptf import (Journey, Leg, Mode, Station, StationBoardLeg,
-                                Stopover)
+                                Stopover, Remark)
 
 from tests.types import PyTestHafasResponse
 
@@ -103,6 +103,32 @@ def test_vsn_journeys_parsing():
                             departure=None,
                             departure_delay=None,
                             departure_platform=None
+                        )
+                    ],
+                    remarks=[
+                        Remark(
+                            remark_type='A',
+                            code='PB',
+                            subject=None,
+                            text='Pflicht zur Bedeckung von Mund und Nase',
+                            priority=200,
+                            trip_id=None
+                        ),
+                        Remark(
+                            remark_type='A',
+                            code='FK',
+                            subject=None,
+                            text='Fahrradmitnahme begrenzt möglich',
+                            priority=260,
+                            trip_id=None
+                        ),
+                        Remark(
+                            remark_type='A',
+                            code='NW',
+                            subject=None,
+                            text='Linie der NordWestBahn, Info unter 01806 600161',
+                            priority=899,
+                            trip_id=None
                         )
                     ]
                 )

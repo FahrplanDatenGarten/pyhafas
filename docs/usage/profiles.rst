@@ -74,6 +74,7 @@ Specialities
 
 * The `max_trips` filter in station board (departures/arrival) requests seems not to work
 
+
 Nahverkehr Sachsen-Anhalt (NASA)
 ---------------------------------------
 Usage
@@ -106,3 +107,32 @@ Specialities
 ^^^^^^^^^^^^
 
 Part of NASA are tourism trains, for example the 'Harzer Schmalspurbahnen' (Light railway of Harz) which climbs the Brocken mountain (1141m).
+
+
+
+Kölner Verkehrsbetriebe (KVB)
+-----------------------------
+Usage
+^^^^^^
+.. code:: python
+
+  from pyhafas.profile import KVBProfile
+  client = HafasClient(KVBProfile())
+
+Available Products
+^^^^^^^^^^^^^^^^^^
+
+===================== ==================
+pyHaFAS Internal Name Example Train Type
+===================== ==================
+s-bahn                S
+stadtbahn             U
+bus                   BUS
+fernverkehr           ICE/ECE/IC/EC
+regionalverkehr       RE/IRE
+taxibus               Group Taxi
+===================== ==================
+
+Default Products
+^^^^^^^^^^^^^^^^
+All available products specified above are enabled by default.

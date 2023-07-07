@@ -5,6 +5,7 @@ from pyhafas.profile.base.helper.format_products_filter import \
     BaseFormatProductsFilterHelper
 from pyhafas.profile.base.helper.parse_leg import BaseParseLegHelper
 from pyhafas.profile.base.helper.parse_lid import BaseParseLidHelper
+from pyhafas.profile.base.helper.parse_remark import BaseParseRemarkHelper
 from pyhafas.profile.base.helper.request import BaseRequestHelper
 from pyhafas.profile.base.requests.journey import BaseJourneyRequest
 from pyhafas.profile.base.requests.journeys import BaseJourneysRequest
@@ -20,6 +21,7 @@ class BaseProfile(
         BaseParseLidHelper,
         BaseDateTimeHelper,
         BaseParseLegHelper,
+        BaseParseRemarkHelper,
         BaseLocationRequest,
         BaseJourneyRequest,
         BaseJourneysRequest,
@@ -41,5 +43,8 @@ class BaseProfile(
     availableProducts: Dict[str, List[int]] = {}
     defaultProducts: List[str] = []
 
-    def __init__(self, ua=defaultUserAgent):
-        self.userAgent = ua
+    def __init__(self, ua=None):
+        if ua:
+            self.userAgent = ua
+        else:
+            self.userAgent = self.defaultUserAgent
