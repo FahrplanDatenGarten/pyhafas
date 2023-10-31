@@ -6,3 +6,4 @@ from .rkrp import RKRPProfile
 from .nasa import NASAProfile
 from .kvb import KVBProfile
 from .nvv import NVVProfile
+from .vvv import VVVProfile

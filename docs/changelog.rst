@@ -2,6 +2,9 @@ Changelog
 =========
 
 .. contents::
+next release
+------------
+* [feature] Add VVV Profile
 
 v0.4.0
 ------
