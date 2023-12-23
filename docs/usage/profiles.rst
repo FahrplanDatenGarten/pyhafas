@@ -136,3 +136,35 @@ taxibus               Group Taxi
 Default Products
 ^^^^^^^^^^^^^^^^
 All available products specified above are enabled by default.
+
+
+Verkehrsverbund Vorarlberg (VVV)
+-----------------------------
+Usage
+^^^^^^
+.. code:: python
+
+  from pyhafas.profile import VVVProfile
+  client = HafasClient(VVVProfile())
+
+Available Products
+^^^^^^^^^^^^^^^^^^
+
+===================== ==================
+pyHaFAS Internal Name Train Type
+===================== ==================
+train-and-s-bahn      Bahn & S-Bahn
+u-bahn                U-Bahn
+tram                  Straßenbahn
+long-distance-bus     Fernbus
+regional-bus          Regionalbus
+city-bus              Stadtbus
+aerial-lift           Seil-/Zahnradbahn
+ferry                 Schiff
+on-call               Anrufsammeltaxi
+other-bus             sonstige Busse
+===================== ==================
+
+Default Products
+^^^^^^^^^^^^^^^^
+All available products specified above are enabled by default.
