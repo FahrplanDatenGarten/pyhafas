@@ -5,6 +5,8 @@ Changelog
 next release
 ------------
 * [feature] Add VVV Profile
+* [feature] Add NVV Profile
+* [fix] Typo in KVB Profile
 
 v0.4.0
 ------
