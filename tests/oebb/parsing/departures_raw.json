@@ -1,0 +1,198 @@
+{
+    "ver": "1.41",
+    "ext": "OEBB.13",
+    "lang": "deu",
+    "id": "p6k66hmwk4pj8wwg",
+    "err": "OK",
+    "graph": {
+        "id": "standard",
+        "index": 0
+    },
+    "subGraph": {
+        "id": "global",
+        "index": 0
+    },
+    "view": {
+        "id": "standard", "index": 0, "type": "WGS84"
+    },
+    "svcResL": [
+        {
+            "meth": "StationBoard", "err": "OK",
+            "res": {
+                "common": {
+                    "locL": [
+                        {
+                            "lid": "A=1@O=Neunkirchen N\u00d6 Bahnhof@X=16085100@Y=47731615@U=181@L=8101277@",
+                            "type": "S",
+                            "name": "Neunkirchen N\u00d6 Bahnhof",
+                            "icoX": 0,
+                            "extId": "8101277",
+                            "state": "F",
+                            "crd": {
+                                "x": 16085100, "y": 47731615, "floor": 0
+                            },
+                            "pCls": 48,
+                            "pRefL": [1, 2],
+                            "entry": true,
+                            "gidL": ["U\u00d78103130", "B\u00d7Nek"],
+                            "chgTime": "000500"
+                        },
+                        {
+                            "lid": "A=1@O=Wien Floridsdorf Bahnhof@X=16399731@Y=48255947@U=181@L=8100236@",
+                            "type": "S",
+                            "name": "Wien Floridsdorf Bahnhof",
+                            "icoX": 0,
+                            "extId": "8100236",
+                            "state": "F",
+                            "crd": {
+                                "x": 16399731,
+                                "y": 48255947,
+                                "floor": 0
+                            },
+                            "pCls": 48,
+                            "entry": true,
+                            "gidL": ["U\u00d78102806", "B\u00d7F"],
+                            "chgTime": "000500"
+                        }
+                    ],
+                    "prodL": [
+                        {
+                            "pid": "L::4::CJX::B1146449194::CJX_1146449194_9::*",
+                            "name": "CJX 9 (Zug-Nr. 2972)",
+                            "nameS": "CJX 9",
+                            "number": "9",
+                            "icoX": 0,
+                            "cls": 16,
+                            "oprX": 0,
+                            "prodCtx": {
+                                "name": "CJX 9   ",
+                                "num": "2972",
+                                "line": "9",
+                                "matchId": "9",
+                                "catOut": "CJX     ",
+                                "catOutS": "CJX",
+                                "catOutL": "cityjet express",
+                                "catIn": "CJX",
+                                "catCode": "4",
+                                "admin": "81____"
+                            }
+                        },
+                        {
+                            "name": "",
+                            "icoX": 0,
+                            "cls": 16,
+                            "prodCtx": { "name": "" }
+                        },
+                        {
+                            "name": "",
+                            "icoX": 2,
+                            "cls": 32,
+                            "prodCtx":{ "name": "" }
+                        }
+                    ],
+                    "opL": [{"name": "Nahreisezug", "icoX": 1}],
+                    "remL": [
+                        {"type": "A", "code": "OB", "prio": 0, "icoX": 3, "txtN": "Niederflurfahrzeug"},
+                        {"type": "A", "code": "RO", "prio": 150, "icoX": 4, "txtN": "Rollstuhlstellplatz"},
+                        {"type": "A", "code": "OA", "prio": 150, "icoX": 5, "txtN": "Rollstuhlstellplatz - Voranmeldung unter +43 5 1717"},
+                        {"type": "A", "code": "EF", "prio": 150, "icoX": 6, "txtN": "<b>Fahrzeuggebundene Einstiegshilfe</b>", "rtActivated": true},
+                        {"type": "A", "code": "OC", "prio": 150, "icoX": 7, "txtN": "rollstuhltaugliches WC"},
+                        {"type": "A", "code": "FK", "prio": 250, "icoX": 8, "txtN": "Fahrradmitnahme begrenzt m\u00f6glich"},
+                        {"type": "A", "code": "K2", "prio": 300, "icoX": 9, "txtN": "nur 2. Klasse"},
+                        {"type": "A", "code": "SB", "prio": 350, "icoX": 10, "txtN": "Zustieg im Nahverkehr (REX, R, CJX, S-Bahn) nur mit g\u00fcltiger Fahrkarte"},
+                        {"type": "A", "code": "WV", "prio": 710, "icoX": 11, "txtN": "WLAN verf\u00fcgbar"},
+                        {"type": "R", "code": "text.realtime.journey.attribute.change", "icoX": 12, "txtN": "Bei Ihrer Verbindung hat sich die Zugausstattung ge\u00e4ndert."}
+                    ],
+                    "icoL": [
+                        {
+                            "res": "prod_reg",
+                            "fg": {"r": 255, "g": 255, "b": 255},
+                            "bg": {"r": 0, "g": 96, "b": 240}
+                        },
+                        {
+                            "res": "DPN",
+                            "txt": "Nahreisezug"
+                        },
+                        {
+                            "res": "prod_comm_t",
+                            "fg": {"r": 255, "g": 255, "b": 255},
+                            "bg": {"r": 0, "g": 96, "b": 240}
+                        },
+                        {"res": "attr_low_floor"},
+                        {"res": "attr_wchair"},
+                        {"res": "attr_wchair_aviso"},
+                        {"res": "attr_wchair_ramp"},
+                        {"res": "attr_wchair_wc"},
+                        {"res": "attr_bike"},
+                        {"res": "attr_2nd"},
+                        {"res": "attr_selfservice"},
+                        {"res": "attr_wlan"},
+                        {"res": "rt_warn"}
+                    ],
+                    "lDrawStyleL": [
+                        {
+                            "sIcoX": 0,
+                            "type": "SOLID",
+                            "bg": {"r": 0, "g": 96, "b": 240}
+                        },
+                        {
+                            "type": "SOLID",
+                            "bg": {"r": 0, "g": 96, "b": 240}
+                        }
+                    ]
+                },
+                "type": "DEP",
+                "jnyL": [
+                    {
+                        "jid": "2|#VN#1#ST#1703147972#PI#3#ZI#361303#TA#0#DA#241223#1S#8100027#1T#2255#LS#8100236#LT#10022#PU#181#RT#1#CA#CJX#ZE#9#ZB#CJX 9   #PC#4#FR#8100027#FT#2255#TO#8100236#TT#10022#",
+                        "date": "20231224",
+                        "prodX": 0,
+                        "dirTxt": "Wien Floridsdorf Bahnhof",
+                        "dirFlg": "x",
+                        "status": "P",
+                        "isRchbl": true,
+                        "stbStop": {
+                            "locX": 0,
+                            "idx": 5,
+                            "dProdX": 0,
+                            "dPltfS": {"type": "PL", "txt": "2"},
+                            "dPltfR": {"type": "PL", "txt": "2"},
+                            "dTimeS": "231400",
+                            "dTimeR": "231400",
+                            "dProgType": "PROGNOSED",
+                            "dTZOffset": 60,
+                            "type": "N"
+                        },
+                        "pos": {
+                            "x": 15914305,
+                            "y": 47682507
+                        },
+                        "msgL": [
+                            {"type": "REM", "remX": 0, "sty": "I", "fLocX": 0, "tLocX": 1, "tagL": ["RES_JNY_H3"], "sort": 268435456},
+                            {"type": "REM", "remX": 1, "sty": "I", "fLocX": 0, "tLocX": 1, "tagL": ["RES_JNY_DTL"], "sort": 556531712},
+                            {"type": "REM", "remX": 2, "sty": "I", "fLocX": 0, "tLocX": 1, "tagL": ["RES_JNY_DTL"], "sort": 556531712},
+                            {"type": "REM", "remX": 3, "sty": "I", "fLocX": 0, "tLocX": 1, "tagL": ["RES_JNY_DTL"], "sort": 556531712},
+                            {"type": "REM", "remX": 4, "sty": "I", "fLocX": 0, "tLocX": 1, "tagL": ["RES_JNY_DTL"], "sort": 556531712},
+                            {"type": "REM", "remX": 5, "sty": "I", "fLocX": 0, "tLocX": 1, "tagL": ["RES_JNY_DTL"], "sort": 569638912},
+                            {"type": "REM", "remX": 6, "sty": "I", "fLocX": 0, "tLocX": 1, "tagL": ["RES_JNY_DTL"], "sort": 576192512},
+                            {"type": "REM", "remX": 7, "sty": "I", "fLocX": 0, "tLocX": 1, "tagL": ["RES_JNY_DTL"], "sort": 582746112},
+                            {"type": "REM", "remX": 8, "sty": "I", "fLocX": 0, "tLocX": 1, "tagL": ["RES_JNY_DTL"], "sort": 629932032},
+                            {"type": "REM", "remX": 9, "sty": "M", "tagL": ["SUM_CON_HDR_H3", "RES_SEC_HDR_H3"], "sort": 13107200, "persist": false}
+                        ],
+                        "subscr": "F",
+                        "prodL": [{"prodX": 0, "fLocX": 0, "tLocX": 1, "fIdx": 5, "tIdx": 19}],
+                        "sumLDrawStyleX": 0,
+                        "resLDrawStyleX": 1,
+                        "trainStartDate": "20231224"
+                    }
+                ],
+                "fpB": "20231006",
+                "fpE": "20241214",
+                "planrtTS": "1703455139",
+                "sD": "20231224",
+                "sT": "225923",
+                "locRefL": [0]
+            }
+        }
+    ]
+}
