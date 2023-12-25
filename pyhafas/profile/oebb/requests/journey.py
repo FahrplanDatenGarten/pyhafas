@@ -12,22 +12,21 @@ class OEBBJourneyRequest(BaseJourneyRequest, JourneyRequestInterface):
 
     def format_journey_request(self: ProfileInterface, journey: Journey) -> dict:
         """
-        Creates the HaFAS ( Adapted for NASA ) request for refreshing journey details
+        Creates the HaFAS ( Adapted for OEBB ) request for refreshing journey details
 
         :param journey: Id of the journey (ctxRecon)
-        :return: Request for HaFAS ( NASA-Adapted )
+        :return: Request for HaFAS ( OEBB-Adapted )
         """
         return {"req": {"outReconL": [{"ctx": journey.id}]}, "meth": "Reconstruction"}
 
     def parse_journey_request(self: ProfileInterface, data: HafasResponse) -> Journey:
         """
-        Parses the HaFAS response for a journey request ( Adapted for NASA )
+        Parses the HaFAS response for a journey request ( Adapted for OEBB )
 
         :param data: Formatted HaFAS response
         :return: List of Journey objects
         """
         date = self.parse_date(data.res["outConL"][0]["date"])
-        # todo: parse more data
         return Journey(
             data.res["outConL"][0]["recon"]["ctx"],
             date=date,

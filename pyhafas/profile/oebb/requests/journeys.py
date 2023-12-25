@@ -16,7 +16,6 @@ class OEBBJourneysRequest(BaseJourneysRequest, JourneysRequestInterface):
 
         for jny in data.res["outConL"]:
             date = self.parse_date(jny["date"])
-            # todo: parse more data
             journeys.append(
                 Journey(
                     jny["recon"]["ctx"],
