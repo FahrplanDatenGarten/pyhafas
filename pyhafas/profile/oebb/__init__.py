@@ -29,16 +29,16 @@ class OEBBProfile(OEBBJourneyRequest, OEBBJourneysRequest, BaseProfile):
     }
 
     availableProducts = {
-        "nationalExpress": [1],  # ICE/RJ
-        "national": [2, 4],  # IC/EC
-        "interregional": [8, 4096],  # D/EN
+        "highspeed": [1],  # RJ/RJX/ICE
+        "eurocity-intercity": [2, 4],  # EC/IC
+        "durchgang-euronight": [8, 4096],  # D/EN
         "regional": [16],  # R/REX/CJX
-        "suburban": [32],  # S-Bahn
+        "s-bahn": [32],  # S-Bahn
         "bus": [64],  # Bus
-        "ferry": [128],  # F
-        "subway": [256],  # U
-        "tram": [512],  # T
-        "onCall": [2048],  # on-call transit, lifts, etc.
+        "ferry": [128],  # Schiff
+        "u-bahn": [256],  # U-Bahn
+        "tram": [512],  # Straßenbahn
+        "on-call": [2048],  # on-call transit, lifts, etc.
     }
 
     defaultProducts = [
