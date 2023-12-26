@@ -8,23 +8,6 @@ from tests.types import PyTestHafasResponse
 
 import json
 
-Station(
-    id="8101567",
-    lid="A=1@O=Sollenau Bahnhof@X=16245611@Y=47898293@U=181@L=8101567@",
-    name="Sollenau Bahnhof",
-    latitude=47.898293,
-    longitude=16.245611,
-)
-
-Station(
-    id="8101150",
-    lid="A=1@O=Wien Liesing Bahnhof@X=16284229@Y=48134583@U=181@L=8101150@",
-    name="Wien Liesing Bahnhof",
-    latitude=48.134583,
-    longitude=16.284229,
-)
-
-
 def test_oebb_trips_parsing():
     directory = os.path.dirname(os.path.realpath(__file__))
     raw_hafas_json_file = open(directory + "/trip_raw.json", "r")
