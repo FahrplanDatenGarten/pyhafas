@@ -42,14 +42,14 @@ class OEBBProfile(OEBBJourneyRequest, OEBBJourneysRequest, BaseProfile):
     }
 
     defaultProducts = [
-        "nationalExpress",
-        "national",
-        "interregional",
+        "highspeed",
+        "eurocity-intercity",
+        "durchgang-euronight",
         "regional",
-        "suburban",
+        "s-bahn",
         "bus",
         "ferry",
-        "subway",
+        "u-bahn",
         "tram",
-        "onCall",
+        "on-call",
     ]
