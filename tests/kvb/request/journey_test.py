@@ -1,3 +1,5 @@
+import datetime
+
 from pyhafas import HafasClient
 from pyhafas.profile import KVBProfile
 from pyhafas.types.fptf import Journey

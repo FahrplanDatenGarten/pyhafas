@@ -1,4 +1,5 @@
 import datetime
+import locale
 import os
 
 from pyhafas.profile.kvb import KVBProfile
@@ -9,9 +10,10 @@ from tests.types import PyTestHafasResponse
 
 def test_kvb_departures_parsing():
     directory = os.path.dirname(os.path.realpath(__file__))
-    raw_hafas_json_file = open(directory + "/departures_raw.json", "r")
+    raw_hafas_json_file = open(directory + "/departures_raw.json", "r", encoding="utf8")
     hafas_response = PyTestHafasResponse(raw_hafas_json_file.read())
     raw_hafas_json_file.close()
+    encoding = locale.getencoding()
     correct_station_board_legs = [StationBoardLeg(
         id='1|119823|0|1|24052023',
         name='609',

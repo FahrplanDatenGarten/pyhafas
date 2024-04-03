@@ -9,7 +9,7 @@ from tests.types import PyTestHafasResponse
 
 def test_db_trips_parsing():
     directory = os.path.dirname(os.path.realpath(__file__))
-    raw_hafas_json_file = open(directory + "/trip_raw.json", "r")
+    raw_hafas_json_file = open(directory + "/trip_raw.json", "r", encoding="utf-8")
     hafas_response = PyTestHafasResponse(raw_hafas_json_file.read())
     raw_hafas_json_file.close()
     correct_trip = Leg(
