@@ -3,6 +3,7 @@ from typing import Dict, List, Optional, Union
 
 from pyhafas.profile import ProfileInterface
 from pyhafas.types.fptf import Journey, Leg, Station, StationBoardLeg
+from pyhafas.types.nearby import LatLng
 from pyhafas.types.station_board_request import StationBoardRequestType
 
 
@@ -242,13 +243,41 @@ class HafasClient:
 
         return self.profile.parse_trip_request(res)
 
-    def stop(self, stop):
+    def nearby(self,
+               location: LatLng,
+               max_walking_distance: int = -1,
+               min_walking_distance: int = 0,
+               products: dict[str, bool] = {},
+               get_pois: bool = False,
+               get_stops: bool = True,
+               max_locations: int = -1
+               ) -> List[Station]:
         """
-        Not implemented yet.
-        """
-        raise NotImplementedError
+        Returns stations close to a given latitude/longitude location
 
-    def nearby(self, location):
+        Distance to stations calculated by HaFAS. The list is ordered by closest to furthest station
+
+        :param location: LatLng object containing latitude and longitude
+        :param max_walking_distance: Maximum walking distance in meters
+        :param min_walking_distance: Minimum walking distance in meters
+        :param products: Dictionary of product names to products
+        :param get_pois: If true, returns pois
+        :param get_stops: If true, returns stops instead of locations
+        :param max_locations: Maximum number of locations to return
+        """
+        body = self.profile.format_nearby_request(
+            location,
+            max_walking_distance,
+            min_walking_distance,
+            products,
+            get_pois,
+            get_stops,
+            max_locations
+        )
+        res = self.profile.request(body)
+        return self.profile.parse_nearby_response(res)
+
+    def stop(self, stop):
         """
         Not implemented yet.
         """

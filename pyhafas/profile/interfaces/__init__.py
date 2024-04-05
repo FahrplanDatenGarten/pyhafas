@@ -15,6 +15,7 @@ from pyhafas.profile.interfaces.requests.journeys import \
     JourneysRequestInterface
 from pyhafas.profile.interfaces.requests.location import \
     LocationRequestInterface
+from pyhafas.profile.interfaces.requests.nearby import NearbyRequestInterface
 from pyhafas.profile.interfaces.requests.station_board import \
     StationBoardRequestInterface
 from pyhafas.profile.interfaces.requests.trip import TripRequestInterface
@@ -32,6 +33,7 @@ class ProfileInterface(
         JourneysRequestInterface,
         StationBoardRequestInterface,
         TripRequestInterface,
+        NearbyRequestInterface,
         ABC):
     """
     The profile interface is the abstract class of a profile.

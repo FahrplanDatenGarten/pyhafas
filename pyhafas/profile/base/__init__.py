@@ -10,6 +10,7 @@ from pyhafas.profile.base.helper.request import BaseRequestHelper
 from pyhafas.profile.base.requests.journey import BaseJourneyRequest
 from pyhafas.profile.base.requests.journeys import BaseJourneysRequest
 from pyhafas.profile.base.requests.location import BaseLocationRequest
+from pyhafas.profile.base.requests.nearby import BaseNearbyRequest
 from pyhafas.profile.base.requests.station_board import BaseStationBoardRequest
 from pyhafas.profile.base.requests.trip import BaseTripRequest
 from pyhafas.profile.interfaces import ProfileInterface
@@ -27,6 +28,7 @@ class BaseProfile(
         BaseJourneysRequest,
         BaseStationBoardRequest,
         BaseTripRequest,
+        BaseNearbyRequest,
         ProfileInterface):
     """
     Profile for a "normal" HaFAS. Only for other profiles usage as basis.
