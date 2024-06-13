@@ -34,7 +34,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
             common['locL'][departure['locX']]['lid'])
         leg_destination = self.parse_lid_to_station(
             common['locL'][arrival['locX']]['lid'])
-        if jny_type == "WALK":
+        if jny_type == "WALK" or jny_type == "TRSF":
             return Leg(
                 id=gis['ctx'],
                 origin=leg_origin,
