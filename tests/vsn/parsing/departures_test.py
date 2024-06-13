@@ -9,7 +9,7 @@ from tests.types import PyTestHafasResponse
 
 def test_vsn_departures_parsing():
     directory = os.path.dirname(os.path.realpath(__file__))
-    raw_hafas_json_file = open(directory + "/departures_raw.json", "r")
+    raw_hafas_json_file = open(directory + "/departures_raw.json", "r", encoding="utf8")
     hafas_response = PyTestHafasResponse(raw_hafas_json_file.read())
     raw_hafas_json_file.close()
     correct_station_board_legs = [StationBoardLeg(
