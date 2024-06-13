@@ -37,17 +37,14 @@ class BaseJourneysRequest(JourneysRequestInterface):
         return {
             'req': {
                 'arrLocL': [{
-                    'type': 'S',
                     'lid': 'A=1@L={}@'.format(destination.id)
                 }],
                 'viaLocL': [{
                     'loc': {
-                        'type': 'S',
-                        'lid': 'A=1@L={}@'.format(via_station.id)
+                        'lid': 'A=1@L={}@'.format(via_station.id),
                     }
                 } for via_station in via],
                 'depLocL': [{
-                    'type': 'S',
                     'lid': 'A=1@L={}@'.format(origin.id)
                 }],
                 'outDate': date.strftime("%Y%m%d"),

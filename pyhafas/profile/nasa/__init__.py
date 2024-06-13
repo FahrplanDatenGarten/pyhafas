@@ -11,7 +11,7 @@ class NASAProfile(NASAJourneyRequest, NASAJourneysRequest, BaseProfile):
     """
 
     baseUrl = "https://reiseauskunft.insa.de/bin/mgate.exe"
-    defaultUserAgent = "Dalvik/2.1.0 (Linux; U; Android 11; Pixel 4a Build/RQ2A.210305.006)"
+    defaultUserAgent = "nasa/6.4.3 (iPad; iOS 17.5.1; Scale/2.00)"
 
     addMicMac = False
     addChecksum = False
@@ -23,10 +23,10 @@ class NASAProfile(NASAJourneyRequest, NASAJourneysRequest, BaseProfile):
         "client": {
             "id": "NASA",
             "type": "IPH",
-            "name": "nasaProd",
-            "v": "4000200",
+            "name": "nasa",
+            "v": "6040300",
         },
-        "ver": "1.44",
+        "ver": "1.57",
         "lang": "de",
         "auth": {
             "type": "AID",
