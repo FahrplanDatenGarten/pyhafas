@@ -1,5 +1,5 @@
-requests~=2.9
-pytz>=2013.6
+requests~=2.28
+pytz>=2022.1
 
 pycryptodome~=3.9.8
 pytest~=6.2.5
