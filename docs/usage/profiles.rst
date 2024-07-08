@@ -168,3 +168,35 @@ other-bus             sonstige Busse
 Default Products
 ^^^^^^^^^^^^^^^^
 All available products specified above are enabled by default.
+
+
+Österreichische Bundesbahnen (ÖBB)
+------------------
+Usage
+^^^^^^
+.. code:: python
+
+  from pyhafas.profile import OEBBProfile
+  client = HafasClient(OEBBProfile())
+
+Available Products
+^^^^^^^^^^^^^^^^^^
+
+===================== ==================
+pyHaFAS Internal Name Example Train Type
+===================== ==================
+highspeed             RJ/RJX/ICE
+eurocity-intercity    EC/IC
+durchgang-euronight   D/EN
+regional              R/REX/CJX
+s-bahn                S-Bahn
+bus                   Bus
+ferry                 Schiff
+u-bahn                U
+tram                  Straßenbahn
+on-call               on-call transit, lifts, etc
+===================== ==================
+
+Default Products
+^^^^^^^^^^^^^^^^
+All available products specified above are enabled by default.
