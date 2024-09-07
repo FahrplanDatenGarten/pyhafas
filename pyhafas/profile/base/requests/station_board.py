@@ -97,6 +97,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
                         date) - self.parse_datetime(
                         raw_leg['stbStop'][departure_arrival_prefix + 'TimeS'],
                         date) if raw_leg['stbStop'].get(departure_arrival_prefix + 'TimeR') is not None else None,
-                    cancelled=bool(raw_leg['stbStop'].get(departure_arrival_prefix + 'Cncl', False))
-                ))
+                    cancelled=bool(raw_leg['stbStop'].get(departure_arrival_prefix + 'Cncl', False)),
+                    additional_name=data.common['prodL'][raw_leg['prodX']].get('addName', None),)
+                )
             return legs
