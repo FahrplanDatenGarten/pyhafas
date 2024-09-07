@@ -90,6 +90,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
             return Leg(
                 id=journey['jid'],
                 name=common['prodL'][journey['prodX']]['name'],
+                additional_name=common['prodL'][journey['prodX']].get('addName', None),
                 origin=leg_origin,
                 destination=leg_destination,
                 cancelled=bool(arrival.get('aCncl', False)),
