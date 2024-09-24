@@ -117,7 +117,8 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                     arrival.get('aPlatfS', arrival.get('aPltfR', arrival.get('aPltfS', {})).get('txt'))),
                 stopovers=leg_stopovers,
                 remarks=[self.parse_remark(common['remL'][msg['remX']], common)
-                         for msg in journey.get('msgL', {}) if msg.get('remX') is not None])
+                         for msg in journey.get('msgL', {}) if msg.get('remX') is not None],
+                operators=[op['name'] for op in common['opL']] if common['opL'] else None)
 
     def parse_legs(
             self: ProfileInterface,
