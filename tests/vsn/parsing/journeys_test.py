@@ -130,7 +130,8 @@ def test_vsn_journeys_parsing():
                             priority=899,
                             trip_id=None
                         )
-                    ]
+                    ],
+                    operators=['NordWestBahn', 'NordWestBahn']
                 )
             ]
         )

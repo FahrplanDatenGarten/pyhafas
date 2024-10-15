@@ -213,6 +213,8 @@ class Leg(FPTFObject):
     :vartype stopovers: Optional[List[Stopover]]
     :ivar remarks: (optional) List of remarks
     :vartype remarks: List[Remark]
+    :ivar operators: (optional) The operators of the train
+    :vartype operators: List[str]
     """
 
     def __init__(
@@ -231,7 +233,8 @@ class Leg(FPTFObject):
             arrival_delay: Optional[datetime.timedelta] = None,
             arrival_platform: Optional[str] = None,
             stopovers: Optional[List[Stopover]] = None,
-            remarks: Optional[List[Remark]] = None
+            remarks: Optional[List[Remark]] = None,
+            operators: Optional[List[str]] = None
     ):
         """
         FPTF `Leg` object
@@ -272,6 +275,7 @@ class Leg(FPTFObject):
         if remarks is None:
             remarks = []
         self.remarks: List[Remark] = remarks
+        self.operators = operators
 
 
 class Journey(FPTFObject):

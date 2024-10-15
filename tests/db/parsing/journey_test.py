@@ -98,6 +98,7 @@ def test_db_journey_parsing():
                 priority=560,
                 trip_id=None
             )
-        ])]
+        ],
+        operators=['DB Regio AG NRW'])]
     )
     assert DBProfile().parse_journey_request(hafas_response) == correct_journey

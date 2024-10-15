@@ -97,7 +97,8 @@ def test_db_journeys_parsing():
                     priority=560,
                     trip_id=None
                 )
-            ]
+            ],
+            operators=['DB Regio AG NRW']
         )],
     )]
     assert DBProfile().parse_journeys_request(hafas_response) == correct_journeys

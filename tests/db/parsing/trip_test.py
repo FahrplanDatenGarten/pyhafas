@@ -398,6 +398,7 @@ def test_db_trips_parsing():
                 priority=560,
                 trip_id=None
             )
-        ]
+        ],
+        operators=['DB Regio AG NRW']
     )
     assert DBProfile().parse_trip_request(hafas_response) == correct_trip
