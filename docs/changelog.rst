@@ -2,8 +2,23 @@ Changelog
 =========
 
 .. contents::
-next release
-------------
+
+v0.6.0
+------
+* feat: implement nearby request
+* fix: parsing station board results without a direction in base profile
+* fix: support additional TRSF leg type equivalent to walking in base profile
+  This fixes VVV profile.
+* fix: fix journeys request in nasa and base profile
+
+Internal changes:
+
+* fix(testing): fix parsing test execution on windows
+* fix(testing): long-term fix for journey request tests.
+* feat(testing): execute tests in GitHub CI
+
+v0.5.0
+------
 * [feature] Add VVV Profile
 * [feature] Add NVV Profile
 * [fix] Typo in KVB Profile
