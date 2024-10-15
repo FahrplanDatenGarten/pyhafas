@@ -85,7 +85,7 @@ class BaseStationBoardRequest(StationBoardRequestInterface):
                 legs.append(StationBoardLeg(
                     id=raw_leg['jid'],
                     name=data.common['prodL'][raw_leg['prodX']]['name'],
-                    direction=raw_leg['dirTxt'],
+                    direction=raw_leg.get('dirTxt'),
                     date_time=self.parse_datetime(
                         raw_leg['stbStop'][departure_arrival_prefix + 'TimeS'],
                         date
