@@ -321,14 +321,14 @@ class StationBoardLeg(FPTFObject):
     :vartype id: str
     :ivar name: Name of the trip (e.g. ICE 123)
     :vartype name: str
-    :ivar direction: Direction text of the trip (e.g. Berlin Central Station)
-    :vartype direction: str
     :ivar station: FPTF `Station` object of the departing/arriving station
     :vartype station: Station
     :ivar date_time: Planned Date and Time of the departure/arrival
     :vartype date_time: datetime.datetime
     :ivar cancelled: Whether the stop or trip cancelled
     :vartype cancelled: bool
+    :ivar direction: Direction text of the trip (e.g. Berlin Central Station)
+    :vartype direction: Optional[str]
     :ivar delay: Delay at the departure station (maybe `None`)
     :vartype delay: Optional[datetime.timedelta]
     :ivar platform: Real-time platform at the station (maybe `None`)
@@ -339,10 +339,10 @@ class StationBoardLeg(FPTFObject):
             self,
             id: str,
             name: str,
-            direction: str,
             station: Station,
             date_time: datetime.datetime,
             cancelled: bool,
+            direction: Optional[str] = None,
             delay: Optional[datetime.timedelta] = None,
             platform: Optional[str] = None
     ):
@@ -351,18 +351,18 @@ class StationBoardLeg(FPTFObject):
 
         :param id: ID of the Leg
         :param name: Name of the trip (e.g. ICE 123)
-        :param direction: Direction text of the trip (e.g. Berlin Central Station)
         :param station: FPTF `Station` object of the departing/arriving station
         :param date_time: Planned Date and Time of the departure/arrival
         :param cancelled: Whether the stop or trip cancelled
+        :param direction: (optional) Direction text of the trip (e.g. Berlin Central Station)
         :param delay: (optional) Delay at the departure station. Defaults to `None`
         :param platform: (optional) Real-time platform at the station. Defaults to `None`
         """
         self.id: str = id
         self.name: str = name
-        self.direction: str = direction
         self.station: Station = station
         self.dateTime: datetime.datetime = date_time
         self.cancelled: bool = cancelled
+        self.direction: Optional[str] = direction
         self.delay: Optional[datetime.timedelta] = delay
         self.platform: Optional[str] = platform
