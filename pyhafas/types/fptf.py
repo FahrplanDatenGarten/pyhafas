@@ -224,6 +224,7 @@ class Leg(FPTFObject):
             arrival: datetime.datetime,
             mode: Mode = Mode.TRAIN,
             name: Optional[str] = None,
+            additional_name: Optional[str] = None,
             cancelled: bool = False,
             distance: Optional[int] = None,
             departure_delay: Optional[datetime.timedelta] = None,
@@ -242,7 +243,8 @@ class Leg(FPTFObject):
         :param departure: Planned date and Time of the departure
         :param arrival: Planned date and Time of the arrival
         :param mode: (optional) Type of transport vehicle - Must be a part of the FPTF `Mode` enum. Defaults to `Mode.TRAIN`
-        :param name: (optional) Name of the trip (e.g. ICE 123). Defaults to None
+        :param name: (optional) Name of the trip (e.g. RE 10354). Defaults to None
+        :param additional_name: (optional) Additional name of the trip (e.g. RE 4). Defaults to None
         :param cancelled: (optional) Whether the trip is cancelled. Defaults to False
         :param distance: (optional) Distance of the walk trip in meters. Defaults to None
         :param departure_delay: (optional) Delay at the departure station. Defaults to None
@@ -262,6 +264,7 @@ class Leg(FPTFObject):
         # Optional Variables
         self.mode: Mode = mode
         self.name: Optional[str] = name
+        self.additionalName: Optional[str] = additional_name
         self.cancelled: bool = cancelled
         self.distance: Optional[int] = distance
         self.departureDelay: Optional[datetime.timedelta] = departure_delay
@@ -344,7 +347,9 @@ class StationBoardLeg(FPTFObject):
             cancelled: bool,
             direction: Optional[str] = None,
             delay: Optional[datetime.timedelta] = None,
-            platform: Optional[str] = None
+            platform: Optional[str] = None,
+            additional_name: Optional[str] = None,
+
     ):
         """
         `StationBoardLeg` object
@@ -357,6 +362,7 @@ class StationBoardLeg(FPTFObject):
         :param direction: (optional) Direction text of the trip (e.g. Berlin Central Station)
         :param delay: (optional) Delay at the departure station. Defaults to `None`
         :param platform: (optional) Real-time platform at the station. Defaults to `None`
+        :param additional_name: (optional) Additional name if available (e.g. RE 4)
         """
         self.id: str = id
         self.name: str = name
@@ -366,3 +372,4 @@ class StationBoardLeg(FPTFObject):
         self.direction: Optional[str] = direction
         self.delay: Optional[datetime.timedelta] = delay
         self.platform: Optional[str] = platform
+        self.additionalName: str = additional_name
