@@ -41,8 +41,7 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                 destination=leg_destination,
                 departure=self.parse_datetime(departure['dTimeS'], date),
                 arrival=self.parse_datetime(arrival['aTimeS'], date),
-                mode=Mode.WALKING,
-                name=None,
+                line=Line("", mode=Mode.WALKING),
                 distance=gis.get('dist') if gis is not None else None
             )
         else:
@@ -102,13 +101,14 @@ class BaseParseLegHelper(ParseLegHelperInterface):
                 leg_line.fahrtNr = prodCtx['num'] if prodCtx and 'num' in prodCtx else None
                 leg_line.adminCode = prodCtx['admin'] if prodCtx and 'admin' in prodCtx else None
                 leg_line.productName = str(prodCtx['catOut']).strip() if prodCtx and 'catOut' in prodCtx else None
+                leg_line.addName = str(prodCtx['addName']).strip() if prodCtx and 'addName' in prodCtx else None
 
-            if 'oprL' in common and 'oprX' in prodL and prodL['oprX'] in common['oprL']:
-                oprL = common['oprL'][prodL['oprX']]
+            if 'opL' in common and 'oprX' in prodL:
+                opL = common['opL'][prodL['oprX']]
 
                 leg_operator = Operator(
-                    id=str(oprL['name']).lower().replace(' ', '-'),
-                    name=oprL['name']
+                    id=str(opL['name']).lower().replace(' ', '-'),
+                    name=opL['name']
                 )
 
                 leg_line.operator = leg_operator

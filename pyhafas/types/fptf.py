@@ -316,8 +316,6 @@ class Leg(FPTFObject):
             destination: Station,
             departure: datetime.datetime,
             arrival: datetime.datetime,
-            mode: Optional[Mode] = Mode.TRAIN,
-            name: Optional[str] = None,
             line: Optional[Line] = None,
             cancelled: bool = False,
             distance: Optional[int] = None,
@@ -336,8 +334,6 @@ class Leg(FPTFObject):
         :param destination: FPTF `Station` object of the destination station
         :param departure: Planned date and Time of the departure
         :param arrival: Planned date and Time of the arrival
-        :param mode: (optional, deprecated) Type of transport vehicle - Must be a part of the FPTF `Mode` enum. Defaults to `Mode.TRAIN`
-        :param name: (optional, deprecated) Name of the trip (e.g. ICE 123). Defaults to None
         :param line: (optional) FPTF `Line` object of the line. Defaults to None
         :param cancelled: (optional) Whether the trip is cancelled. Defaults to False
         :param distance: (optional) Distance of the walk trip in meters. Defaults to None
@@ -357,8 +353,6 @@ class Leg(FPTFObject):
 
         # Optional Variables
         self.line: Optional[Line] = line
-        self.mode: Optional[Mode] = mode
-        self.name: Optional[str] = name
         self.cancelled: bool = cancelled
         self.distance: Optional[int] = distance
         self.departureDelay: Optional[datetime.timedelta] = departure_delay
@@ -377,26 +371,12 @@ class Leg(FPTFObject):
             return None
         return self.line.name
 
-    @name.setter
-    def name(self, name: str):
-        """(Deprecated) Use `line.name` instead."""
-        if not self.line:
-            self.line = Line("")
-        self.line.name = name
-
     @property
     def mode(self):
         """(Deprecated) Use `line.mode` instead."""
         if not self.line:
             return Mode.TRAIN
         return self.line.mode
-
-    @mode.setter
-    def mode(self, mode: Mode):
-        """(Deprecated) Use `line.mode` instead."""
-        if not self.line:
-            self.line = Line("")
-        self.line.mode = mode
 
 
 class Journey(FPTFObject):
