@@ -35,8 +35,8 @@ class KVBProfile(KVBJourneysRequest, KVBJourneyRequest, BaseProfile):
         's-bahn': [1],
         'stadtbahn': [2],
         'bus': [8],
+        'regionalverkehr': [16],
         'fernverkehr': [32],
-        'regionalverkehr': [64],
         'taxibus': [256]
     }
 
