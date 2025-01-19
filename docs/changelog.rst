@@ -3,6 +3,15 @@ Changelog
 
 .. contents::
 
+v0.6.1
+------
+* fix: regional trains type in KVB profile
+
+Internal changes:
+
+* fix: disable DB requests tests
+  DB disabled their HaFAS
+
 v0.6.0
 ------
 * feat: implement nearby request
