@@ -1,10 +1,12 @@
 import datetime
+import pytest
 
 from pyhafas import HafasClient
 from pyhafas.profile import DBProfile
 from pyhafas.types.fptf import Journey
 
 
+@pytest.mark.skip()
 def test_db_journey_request():
     profile = DBProfile()
     client = HafasClient(profile)

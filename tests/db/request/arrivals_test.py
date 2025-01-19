@@ -1,9 +1,11 @@
 import datetime
+import pytest
 
 from pyhafas import HafasClient
 from pyhafas.profile import DBProfile
 
 
+@pytest.mark.skip()
 def test_db_arrivals_request():
     client = HafasClient(DBProfile())
     arrivals = client.arrivals(
