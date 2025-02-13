@@ -168,3 +168,38 @@ other-bus             sonstige Busse
 Default Products
 ^^^^^^^^^^^^^^^^
 All available products specified above are enabled by default.
+
+Rejsekort & Rejseplan (RKRP)
+-----------------------------
+Usage
+^^^^^^
+.. code:: python
+
+  from pyhafas.profile import RKRPProfile
+  client = HafasClient(RKRPProfile())
+
+Available Products
+^^^^^^^^^^^^^^^^^^
+
+===================== ==================
+pyHaFAS Internal Name Example Train Type
+===================== ==================
+long_distance_express ICE
+long_distance         IC/EC
+regional_express      RE/IR
+regional              RB
+suburban              S
+bus                   BUS
+ferry                 F
+subway                U
+tram                  T
+taxi                  Group Taxi
+===================== ==================
+
+Default Products
+^^^^^^^^^^^^^^^^
+All available products specified above are enabled by default.
+
+Other interesting Stuff
+^^^^^^^^^^^^^^^^^^^^^^^
+* Official API documentation: `<https://help.rejseplanen.dk/hc/da/articles/214174465-Rejseplanens-API>`_
