@@ -72,6 +72,98 @@ class Station(FPTFObject):
         self.longitude: Optional[float] = longitude
 
 
+class Operator(FPTFObject):
+    """
+    FPTF `Operator` object
+
+    A operator is a definition of the operator of a line.
+
+    :ivar id: ID of the Operator. Typically the name of the operator as slug
+    :vartype id: str
+    :ivar name: Name of the Operator (maybe `None`)
+    :vartype name: Optional[str]
+    """
+
+    def __init__(
+            self,
+            id: str,
+            name: Optional[str] = None):
+        """
+        FPTF `Line` object
+
+        :param id: Internal ID of the station
+        :param name: (optional) Name of the Operator. Defaults to None
+        """
+        self.id: str = id
+        self.name: Optional[str] = name
+
+
+class Line(FPTFObject):
+    """
+    FPTF `Line` object
+
+    A line is a definition of the transport vehicle.
+
+    :ivar id: ID of the Station. Typically the name of the transport vehicle as slug
+    :vartype id: str
+    :ivar fahrtNr: Number of the transport vehicle (maybe `None`)
+    :vartype fahrtNr: Optional[str]
+    :ivar name: Name of the transport vehicle (maybe `None`)
+    :vartype name: Optional[str]
+    :ivar public: Whether the transport vehicle is publicly accessible or not (maybe `None`)
+    :vartype public: Optional[bool]
+    :ivar adminCode: AdminCode of the transport vehicle (maybe `None`)
+    :vartype adminCode: Optional[str]
+    :ivar productName: Product name of the transport vehicle (maybe `None`)
+    :vartype productName: Optional[str]
+    :ivar mode: Type of transport vehicle - Must be a part of the FPTF `Mode` enum. Defaults to `Mode.TRAIN`
+    :vartype mode: Mode
+    :ivar product: Product of the transport vehicle (maybe `None`)
+    :vartype product: Optional[str]
+    :ivar operator: Operator of the transport vehicle (maybe `None`)
+    :vartype operator: Optional[Operator]
+    :ivar addName: Additional name of the transport vehicle (maybe `None`)
+    :vartype addName: Optional[str]
+    """
+
+    def __init__(
+            self,
+            id: str,
+            fahrtNr: Optional[str] = None,
+            name: Optional[str] = None,
+            public: Optional[bool] = True,
+            adminCode: Optional[str] = None,
+            productName: Optional[str] = None,
+            mode: Optional[Mode] = Mode.TRAIN,
+            product: Optional[str] = None,
+            operator: Optional[Operator] = None,
+            addName: Optional[str] = None):
+        """
+        FPTF `Line` object
+
+        :param id: Internal ID of the Line
+        :param fahrtNr: (optional) Number of the transport vehicle. Defaults to None
+        :param name: (optional) Name of the transport vehicle. Defaults to None
+        :param public: (optional) Whether the transport vehicle is publicly accessible or not. Defaults to True
+        :param adminCode: (optional) Admin code of the transport vehicle. Defaults to None
+        :param productName: (optional) Product name of the transport vehicle. Defaults to None
+        :param mode: (optional) Type of transport vehicle - Must be a part of the FPTF `Mode` enum. Defaults to `Mode.TRAIN`
+        :param product: (optional) Product of the transport vehicle. Defaults to None
+        :param operator: (optional) Operator of the transport vehicle. Defaults to None
+        :param addName: (optional) Additional name of the transport vehicle. Defaults to None
+        """
+        self.id: str = id
+        self.fahrtNr: Optional[str] = fahrtNr
+        self.name: Optional[str] = name
+        self.public: Optional[bool] = public
+        self.adminCode: Optional[str] = adminCode
+        self.productName: Optional[str] = productName
+        self.mode: Optional[str] = mode
+        self.product: Optional[str] = product
+        self.operator: Optional[Operator] = operator
+        self.addName: Optional[str] = addName
+
+
 class Remark(FPTFObject):
     """
     A remark is a textual comment/information, usually added to a Stopover or Leg
@@ -193,10 +285,12 @@ class Leg(FPTFObject):
     :vartype departure: datetime.datetime
     :ivar arrival: Planned Date and Time of the arrival
     :vartype arrival: datetime.datetime
-    :ivar mode: Type of transport vehicle - Must be a part of the FPTF `Mode` enum. Defaults to `Mode.TRAIN`
+    :ivar mode: (deprecated) Type of transport vehicle - Must be a part of the FPTF `Mode` enum. References to Leg.line.mode`
     :vartype mode: Mode
-    :ivar name: Name of the trip (e.g. ICE 123) (maybe `None`)
+    :ivar name: (deprecated) Name of the trip (e.g. ICE 123). References to Leg.line.name
     :vartype name: Optional[str]
+    :ivar line: FPTF `Line` object of the line (maybe `None`)
+    :vartype line: Optional[Line]
     :ivar cancelled: Whether the trip is completely cancelled (not only some stops)
     :vartype cancelled: bool
     :ivar distance: Distance of the walk trip in metres. Only set if `mode` is `Mode.WALKING` otherwise None
@@ -222,8 +316,7 @@ class Leg(FPTFObject):
             destination: Station,
             departure: datetime.datetime,
             arrival: datetime.datetime,
-            mode: Mode = Mode.TRAIN,
-            name: Optional[str] = None,
+            line: Optional[Line] = None,
             cancelled: bool = False,
             distance: Optional[int] = None,
             departure_delay: Optional[datetime.timedelta] = None,
@@ -241,8 +334,7 @@ class Leg(FPTFObject):
         :param destination: FPTF `Station` object of the destination station
         :param departure: Planned date and Time of the departure
         :param arrival: Planned date and Time of the arrival
-        :param mode: (optional) Type of transport vehicle - Must be a part of the FPTF `Mode` enum. Defaults to `Mode.TRAIN`
-        :param name: (optional) Name of the trip (e.g. ICE 123). Defaults to None
+        :param line: (optional) FPTF `Line` object of the line. Defaults to None
         :param cancelled: (optional) Whether the trip is cancelled. Defaults to False
         :param distance: (optional) Distance of the walk trip in meters. Defaults to None
         :param departure_delay: (optional) Delay at the departure station. Defaults to None
@@ -260,8 +352,7 @@ class Leg(FPTFObject):
         self.arrival: datetime.datetime = arrival
 
         # Optional Variables
-        self.mode: Mode = mode
-        self.name: Optional[str] = name
+        self.line: Optional[Line] = line
         self.cancelled: bool = cancelled
         self.distance: Optional[int] = distance
         self.departureDelay: Optional[datetime.timedelta] = departure_delay
@@ -272,6 +363,20 @@ class Leg(FPTFObject):
         if remarks is None:
             remarks = []
         self.remarks: List[Remark] = remarks
+
+    @property
+    def name(self):
+        """(Deprecated) Use `line.name` instead."""
+        if not self.line:
+            return None
+        return self.line.name
+
+    @property
+    def mode(self):
+        """(Deprecated) Use `line.mode` instead."""
+        if not self.line:
+            return Mode.TRAIN
+        return self.line.mode
 
 
 class Journey(FPTFObject):
