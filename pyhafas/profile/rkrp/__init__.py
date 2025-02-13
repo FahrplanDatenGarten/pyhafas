@@ -50,7 +50,7 @@ class RKRPProfile(BaseProfile):
         'bus': [32],  # BUS
         'ferry': [64],  # F
         'subway': [128],  # U
-        'tram': [256],  # T
+        'tram': [256, 2048],  # T
         'taxi': [512]  # Group Taxi
     }
 
