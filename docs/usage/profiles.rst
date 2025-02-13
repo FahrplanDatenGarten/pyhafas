@@ -74,6 +74,38 @@ Specialities
 
 * The `max_trips` filter in station board (departures/arrival) requests seems not to work
 
+Großraumverkehr Hannover (GVH)
+------------------------------
+
+Usage
+^^^^^^
+.. code:: python
+
+  from pyhafas.profile import GVHProfile
+  client = HafasClient(GVHProfile())
+
+Available Products
+^^^^^^^^^^^^^^^^^^
+
+===================== ===================
+pyHaFAS Internal Name Example Train Types
+===================== ===================
+ice                   ICE
+ic-ec                 IC, EC
+re-rb                 RE, RB
+s-bahn                S-Bahn
+stadtbahn             U-Bahn
+bus                   Bus
+on-demand             Bedarfsverkehr
+===================== ===================
+
+Default Products
+^^^^^^^^^^^^^^^^
+All available products specified above are enabled by default.
+
+Noteworthy
+^^^^^^^^^^
+The location IDs are different from standard HAFAS and don't contain names and coordinates.
 
 Nahverkehr Sachsen-Anhalt (NASA)
 ---------------------------------------
